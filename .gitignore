@@ -1,4 +1,12 @@
 node_modules/
+studio/dist/
+studio/.sanity/
+.wrangler/
+.dev.vars
+.env
+.env.local
 .DS_Store
 .thumbnail
 *.log
+/bin/bash: line 4: /var/folders/4h/n445_l6155xdjyd77lmkyn540000gn/T/hermes-snap-6607d2212bef.sh: No space left on device
+/bin/bash: line 5: /var/folders/4h/n445_l6155xdjyd77lmkyn540000gn/T/hermes-cwd-6607d2212bef.txt: No space left on device

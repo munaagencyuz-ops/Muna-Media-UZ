@@ -1,11 +1,19 @@
 {
-  "name": "muna",
+  "name": "muna-media-uz",
   "version": "1.0.0",
   "description": "Muna Media website",
+  "private": true,
   "scripts": {
-    "dev": "http-server -p 3005 -c-1"
+    "dev": "http-server -p 3005 -c-1",
+    "build": "node -e \"console.log('Static site: no build step required')\"",
+    "preview": "npx wrangler pages dev . --compatibility-date=2025-01-01",
+    "deploy": "npx wrangler pages deploy . --project-name=muna-media-uz"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "wrangler": "^4.0.0"
   }
 }

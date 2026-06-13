@@ -820,10 +820,34 @@ function FAQ() {
 // ─────────────────────────────────────────────────────────────
 function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', company: '', task: '' });
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, page: window.location.pathname }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте позже.');
+      }
+
+      setSubmitted(true);
+      setForm({ name: '', company: '', task: '' });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Не удалось отправить заявку. Попробуйте позже.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -930,10 +954,15 @@ function FinalCTA() {
                       required
                     />
                   </div>
-                  <button type="submit" className="btn" style={{justifyContent:'center', marginTop: 4}}>
-                    Получить расчет
+                  <button type="submit" className="btn" style={{justifyContent:'center', marginTop: 4}} disabled={submitting}>
+                    {submitting ? 'Отправляем...' : 'Получить расчет'}
                     <span className="arrow">→</span>
                   </button>
+                  {error && (
+                    <div style={{color:'#b00020', fontSize: 13, textAlign:'center', fontWeight: 600}}>
+                      {error}
+                    </div>
+                  )}
                   <div className="mono" style={{color:'var(--muted)', textAlign:'center', marginTop: 4, fontSize: 10}}>
                     Первичный расчет высылаем в течение 48 часов
                   </div>

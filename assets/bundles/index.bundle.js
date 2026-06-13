@@ -1543,10 +1543,32 @@ function FAQ() {
 // ─────────────────────────────────────────────────────────────
 function FinalCTA() {
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState('');
     const [form, setForm] = useState({ name: '', company: '', task: '' });
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        setSubmitted(true);
+        setSubmitting(true);
+        setError('');
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(Object.assign(Object.assign({}, form), { page: window.location.pathname })),
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok || result.ok === false) {
+                throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте позже.');
+            }
+            setSubmitted(true);
+            setForm({ name: '', company: '', task: '' });
+        }
+        catch (err) {
+            setError(err instanceof Error ? err.message : 'Не удалось отправить заявку. Попробуйте позже.');
+        }
+        finally {
+            setSubmitting(false);
+        }
     }
     return (React.createElement("section", { id: "contact", style: { paddingBottom: 60 } },
         React.createElement("div", { className: "container" },
@@ -1609,9 +1631,10 @@ function FinalCTA() {
                         React.createElement("div", null,
                             React.createElement("label", { className: "mono", style: { color: 'var(--muted)', display: 'block', marginBottom: 8 } }, "\u0417\u0430\u0434\u0430\u0447\u0430 & \u0411\u044E\u0434\u0436\u0435\u0442"),
                             React.createElement("textarea", { className: "input", placeholder: "\u0412\u044B\u0445\u043E\u0434 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u043A \u0441\u0435\u043D\u0442\u044F\u0431\u0440\u044E. \u0411\u044E\u0434\u0436\u0435\u0442 \u043E\u0431\u0441\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044F \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E.", value: form.task, onChange: e => setForm(Object.assign(Object.assign({}, form), { task: e.target.value })), required: true })),
-                        React.createElement("button", { type: "submit", className: "btn", style: { justifyContent: 'center', marginTop: 4 } },
-                            "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0440\u0430\u0441\u0447\u0435\u0442",
+                        React.createElement("button", { type: "submit", className: "btn", style: { justifyContent: 'center', marginTop: 4 }, disabled: submitting },
+                            submitting ? 'Отправляем...' : "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0440\u0430\u0441\u0447\u0435\u0442",
                             React.createElement("span", { className: "arrow" }, "\u2192")),
+                        error && React.createElement("div", { style: { color: '#b00020', fontSize: 13, textAlign: 'center', fontWeight: 600 } }, error),
                         React.createElement("div", { className: "mono", style: { color: 'var(--muted)', textAlign: 'center', marginTop: 4, fontSize: 10 } }, "\u041F\u0435\u0440\u0432\u0438\u0447\u043D\u044B\u0439 \u0440\u0430\u0441\u0447\u0435\u0442 \u0432\u044B\u0441\u044B\u043B\u0430\u0435\u043C \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435 48 \u0447\u0430\u0441\u043E\u0432"))) : (React.createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center', textAlign: 'center', padding: '20px 0' } },
                         React.createElement("div", { style: {
                                 width: 72, height: 72, borderRadius: 999,
