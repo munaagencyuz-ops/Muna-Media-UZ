@@ -2,6 +2,10 @@ export async function onRequest(context) {
   const {request} = context
   const url = new URL(request.url)
 
+  if (request.method === 'GET' && url.hostname === 'munamedia.uz' && url.pathname.startsWith('/cms')) {
+    return Response.redirect(`https://www.munamedia.uz${url.pathname}${url.search}`, 301)
+  }
+
   if (request.method !== 'GET' || shouldSkip(url.pathname)) {
     return context.next()
   }
