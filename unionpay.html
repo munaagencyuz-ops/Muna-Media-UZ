@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Кейс UnionPay International | Muna Media</title>
+<meta name="description" content="Кейс UnionPay International от Muna Media: 6-месячная BTL-акция, сайт, Telegram-бот, retail-активации, таргет и influence-маркетинг." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-2: #F5F5F7;
+    --ink: #000000;
+    --ink-soft: #1D1D1F;
+    --muted: #86868B;
+    --lime: #295AE9;
+    --coral: #000000;
+    --cream-card: #FFFFFF;
+    --accent: var(--lime);
+    --accent-2: var(--coral);
+    --shadow: 6px 6px 0 0 var(--ink);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  .display {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+  .serif { font-family: 'Montserrat', sans-serif; font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+  section { padding: 80px 0; position: relative; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .card { background: var(--cream-card); border: 1.5px solid var(--ink); border-radius: 28px; box-shadow: var(--shadow); }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--bg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .pill .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent); }
+  .pill.solid { background: var(--ink); color: var(--bg); }
+  .pill.solid .dot { background: var(--accent); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 26px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 0 var(--ink); }
+  .btn.lime { background: var(--accent); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo .blob { width: 22px; height: 22px; background: var(--accent); border: 1.5px solid var(--ink); border-radius: 999px; display: inline-block; }
+  .logo-chip { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .glyph, .logo-chip .glyph {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--ink);
+    border-radius: 8px;
+    display: inline-grid;
+    place-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--cream-card);
+  }
+  .num-big { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; }
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
+  .sec-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .sec-title { font-size: clamp(40px, 5vw, 72px); }
+  a { color: inherit; }
+  @media (max-width: 900px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .container { padding: 0 22px; }
+    .card[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 760px) {
+    .container {
+      padding: 0 20px;
+    }
+    section {
+      padding: 56px 0;
+    }
+    .display {
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+    .sec-head {
+      margin-bottom: 32px;
+      gap: 18px;
+    }
+    .sec-eyebrow {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sec-title {
+      font-size: clamp(34px, 11vw, 48px);
+      line-height: 1.04;
+    }
+    .pill {
+      max-width: 100%;
+      white-space: normal;
+      line-height: 1.25;
+      border-radius: 18px;
+    }
+    .mono {
+      font-size: 10px;
+      line-height: 1.45;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 16px 18px;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.2;
+      min-height: 54px;
+    }
+    .card {
+      border-radius: 22px;
+      box-shadow: 4px 4px 0 0 var(--ink);
+    }
+    .hero-badge {
+      display: none !important;
+    }
+    #hero {
+      padding-top: 56px !important;
+      padding-bottom: 44px !important;
+    }
+    #hero h1 {
+      font-size: clamp(40px, 13vw, 58px) !important;
+      max-width: 100% !important;
+      margin-bottom: 22px !important;
+    }
+    #hero p {
+      font-size: 17px !important;
+      line-height: 1.55 !important;
+    }
+    .hero-main-row {
+      gap: 24px !important;
+      margin-bottom: 34px !important;
+    }
+    .hero-actions {
+      width: 100%;
+      gap: 10px !important;
+    }
+    .hero-strip {
+      grid-template-columns: 1fr 1fr !important;
+      border-radius: 18px !important;
+    }
+    .hero-strip-item {
+      padding: 18px !important;
+    }
+    .hero-strip-item .num-big {
+      font-size: 34px !important;
+    }
+    .cases-grid {
+      gap: 22px !important;
+    }
+    .case-card-head {
+      padding: 22px 20px 18px !important;
+      min-height: 92px;
+      gap: 12px !important;
+    }
+    .case-card-head > .mono {
+      max-width: 42%;
+      text-align: right;
+    }
+    .case-card-logo {
+      width: min(var(--case-logo-w, 160px), 50vw) !important;
+      height: 42px;
+    }
+    .case-card-logo img {
+      height: 36px;
+    }
+    .case-card-body {
+      padding: 24px 20px 22px !important;
+      gap: 18px !important;
+    }
+    .case-card-body h3 {
+      font-size: clamp(30px, 9vw, 42px) !important;
+      line-height: 1.02 !important;
+    }
+    .case-card-body p {
+      font-size: 16px !important;
+      line-height: 1.55 !important;
+    }
+    .tag {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    .case-metrics {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+      padding-top: 18px !important;
+    }
+    .case-metrics > div {
+      border-right: 0 !important;
+      border-bottom: 1px dashed var(--ink);
+      padding: 0 0 14px !important;
+    }
+    .case-metrics > div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0 !important;
+    }
+    .case-metrics .num-big {
+      font-size: 36px !important;
+    }
+    .marquee {
+      padding: 18px 0;
+    }
+    .marquee-track {
+      gap: 12px;
+      animation-duration: 34s;
+    }
+    .brand-logo-chip {
+      height: 58px;
+      min-width: clamp(124px, calc(var(--logo-w, 120px) * .82 + 42px), 190px);
+      padding: 10px 18px;
+      border-radius: 18px;
+    }
+    .brand-logo-chip img {
+      width: calc(var(--logo-w, 120px) * .78);
+      height: 34px;
+    }
+    .services-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    .service-card {
+      min-height: unset !important;
+      padding: 24px 20px !important;
+    }
+    .service-card h3 {
+      font-size: 26px !important;
+    }
+    .service-card ul li {
+      font-size: 14px !important;
+    }
+    .service-card .btn {
+      width: auto;
+      min-width: 132px;
+      padding: 13px 16px !important;
+      min-height: 46px;
+    }
+    .cta-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+    .ph {
+      min-height: 220px;
+      height: auto !important;
+      border-radius: 18px;
+    }
+    .faq-item {
+      padding: 22px 0;
+    }
+    .faq-title {
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .faq-toggle {
+      width: 38px;
+      height: 38px;
+    }
+    .final-cta-card {
+      padding: 32px 20px !important;
+      border-radius: 22px !important;
+    }
+    .final-cta-card h2 {
+      font-size: clamp(34px, 10vw, 48px) !important;
+    }
+    .final-cta-link {
+      align-self: stretch !important;
+    }
+    .contact-form-card {
+      padding: 22px 18px !important;
+      border-radius: 18px !important;
+    }
+    .input {
+      padding: 15px 16px;
+      font-size: 16px;
+      border-radius: 14px;
+    }
+    footer .container {
+      align-items: flex-start !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .container {
+      padding: 0 16px;
+    }
+    section {
+      padding: 48px 0;
+    }
+    #hero h1 {
+      font-size: clamp(36px, 13vw, 48px) !important;
+    }
+    .hero-strip {
+      grid-template-columns: 1fr !important;
+    }
+    .hero-strip-item {
+      border-right: 0 !important;
+    }
+    .case-card-head {
+      flex-direction: column;
+      align-items: flex-start !important;
+    }
+    .case-card-head > .mono {
+      max-width: 100%;
+      text-align: left;
+    }
+    .case-card-logo {
+      width: min(var(--case-logo-w, 160px), 72vw) !important;
+    }
+    .service-card > div:first-child {
+      flex-direction: column;
+    }
+    .service-card > div:first-child > div:last-child {
+      text-align: left !important;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="assets/vendor/react.development.js"></script>
+<script src="assets/vendor/react-dom.development.js"></script>
+<script>window.CASE_STUDY = 'unionpay';</script>
+<script src="assets/bundles/case-detail.bundle.js"></script>
+</body>
+</html>
