@@ -11,6 +11,7 @@ export default defineConfig({
   title: 'Muna Media CMS',
   projectId,
   dataset,
+  basePath: '/cms',
   plugins: [structureTool(), visionTool()],
   schema: {types: schemaTypes},
 })
