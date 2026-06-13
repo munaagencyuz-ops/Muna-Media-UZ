@@ -69,6 +69,7 @@ function Nav() {
         { label: 'Кейс KoronaPay', href: 'koronapay.html' }
       ]
     },
+    { label: 'Блог', href: '/blog', match: ['blog'] },
     { label: 'О компании', href: 'about.html' }
   ];
 
