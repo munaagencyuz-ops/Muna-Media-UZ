@@ -1,1 +1,3 @@
+https://munamedia.uz/cms https://www.munamedia.uz/cms/ 301
+https://munamedia.uz/cms/* https://www.munamedia.uz/cms/:splat 301
 /cms/* /cms/index.html 200
