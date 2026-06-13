@@ -459,8 +459,8 @@ function ServicesContact() {
                 «Если ваш маркетинг в Узбекистане не оцифрован и не имеет регламента ответа — вы теряете долю рынка прямо сейчас.»
               </p>
               <div style={{marginTop: 24, display: 'flex', flexDirection: 'column', gap: 14, fontSize: 15, color: 'rgba(255,255,255,0.85)'}}>
-                <div><strong>Email:</strong> hello@muna.media</div>
-                <div><strong>Телефон:</strong> +998 71 200-24-24</div>
+                <div><strong>Email:</strong> info@munamedia.me</div>
+                <div><strong>Телефон:</strong> +998 33 130 13 13</div>
                 <div><strong>Telegram:</strong> @muna_media_B2B</div>
               </div>
             </div>

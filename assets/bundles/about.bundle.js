@@ -467,7 +467,8 @@ function MunaFooter() {
                     alignItems: 'center'
                 } },
                 React.createElement("div", { style: { display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center' } },
-                    React.createElement("a", { href: "mailto:hello@muna.media", style: Object.assign(Object.assign({}, linkStyle), { fontWeight: 700 }) }, "hello@muna.media"),
+                    React.createElement("a", { href: "mailto:info@munamedia.me", style: Object.assign(Object.assign({}, linkStyle), { fontWeight: 700 }) }, "info@munamedia.me"),
+                    React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"),
                     React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"),
                     React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")),
                 React.createElement("div", { className: "mono", style: { color: 'rgba(255,255,255,.46)', textAlign: 'right' } }, "\u00A9 2019-2026 Muna Media \u00B7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D"))),
@@ -1208,7 +1209,9 @@ function AboutCTA() {
                                 "\u0411\u0438\u0437\u043D\u0435\u0441-\u0446\u0435\u043D\u0442\u0440 \u00ABInternational\u00BB, 4 \u044D\u0442\u0430\u0436"),
                             React.createElement("div", null,
                                 React.createElement("div", { className: "mono", style: { opacity: .6, fontSize: 11 } }, "\u041F\u0440\u044F\u043C\u0430\u044F \u043B\u0438\u043D\u0438\u044F"),
-                                React.createElement("a", { href: "mailto:hello@muna.media", style: { color: 'var(--bg)', textDecoration: 'none', fontSize: 18, fontWeight: 600 } }, "hello@muna.media")))),
+                                React.createElement("a", { href: "mailto:info@munamedia.me", style: { color: 'var(--bg)', textDecoration: 'none', fontSize: 18, fontWeight: 600 } }, "info@munamedia.me"),
+                            React.createElement("br", null),
+                            React.createElement("a", { href: "tel:+998331301313", style: { color: 'var(--bg)', textDecoration: 'none', fontSize: 18, fontWeight: 600 } }, "+998 33 130 13 13")))),
                     React.createElement("div", { style: {
                             background: 'var(--bg)',
                             color: 'var(--ink)',

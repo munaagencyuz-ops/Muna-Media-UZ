@@ -900,8 +900,14 @@ function FinalCTA() {
               }}>
                 <div>
                   <div className="mono" style={{opacity:.6}}>Email</div>
-                  <a href="mailto:hello@muna.media" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
-                    hello@muna.media
+                  <a href="mailto:info@munamedia.me" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    info@munamedia.me
+                  </a>
+                </div>
+                <div>
+                  <div className="mono" style={{opacity:.6}}>Телефон</div>
+                  <a href="tel:+998331301313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    +998 33 130 13 13
                   </a>
                 </div>
                 <div>

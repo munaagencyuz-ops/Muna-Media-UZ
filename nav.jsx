@@ -575,7 +575,8 @@ function MunaFooter() {
           alignItems: 'center'
         }}>
           <div style={{display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center'}}>
-            <a href="mailto:hello@muna.media" style={{...linkStyle, fontWeight: 700}}>hello@muna.media</a>
+            <a href="mailto:info@munamedia.me" style={{...linkStyle, fontWeight: 700}}>info@munamedia.me</a>
+            <a href="tel:+998331301313" style={linkStyle}>+998 33 130 13 13</a>
             <a href="https://t.me/munamedia" style={linkStyle}>Telegram</a>
             <a href="https://instagram.com/munamedia" style={linkStyle}>Instagram</a>
           </div>

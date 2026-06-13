@@ -366,8 +366,12 @@ function AboutCTA() {
                 </div>
                 <div>
                   <div className="mono" style={{opacity:.6, fontSize: 11}}>Прямая линия</div>
-                  <a href="mailto:hello@muna.media" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
-                    hello@muna.media
+                  <a href="mailto:info@munamedia.me" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    info@munamedia.me
+                  </a>
+                  <br />
+                  <a href="tel:+998331301313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    +998 33 130 13 13
                   </a>
                 </div>
               </div>
