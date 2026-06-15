@@ -14,16 +14,17 @@ export async function onRequest(context) {
   const contentType = response.headers.get('content-type') || ''
   if (!contentType.includes('text/html')) return response
 
-  const seo = await getPageSeo(context.env, normalizePath(url.pathname))
-  if (!seo) return response
+  const normalizedPath = normalizePath(url.pathname)
+  const seo = await getPageSeo(context.env, normalizedPath)
+  const canonicalUrl = seo?.canonicalUrl || defaultCanonicalUrl(url, normalizedPath)
 
   const rewriter = new HTMLRewriter()
-  if (seo.metaTitle) rewriter.on('title', replaceText(seo.metaTitle))
-  if (seo.metaDescription) rewriter.on('meta[name="description"]', setAttr('content', seo.metaDescription))
-  if (seo.h1) rewriter.on('h1', replaceFirstText(seo.h1))
-  if (seo.subtitle) rewriter.on('[data-cms="subtitle"]', replaceFirstText(seo.subtitle))
-  if (seo.canonicalUrl) rewriter.on('head', appendHtml(`<link rel="canonical" href="${escapeAttr(seo.canonicalUrl)}">`))
-  if (seo.noindex) rewriter.on('head', appendHtml('<meta name="robots" content="noindex,nofollow">'))
+  if (seo?.metaTitle) rewriter.on('title', replaceText(seo.metaTitle))
+  if (seo?.metaDescription) rewriter.on('meta[name="description"]', setAttr('content', seo.metaDescription))
+  if (seo?.h1) rewriter.on('h1', replaceFirstText(seo.h1))
+  if (seo?.subtitle) rewriter.on('[data-cms="subtitle"]', replaceFirstText(seo.subtitle))
+  rewriter.on('head', appendHtml(`<link rel="canonical" href="${escapeAttr(canonicalUrl)}">`))
+  rewriter.on('head', appendHtml(seo?.noindex ? '<meta name="robots" content="noindex,nofollow">' : '<meta name="robots" content="index,follow">'))
 
   return rewriter.transform(response)
 }
@@ -34,7 +35,14 @@ function shouldSkip(pathname) {
 
 function normalizePath(pathname) {
   if (!pathname || pathname === '/index.html') return '/'
-  return pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname
+  let path = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname
+  if (path.endsWith('.html')) path = path.slice(0, -5)
+  return path || '/'
+}
+
+function defaultCanonicalUrl(url, path) {
+  const hostname = url.hostname === 'www.munamedia.uz' ? 'https://www.munamedia.uz' : 'https://munamedia.uz'
+  return `${hostname}${path === '/' ? '/' : path}`
 }
 
 async function getPageSeo(env, path) {

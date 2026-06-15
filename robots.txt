@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Keep internal endpoints and CMS build assets out of search results
+Disallow: /api/
+Disallow: /cms/
+Disallow: /assets/vendor/
+
+Sitemap: https://munamedia.uz/sitemap.xml
