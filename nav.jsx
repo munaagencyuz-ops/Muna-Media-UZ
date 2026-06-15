@@ -353,7 +353,7 @@ function Nav() {
         <div className="nav-inner">
           <a href="index.html" className="logo" onClick={() => setIsOpen(false)}>
             <span className="blob" />
-            muna.media
+            MUNA MEDIA
           </a>
 
           {/* Desktop Links */}
@@ -535,7 +535,7 @@ function MunaFooter() {
           <div>
             <a href="index.html" className="logo" style={{fontSize: 42, color: 'white', textDecoration: 'none'}}>
               <span className="blob" style={{width: 34, height: 34, background: 'var(--accent)'}} />
-              muna.media
+              MUNA MEDIA
             </a>
             <p style={{margin: '18px 0 0', maxWidth: 470, color: 'rgba(255,255,255,.72)', fontSize: 16, lineHeight: 1.65}}>
               Рекламное агентство полного цикла в Узбекистане: стратегия, наружная реклама, digital, инфлюенсеры, ивенты и прозрачная отчетность.
