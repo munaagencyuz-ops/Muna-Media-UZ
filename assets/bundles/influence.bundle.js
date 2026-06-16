@@ -347,7 +347,7 @@ function Nav() {
         React.createElement("nav", { className: "nav" },
             React.createElement("div", { className: "nav-inner" },
                 React.createElement("a", { href: "index.html", className: "logo", onClick: () => setIsOpen(false) },
-                    React.createElement("span", { className: "blob" }),
+                    React.createElement("img", { src: "/assets/favicon/muna-icon-32x32.png", alt: "", "aria-hidden": "true", style: { width: 28, height: 28, borderRadius: 8, objectFit: 'cover', display: 'inline-block', flexShrink: 0 } }),
                     "MUNA MEDIA"),
                 React.createElement("div", { className: "nav-links" }, links.map((link, idx) => (React.createElement("div", { className: "nav-item", key: idx },
                     React.createElement("a", { href: link.href, className: `nav-link ${isActive(link) ? 'active' : ''}` },
