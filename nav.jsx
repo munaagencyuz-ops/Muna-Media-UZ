@@ -351,14 +351,12 @@ function Nav() {
 
       <nav className="nav">
         <div className="nav-inner">
-          <a href="index.html" className="logo" onClick={() => setIsOpen(false)}>
+          <a href="index.html" className="logo" onClick={() => setIsOpen(false)} aria-label="MUNA MEDIA">
             <img
-              src="/assets/favicon/muna-icon-32x32.png"
-              alt=""
-              aria-hidden="true"
-              style={{width: 28, height: 28, borderRadius: 8, objectFit: 'cover', display: 'inline-block', flexShrink: 0}}
+              src="/assets/logo/muna-media-navbar-logo.jpg"
+              alt="MUNA MEDIA"
+              style={{width: 156, maxWidth: '42vw', height: 'auto', display: 'block', flexShrink: 0}}
             />
-            MUNA MEDIA
           </a>
 
           {/* Desktop Links */}
