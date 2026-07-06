@@ -5,6 +5,8 @@ export default {
   fields: [
     {name: 'name', title: 'Name', type: 'string', validation: Rule => Rule.required()},
     {name: 'company', title: 'Company', type: 'string', validation: Rule => Rule.required()},
+    {name: 'phone', title: 'Phone', type: 'string', validation: Rule => Rule.required()},
+    {name: 'email', title: 'Email', type: 'string', validation: Rule => Rule.required().email()},
     {name: 'task', title: 'Task / Budget', type: 'text', validation: Rule => Rule.required()},
     {name: 'page', title: 'Page', type: 'string'},
     {

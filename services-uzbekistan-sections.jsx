@@ -439,10 +439,23 @@ function ServicesFAQ() {
 // ─────────────────────────────────────────────────────────────
 function ServicesContact() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', company: '', budget: '' });
-  function handleSubmit(e) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState(createLeadFormState());
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitLeadForm(form, window.location.pathname);
+      setSubmitted(true);
+      setForm(createLeadFormState());
+    } catch (err) {
+      setError(leadErrorMessage(err));
+    } finally {
+      setSubmitting(false);
+    }
   }
   return (
     <section id="contact" style={{paddingBottom: 60}}>
@@ -475,17 +488,28 @@ function ServicesContact() {
                     <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Компания</label>
                     <input className="input" placeholder="Название компании" value={form.company} onChange={e => setForm({...form, company: e.target.value})} required />
                   </div>
+                  <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14}} className="form-contact-grid">
+                    <div>
+                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Телефон</label>
+                      <input className="input" type="tel" placeholder="+998 90 123 45 67" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required />
+                    </div>
+                    <div>
+                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Email</label>
+                      <input className="input" type="email" placeholder="name@company.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required />
+                    </div>
+                  </div>
                   <div>
                     <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Планируемый бюджет</label>
-                    <select className="input" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})} required style={{height: 58}}>
+                    <select className="input" value={form.task} onChange={e => setForm({...form, task: e.target.value})} required style={{height: 58}}>
                       <option value="">Выберите масштаб проекта</option>
                       <option value="regional">Локальный запуск в Ташкенте</option>
                       <option value="national">Масштабная кампания по Узбекистану</option>
                       <option value="custom">Индивидуальный enterprise-формат</option>
                     </select>
                   </div>
-                  <button type="submit" className="btn" style={{justifyContent: 'center', marginTop: 4, background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
-                    Забронировать встречу
+                  {error ? <p style={{margin: 0, color: '#d32f2f', fontSize: 14}}>{error}</p> : null}
+                  <button type="submit" className="btn" style={{justifyContent: 'center', marginTop: 4, background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}} disabled={submitting}>
+                    {submitting ? 'Отправляем...' : 'Забронировать встречу'}
                     <span className="arrow">→</span>
                   </button>
                 </form>

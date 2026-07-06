@@ -822,7 +822,7 @@ function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ name: '', company: '', task: '' });
+  const [form, setForm] = useState({ name: '', company: '', phone: '', email: '', task: '' });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -842,7 +842,7 @@ function FinalCTA() {
       }
 
       setSubmitted(true);
-      setForm({ name: '', company: '', task: '' });
+      setForm({ name: '', company: '', phone: '', email: '', task: '' });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Не удалось отправить заявку. Попробуйте позже.');
     } finally {
@@ -949,6 +949,30 @@ function FinalCTA() {
                       onChange={e => setForm({...form, company: e.target.value})}
                       required
                     />
+                  </div>
+                  <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14}} className="form-contact-grid">
+                    <div>
+                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Телефон *</label>
+                      <input
+                        className="input"
+                        type="tel"
+                        placeholder="+998 90 123 45 67"
+                        value={form.phone}
+                        onChange={e => setForm({...form, phone: e.target.value})}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Email *</label>
+                      <input
+                        className="input"
+                        type="email"
+                        placeholder="name@company.com"
+                        value={form.email}
+                        onChange={e => setForm({...form, email: e.target.value})}
+                        required
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Задача & Бюджет</label>

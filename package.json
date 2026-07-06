@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "http-server -p 3005 -c-1",
-    "build": "node -e \"console.log('Static site: no build step required')\"",
+    "build:bundles": "node scripts/build-bundles.cjs",
+    "build": "npm run build:bundles",
     "preview": "npx wrangler pages dev . --compatibility-date=2025-01-01",
-    "deploy": "npx wrangler pages deploy . --project-name=muna-media-uz"
+    "deploy": "npm run build && npx wrangler pages deploy . --project-name=muna-media-uz"
   },
   "engines": {
     "node": ">=20.9.0"
