@@ -115,8 +115,21 @@ ${canonical ? `<link rel="canonical" href="${escapeAttr(canonical)}">` : ''}
 :root{--bg:#fff;--bg-2:#F5F5F7;--ink:#000;--muted:#86868B;--accent:#295AE9;--shadow:6px 6px 0 0 var(--ink)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;line-height:1.55}.container{max-width:1180px;margin:0 auto;padding:0 28px}.nav{border-bottom:1.5px solid var(--ink);background:#fff;position:sticky;top:0;z-index:10}.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;text-decoration:none;color:#000}.nav a{color:#000;text-decoration:none;font-weight:600}.nav-links{display:flex;gap:18px;align-items:center}.btn{display:inline-flex;padding:14px 20px;border:1.5px solid #000;border-radius:999px;background:#000;color:#fff!important}.hero{padding:76px 0 44px}.pill{display:inline-flex;gap:8px;align-items:center;border:1.5px solid #000;border-radius:999px;padding:8px 14px;font:600 11px JetBrains Mono;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:99px;background:var(--accent)}h1{font-size:clamp(40px,6vw,82px);line-height:1.03;letter-spacing:-.04em;margin:24px 0 18px}h2{font-size:28px;line-height:1.15;margin:8px 0 12px}.hero p,.lead{font-size:20px;max-width:820px;color:#1D1D1F}.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;padding:20px 0 80px}.post-card,.card{border:1.5px solid #000;border-radius:24px;padding:28px;background:#fff;box-shadow:var(--shadow)}.post-card a{color:#000}.read-more{display:inline-block;margin-top:12px;font-weight:700}.mono{font:600 12px JetBrains Mono;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.article{max-width:860px;margin:0 auto;padding:56px 28px 100px}.back{color:#000;font-weight:700}.article-body{font-size:18px}.article-body h2{font-size:34px;margin-top:42px}.article-body h3{font-size:26px;margin-top:32px}.article-body p{margin:18px 0}.article-body ul,.article-body ol{padding-left:24px}.article-body blockquote{border-left:5px solid var(--accent);margin:28px 0;padding:10px 0 10px 20px;background:var(--bg-2)}footer{border-top:1.5px solid #000;padding:28px 0;color:var(--muted)}@media(max-width:700px){.nav-links{display:none}.container{padding:0 18px}.article{padding-left:18px;padding-right:18px}}
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110435330', 'ym');
+
+    ym(110435330, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="/services-uzbekistan.html">Услуги</a><a href="/cases.html">Кейсы</a><a href="/blog">Блог</a><a href="/about.html">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav>
 <main class="container">${body}</main>
 <footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer>
