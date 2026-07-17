@@ -2,22 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const esbuild = require('esbuild');
 
+const sharedUiInputs = ['nav.jsx', 'tweaks-panel.jsx'];
+
 const builds = [
   {
     out: 'assets/bundles/index.bundle.js',
-    inputs: ['nav.jsx', 'sections.jsx', 'app.jsx'],
+    inputs: [...sharedUiInputs, 'sections.jsx', 'app.jsx'],
   },
   {
     out: 'assets/bundles/about.bundle.js',
-    inputs: ['nav.jsx', 'contact-helper.jsx', 'about-sections.jsx', 'about-app.jsx'],
+    inputs: [...sharedUiInputs, 'contact-helper.jsx', 'about-sections.jsx', 'about-app.jsx'],
   },
   {
     out: 'assets/bundles/influence.bundle.js',
-    inputs: ['nav.jsx', 'contact-helper.jsx', 'influence-sections.jsx', 'influence-app.jsx'],
+    inputs: [...sharedUiInputs, 'contact-helper.jsx', 'influence-sections.jsx', 'influence-app.jsx'],
   },
   {
     out: 'assets/bundles/services.bundle.js',
-    inputs: ['nav.jsx', 'contact-helper.jsx', 'services-uzbekistan-sections.jsx', 'services-uzbekistan-app.jsx'],
+    inputs: [...sharedUiInputs, 'contact-helper.jsx', 'services-uzbekistan-sections.jsx', 'services-uzbekistan-app.jsx'],
   },
 ];
 
