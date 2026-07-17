@@ -240,8 +240,8 @@ function CaseCTA() {
     <section style={{paddingBottom: 60}}>
       <div className="container">
         <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center'}}>
-          <a href="cases.html" className="btn ghost">Все кейсы <span className="arrow">→</span></a>
-          <a href="index.html#contact" className="btn lime">Обсудить проект <span className="arrow">→</span></a>
+          <a href="/cases" className="btn ghost">Все кейсы <span className="arrow">→</span></a>
+          <a href="/#contact" className="btn lime">Обсудить проект <span className="arrow">→</span></a>
         </div>
       </div>
     </section>

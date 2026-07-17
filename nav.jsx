@@ -16,67 +16,67 @@ function Nav() {
   }, [isOpen]);
 
   const links = [
-    { label: 'Главная', href: 'index.html' },
+    { label: 'Главная', href: '/' },
     {
       label: 'Услуги',
-      href: 'services-uzbekistan.html',
+      href: '/services-uzbekistan',
       match: [
-        'services-uzbekistan.html',
-        'influence.html',
-        'led-screens.html',
-        'gas-station-ads.html',
-        'mall-ads.html',
-        'bus-ads.html',
-        'bus-stop-ads.html',
-        'metro-ads.html',
-        'airport-ads.html',
-        'seo-optimization.html',
-        'context-ads.html',
-        'smm.html',
-        'influencer-marketing.html',
-        'telegram-marketing.html',
-        'event-management.html'
+        '/services-uzbekistan',
+        '/influence',
+        '/led-screens',
+        '/gas-station-ads',
+        '/mall-ads',
+        '/bus-ads',
+        '/bus-stop-ads',
+        '/metro-ads',
+        '/airport-ads',
+        '/seo-optimization',
+        '/context-ads',
+        '/smm',
+        '/influencer-marketing',
+        '/telegram-marketing',
+        '/event-management'
       ],
       children: [
-        { label: 'Все услуги', href: 'services-uzbekistan.html' },
+        { label: 'Все услуги', href: '/services-uzbekistan' },
         { type: 'group', label: 'Наружная реклама' },
-        { label: 'LED-экраны', href: 'led-screens.html' },
-        { label: 'Реклама на АЗС', href: 'gas-station-ads.html' },
-        { label: 'Реклама в торговых центрах', href: 'mall-ads.html' },
-        { label: 'Реклама на автобусах', href: 'bus-ads.html' },
-        { label: 'Реклама на остановках', href: 'bus-stop-ads.html' },
-        { label: 'Реклама в метро', href: 'metro-ads.html' },
-        { label: 'Реклама в аэропорту', href: 'airport-ads.html' },
+        { label: 'LED-экраны', href: '/led-screens' },
+        { label: 'Реклама на АЗС', href: '/gas-station-ads' },
+        { label: 'Реклама в торговых центрах', href: '/mall-ads' },
+        { label: 'Реклама на автобусах', href: '/bus-ads' },
+        { label: 'Реклама на остановках', href: '/bus-stop-ads' },
+        { label: 'Реклама в метро', href: '/metro-ads' },
+        { label: 'Реклама в аэропорту', href: '/airport-ads' },
         { type: 'group', label: 'Онлайн и поиск' },
-        { label: 'SEO-оптимизация', href: 'seo-optimization.html' },
-        { label: 'Контекстная реклама', href: 'context-ads.html' },
+        { label: 'SEO-оптимизация', href: '/seo-optimization' },
+        { label: 'Контекстная реклама', href: '/context-ads' },
         { type: 'group', label: 'Соцсети и инфлюенсеры' },
-        { label: 'SMM', href: 'smm.html' },
-        { label: 'Инфлюенс-маркетинг', href: 'influencer-marketing.html' },
-        { label: 'Telegram-маркетинг', href: 'telegram-marketing.html' },
+        { label: 'SMM', href: '/smm' },
+        { label: 'Инфлюенс-маркетинг', href: '/influencer-marketing' },
+        { label: 'Telegram-маркетинг', href: '/telegram-marketing' },
         { type: 'group', label: 'События' },
-        { label: 'Ивент-менеджмент', href: 'event-management.html' }
+        { label: 'Ивент-менеджмент', href: '/event-management' }
       ]
     },
     {
       label: 'Кейсы',
-      href: 'cases.html',
-      match: ['cases.html', 'xiaomi.html', 'unionpay.html', 'koronapay.html'],
+      href: '/cases',
+      match: ['/cases', '/xiaomi', '/unionpay', '/koronapay'],
       children: [
-        { label: 'Все кейсы', href: 'cases.html' },
-        { label: 'Кейс Xiaomi', href: 'xiaomi.html' },
-        { label: 'Кейс UnionPay', href: 'unionpay.html' },
-        { label: 'Кейс KoronaPay', href: 'koronapay.html' }
+        { label: 'Все кейсы', href: '/cases' },
+        { label: 'Кейс Xiaomi', href: '/xiaomi' },
+        { label: 'Кейс UnionPay', href: '/unionpay' },
+        { label: 'Кейс KoronaPay', href: '/koronapay' }
       ]
     },
     { label: 'Блог', href: '/blog', match: ['blog'] },
-    { label: 'О компании', href: 'about.html' }
+    { label: 'О компании', href: '/about' }
   ];
 
   const getActiveLink = () => {
     const path = window.location.pathname;
-    const page = path.split('/').pop() || 'index.html';
-    if (page === '' || page === '/') return 'index.html';
+    const page = path.split('/').pop() || '/';
+    if (page === '' || page === '/') return '/';
     return page;
   };
 
@@ -351,7 +351,7 @@ function Nav() {
 
       <nav className="nav">
         <div className="nav-inner">
-          <a href="index.html" className="logo" onClick={() => setIsOpen(false)} aria-label="MUNA MEDIA">
+          <a href="/" className="logo" onClick={() => setIsOpen(false)} aria-label="MUNA MEDIA">
             <img
               src="/assets/logo/muna-media-navbar-logo.jpg"
               alt="MUNA MEDIA"
@@ -394,7 +394,7 @@ function Nav() {
 
           {/* CTA (visible on desktop) */}
           <a
-            href="index.html#contact"
+            href="/#contact"
             className="btn lime nav-links"
             style={{ padding: '10px 20px', fontSize: '14px', margin: 0 }}
           >
@@ -450,7 +450,7 @@ function Nav() {
           
           <div className="mobile-drawer-footer">
             <a
-              href="index.html#contact"
+              href="/#contact"
               className="btn lime mobile-drawer-cta"
               style={{ padding: '18px 24px', fontSize: '16px' }}
               onClick={() => setIsOpen(false)}
@@ -473,39 +473,39 @@ function MunaFooter() {
     {
       title: 'Наружная реклама',
       links: [
-        ['LED-экраны', 'led-screens.html'],
-        ['Реклама на АЗС', 'gas-station-ads.html'],
-        ['Реклама в ТЦ', 'mall-ads.html'],
-        ['Реклама на автобусах', 'bus-ads.html'],
-        ['Остановки', 'bus-stop-ads.html'],
-        ['Метро', 'metro-ads.html'],
-        ['Аэропорт', 'airport-ads.html']
+        ['LED-экраны', '/led-screens'],
+        ['Реклама на АЗС', '/gas-station-ads'],
+        ['Реклама в ТЦ', '/mall-ads'],
+        ['Реклама на автобусах', '/bus-ads'],
+        ['Остановки', '/bus-stop-ads'],
+        ['Метро', '/metro-ads'],
+        ['Аэропорт', '/airport-ads']
       ]
     },
     {
       title: 'Digital',
       links: [
-        ['SEO-оптимизация', 'seo-optimization.html'],
-        ['Контекстная реклама', 'context-ads.html'],
-        ['SMM', 'smm.html'],
-        ['Инфлюенс-маркетинг', 'influencer-marketing.html'],
-        ['Telegram-маркетинг', 'telegram-marketing.html'],
-        ['Ивент-менеджмент', 'event-management.html']
+        ['SEO-оптимизация', '/seo-optimization'],
+        ['Контекстная реклама', '/context-ads'],
+        ['SMM', '/smm'],
+        ['Инфлюенс-маркетинг', '/influencer-marketing'],
+        ['Telegram-маркетинг', '/telegram-marketing'],
+        ['Ивент-менеджмент', '/event-management']
       ]
     }
   ];
   const footerLinks = {
     pages: [
-      ['Главная', 'index.html'],
-      ['Все услуги', 'services-uzbekistan.html'],
-      ['Кейсы', 'cases.html'],
-      ['О компании', 'about.html'],
-      ['Контакты', 'index.html#contact']
+      ['Главная', '/'],
+      ['Все услуги', '/services-uzbekistan'],
+      ['Кейсы', '/cases'],
+      ['О компании', '/about'],
+      ['Контакты', '/#contact']
     ],
     cases: [
-      ['Xiaomi', 'xiaomi.html'],
-      ['UnionPay', 'unionpay.html'],
-      ['KoronaPay', 'koronapay.html']
+      ['Xiaomi', '/xiaomi'],
+      ['UnionPay', '/unionpay'],
+      ['KoronaPay', '/koronapay']
     ]
   };
 
@@ -536,7 +536,7 @@ function MunaFooter() {
           alignItems: 'start'
         }}>
           <div>
-            <a href="index.html" className="logo" style={{fontSize: 42, color: 'white', textDecoration: 'none'}}>
+            <a href="/" className="logo" style={{fontSize: 42, color: 'white', textDecoration: 'none'}}>
               <span className="blob" style={{width: 34, height: 34, background: 'var(--accent)'}} />
               MUNA MEDIA
             </a>
@@ -544,11 +544,11 @@ function MunaFooter() {
               Рекламное агентство полного цикла в Узбекистане: стратегия, наружная реклама, digital, инфлюенсеры, ивенты и прозрачная отчетность.
             </p>
             <div style={{display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 26}}>
-              <a href="index.html#contact" className="btn" style={{background: 'var(--accent)', borderColor: 'white', color: 'white'}}>
+              <a href="/#contact" className="btn" style={{background: 'var(--accent)', borderColor: 'white', color: 'white'}}>
                 Обсудить проект
                 <span className="arrow">→</span>
               </a>
-              <a href="cases.html" className="btn" style={{background: 'transparent', borderColor: 'white', color: 'white'}}>
+              <a href="/cases" className="btn" style={{background: 'transparent', borderColor: 'white', color: 'white'}}>
                 Смотреть кейсы
                 <span className="arrow">→</span>
               </a>

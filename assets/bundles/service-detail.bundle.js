@@ -15,67 +15,67 @@ function Nav() {
         };
     }, [isOpen]);
     const links = [
-        { label: 'Главная', href: 'index.html' },
+        { label: 'Главная', href: '/' },
         {
             label: 'Услуги',
-            href: 'services-uzbekistan.html',
+            href: '/services-uzbekistan',
             match: [
-                'services-uzbekistan.html',
-                'influence.html',
-                'led-screens.html',
-                'gas-station-ads.html',
-                'mall-ads.html',
-                'bus-ads.html',
-                'bus-stop-ads.html',
-                'metro-ads.html',
-                'airport-ads.html',
-                'seo-optimization.html',
-                'context-ads.html',
-                'smm.html',
-                'influencer-marketing.html',
-                'telegram-marketing.html',
-                'event-management.html'
+                '/services-uzbekistan',
+                '/influence',
+                '/led-screens',
+                '/gas-station-ads',
+                '/mall-ads',
+                '/bus-ads',
+                '/bus-stop-ads',
+                '/metro-ads',
+                '/airport-ads',
+                '/seo-optimization',
+                '/context-ads',
+                '/smm',
+                '/influencer-marketing',
+                '/telegram-marketing',
+                '/event-management'
             ],
             children: [
-                { label: 'Все услуги', href: 'services-uzbekistan.html' },
+                { label: 'Все услуги', href: '/services-uzbekistan' },
                 { type: 'group', label: 'Наружная реклама' },
-                { label: 'LED-экраны', href: 'led-screens.html' },
-                { label: 'Реклама на АЗС', href: 'gas-station-ads.html' },
-                { label: 'Реклама в торговых центрах', href: 'mall-ads.html' },
-                { label: 'Реклама на автобусах', href: 'bus-ads.html' },
-                { label: 'Реклама на остановках', href: 'bus-stop-ads.html' },
-                { label: 'Реклама в метро', href: 'metro-ads.html' },
-                { label: 'Реклама в аэропорту', href: 'airport-ads.html' },
+                { label: 'LED-экраны', href: '/led-screens' },
+                { label: 'Реклама на АЗС', href: '/gas-station-ads' },
+                { label: 'Реклама в торговых центрах', href: '/mall-ads' },
+                { label: 'Реклама на автобусах', href: '/bus-ads' },
+                { label: 'Реклама на остановках', href: '/bus-stop-ads' },
+                { label: 'Реклама в метро', href: '/metro-ads' },
+                { label: 'Реклама в аэропорту', href: '/airport-ads' },
                 { type: 'group', label: 'Онлайн и поиск' },
-                { label: 'SEO-оптимизация', href: 'seo-optimization.html' },
-                { label: 'Контекстная реклама', href: 'context-ads.html' },
+                { label: 'SEO-оптимизация', href: '/seo-optimization' },
+                { label: 'Контекстная реклама', href: '/context-ads' },
                 { type: 'group', label: 'Соцсети и инфлюенсеры' },
-                { label: 'SMM', href: 'smm.html' },
-                { label: 'Инфлюенс-маркетинг', href: 'influencer-marketing.html' },
-                { label: 'Telegram-маркетинг', href: 'telegram-marketing.html' },
+                { label: 'SMM', href: '/smm' },
+                { label: 'Инфлюенс-маркетинг', href: '/influencer-marketing' },
+                { label: 'Telegram-маркетинг', href: '/telegram-marketing' },
                 { type: 'group', label: 'События' },
-                { label: 'Ивент-менеджмент', href: 'event-management.html' }
+                { label: 'Ивент-менеджмент', href: '/event-management' }
             ]
         },
         {
             label: 'Кейсы',
-            href: 'cases.html',
-            match: ['cases.html', 'xiaomi.html', 'unionpay.html', 'koronapay.html'],
+            href: '/cases',
+            match: ['/cases', '/xiaomi', '/unionpay', '/koronapay'],
             children: [
-                { label: 'Все кейсы', href: 'cases.html' },
-                { label: 'Кейс Xiaomi', href: 'xiaomi.html' },
-                { label: 'Кейс UnionPay', href: 'unionpay.html' },
-                { label: 'Кейс KoronaPay', href: 'koronapay.html' }
+                { label: 'Все кейсы', href: '/cases' },
+                { label: 'Кейс Xiaomi', href: '/xiaomi' },
+                { label: 'Кейс UnionPay', href: '/unionpay' },
+                { label: 'Кейс KoronaPay', href: '/koronapay' }
             ]
         },
         { label: 'Блог', href: '/blog', match: ['blog'] },
-        { label: 'О компании', href: 'about.html' }
+        { label: 'О компании', href: '/about' }
     ];
     const getActiveLink = () => {
         const path = window.location.pathname;
-        const page = path.split('/').pop() || 'index.html';
+        const page = path.split('/').pop() || '/';
         if (page === '' || page === '/')
-            return 'index.html';
+            return '/';
         return page;
     };
     const activePage = getActiveLink();
@@ -346,7 +346,7 @@ function Nav() {
       ` } }),
         React.createElement("nav", { className: "nav" },
             React.createElement("div", { className: "nav-inner" },
-                React.createElement("a", { href: "index.html", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" },
+                React.createElement("a", { href: "/", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" },
                     React.createElement("img", { src: "/assets/logo/muna-media-navbar-logo.jpg", alt: "MUNA MEDIA", style: { width: 156, maxWidth: '42vw', height: 'auto', display: 'block', flexShrink: 0 } })),
                 React.createElement("div", { className: "nav-links" }, links.map((link, idx) => (React.createElement("div", { className: "nav-item", key: idx },
                     React.createElement("a", { href: link.href, className: `nav-link ${isActive(link) ? 'active' : ''}` },
@@ -355,7 +355,7 @@ function Nav() {
                     link.children && (React.createElement("div", { className: "nav-dropdown" }, link.children.map((child, childIdx) => (child.type === 'group' ? (React.createElement("div", { key: childIdx, className: "nav-dropdown-group" }, child.label)) : (React.createElement("a", { key: childIdx, href: child.href, className: `nav-dropdown-link ${activePage === child.href ? 'active' : ''}` },
                         child.label,
                         React.createElement("span", null, "\u2192"))))))))))),
-                React.createElement("a", { href: "index.html#contact", className: "btn lime nav-links", style: { padding: '10px 20px', fontSize: '14px', margin: 0 } },
+                React.createElement("a", { href: "/#contact", className: "btn lime nav-links", style: { padding: '10px 20px', fontSize: '14px', margin: 0 } },
                     "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                     React.createElement("span", { className: "arrow" }, "\u2192")),
                 React.createElement("button", { className: `burger-btn ${isOpen ? 'open' : ''}`, onClick: () => setIsOpen(!isOpen), "aria-label": "Toggle navigation menu" },
@@ -372,7 +372,7 @@ function Nav() {
                         React.createElement("span", null, child.label),
                         React.createElement("span", { className: "chevron" }, "\u2192"))))))))),
                 React.createElement("div", { className: "mobile-drawer-footer" },
-                    React.createElement("a", { href: "index.html#contact", className: "btn lime mobile-drawer-cta", style: { padding: '18px 24px', fontSize: '16px' }, onClick: () => setIsOpen(false) },
+                    React.createElement("a", { href: "/#contact", className: "btn lime mobile-drawer-cta", style: { padding: '18px 24px', fontSize: '16px' }, onClick: () => setIsOpen(false) },
                         "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                         React.createElement("span", { className: "arrow", style: { marginLeft: '8px' } }, "\u2192")))))));
 }
@@ -383,39 +383,39 @@ function MunaFooter() {
         {
             title: 'Наружная реклама',
             links: [
-                ['LED-экраны', 'led-screens.html'],
-                ['Реклама на АЗС', 'gas-station-ads.html'],
-                ['Реклама в ТЦ', 'mall-ads.html'],
-                ['Реклама на автобусах', 'bus-ads.html'],
-                ['Остановки', 'bus-stop-ads.html'],
-                ['Метро', 'metro-ads.html'],
-                ['Аэропорт', 'airport-ads.html']
+                ['LED-экраны', '/led-screens'],
+                ['Реклама на АЗС', '/gas-station-ads'],
+                ['Реклама в ТЦ', '/mall-ads'],
+                ['Реклама на автобусах', '/bus-ads'],
+                ['Остановки', '/bus-stop-ads'],
+                ['Метро', '/metro-ads'],
+                ['Аэропорт', '/airport-ads']
             ]
         },
         {
             title: 'Digital',
             links: [
-                ['SEO-оптимизация', 'seo-optimization.html'],
-                ['Контекстная реклама', 'context-ads.html'],
-                ['SMM', 'smm.html'],
-                ['Инфлюенс-маркетинг', 'influencer-marketing.html'],
-                ['Telegram-маркетинг', 'telegram-marketing.html'],
-                ['Ивент-менеджмент', 'event-management.html']
+                ['SEO-оптимизация', '/seo-optimization'],
+                ['Контекстная реклама', '/context-ads'],
+                ['SMM', '/smm'],
+                ['Инфлюенс-маркетинг', '/influencer-marketing'],
+                ['Telegram-маркетинг', '/telegram-marketing'],
+                ['Ивент-менеджмент', '/event-management']
             ]
         }
     ];
     const footerLinks = {
         pages: [
-            ['Главная', 'index.html'],
-            ['Все услуги', 'services-uzbekistan.html'],
-            ['Кейсы', 'cases.html'],
-            ['О компании', 'about.html'],
-            ['Контакты', 'index.html#contact']
+            ['Главная', '/'],
+            ['Все услуги', '/services-uzbekistan'],
+            ['Кейсы', '/cases'],
+            ['О компании', '/about'],
+            ['Контакты', '/#contact']
         ],
         cases: [
-            ['Xiaomi', 'xiaomi.html'],
-            ['UnionPay', 'unionpay.html'],
-            ['KoronaPay', 'koronapay.html']
+            ['Xiaomi', '/xiaomi'],
+            ['UnionPay', '/unionpay'],
+            ['KoronaPay', '/koronapay']
         ]
     };
     const linkStyle = {
@@ -437,15 +437,15 @@ function MunaFooter() {
                     alignItems: 'start'
                 } },
                 React.createElement("div", null,
-                    React.createElement("a", { href: "index.html", className: "logo", style: { fontSize: 42, color: 'white', textDecoration: 'none' } },
+                    React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: 'white', textDecoration: 'none' } },
                         React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: 'var(--accent)' } }),
                         "MUNA MEDIA"),
                     React.createElement("p", { style: { margin: '18px 0 0', maxWidth: 470, color: 'rgba(255,255,255,.72)', fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."),
                     React.createElement("div", { style: { display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 26 } },
-                        React.createElement("a", { href: "index.html#contact", className: "btn", style: { background: 'var(--accent)', borderColor: 'white', color: 'white' } },
+                        React.createElement("a", { href: "/#contact", className: "btn", style: { background: 'var(--accent)', borderColor: 'white', color: 'white' } },
                             "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                             React.createElement("span", { className: "arrow" }, "\u2192")),
-                        React.createElement("a", { href: "cases.html", className: "btn", style: { background: 'transparent', borderColor: 'white', color: 'white' } },
+                        React.createElement("a", { href: "/cases", className: "btn", style: { background: 'transparent', borderColor: 'white', color: 'white' } },
                             "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B",
                             React.createElement("span", { className: "arrow" }, "\u2192")))),
                 React.createElement("div", { style: {
@@ -950,7 +950,7 @@ Object.assign(window, {
 // Muna Media — service detail page data
 const SERVICE_PAGES = {
     led: {
-        slug: 'led-screens.html',
+        slug: '/led-screens',
         group: 'Наружная реклама',
         title: 'LED-экраны',
         hero: 'LED-экраны для заметного городского охвата',
@@ -963,7 +963,7 @@ const SERVICE_PAGES = {
         ],
         why: ['Подбираем экраны по трафику и контексту района.', 'Адаптируем креатив под формат и длительность ролика.', 'Собираем фото- и видеоотчеты по размещениям.'],
         caseName: 'Xiaomi',
-        caseUrl: 'xiaomi.html',
+        caseUrl: '/xiaomi',
         caseText: 'В запусковых активностях Xiaomi наружные форматы помогали поддерживать узнаваемость продукта рядом с точками продаж и городским трафиком.',
         testimonial: 'Команда Muna Media умеет быстро собрать понятный медиаплан и держать качество размещения под контролем.',
         author: 'Маркетинг-менеджер технологического бренда',
@@ -974,7 +974,7 @@ const SERVICE_PAGES = {
         ]
     },
     gas: {
-        slug: 'gas-station-ads.html',
+        slug: '/gas-station-ads',
         group: 'Наружная реклама',
         title: 'Реклама на АЗС',
         hero: 'Реклама на АЗС для аудитории автомобилистов',
@@ -983,7 +983,7 @@ const SERVICE_PAGES = {
         needs: ['Достучаться до платежеспособной городской аудитории.', 'Поддержать FMCG, финтех, авто- и телеком-предложения.', 'Закрепить бренд на ежедневных маршрутах.'],
         why: ['Знаем, какие форматы работают рядом с кассой, колонками и магазином.', 'Собираем адресную программу под район и поток.', 'Контролируем размещения и отчетность.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В промо UnionPay мы работали с точками высокого потока, включая розничные и городские маршруты, чтобы стимулировать реальные транзакции.',
         testimonial: 'Для нас было важно не просто поставить рекламу, а выбрать точки, где аудитория действительно принимает решение.',
         author: 'Проектный менеджер финтех-кампании',
@@ -994,7 +994,7 @@ const SERVICE_PAGES = {
         ]
     },
     malls: {
-        slug: 'mall-ads.html',
+        slug: '/mall-ads',
         group: 'Наружная реклама',
         title: 'Реклама в торговых центрах',
         hero: 'Реклама в ТЦ рядом с моментом покупки',
@@ -1003,7 +1003,7 @@ const SERVICE_PAGES = {
         needs: ['Повлиять на выбор рядом с покупкой.', 'Поддержать запуск в ритейле и партнерских точках.', 'Увеличить контакт с семейной и городской аудиторией.'],
         why: ['Подбираем ТЦ под аудиторию бренда и географию продаж.', 'Согласовываем форматы с площадками и администрацией.', 'Можем совместить размещение с промо-персоналом и событиями.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В кампании UnionPay ритейл-точки и офлайн-промо помогали объяснять механику акции и доводить пользователя до транзакции.',
         testimonial: 'Muna Media хорошо связывает ритейл, промо и digital, поэтому кампания не распадается на отдельные куски.',
         author: 'Руководитель BTL-направления',
@@ -1014,7 +1014,7 @@ const SERVICE_PAGES = {
         ]
     },
     buses: {
-        slug: 'bus-ads.html',
+        slug: '/bus-ads',
         group: 'Наружная реклама',
         title: 'Реклама на автобусах',
         hero: 'Реклама на автобусах для массового городского охвата',
@@ -1023,7 +1023,7 @@ const SERVICE_PAGES = {
         needs: ['Получить заметность в разных районах города.', 'Поддержать массовую кампанию или запуск продукта.', 'Сделать бренд частью ежедневного маршрута аудитории.'],
         why: ['Подбираем маршруты под географию аудитории.', 'Контролируем производство и монтаж.', 'Даем понятную отчетность по транспорту и срокам.'],
         caseName: 'KoronaPay',
-        caseUrl: 'koronapay.html',
+        caseUrl: '/koronapay',
         caseText: 'Для финтех-кампаний транспортная среда помогает формировать доверие и регулярный контакт с широкой аудиторией.',
         testimonial: 'Транспортная реклама дала кампании ощущение масштаба и присутствия в городе.',
         author: 'Бренд-менеджер финансового сервиса',
@@ -1034,7 +1034,7 @@ const SERVICE_PAGES = {
         ]
     },
     busStops: {
-        slug: 'bus-stop-ads.html',
+        slug: '/bus-stop-ads',
         group: 'Наружная реклама',
         title: 'Реклама на автобусных остановках',
         hero: 'Остановки как точка частого контакта с аудиторией',
@@ -1043,7 +1043,7 @@ const SERVICE_PAGES = {
         needs: ['Усилить локальную узнаваемость в конкретных районах.', 'Донести простое предложение до широкой аудитории.', 'Поддержать кампанию рядом с метро, ТЦ или ритейлом.'],
         why: ['Выбираем остановки по потоку и окружению.', 'Адаптируем макеты под быстрый контакт.', 'Проверяем размещения на местах.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В промо-механиках UnionPay офлайн-точки с высоким потоком помогали объяснять акцию и вести аудиторию в цифровую механику.',
         testimonial: 'Остановки хорошо сработали как понятный и заметный слой кампании в городе.',
         author: 'Менеджер по офлайн-размещениям',
@@ -1054,7 +1054,7 @@ const SERVICE_PAGES = {
         ]
     },
     metro: {
-        slug: 'metro-ads.html',
+        slug: '/metro-ads',
         group: 'Наружная реклама',
         title: 'Реклама в метро',
         hero: 'Реклама в метро для стабильного пассажирского потока',
@@ -1063,7 +1063,7 @@ const SERVICE_PAGES = {
         needs: ['Получить частый контакт с ежедневной аудиторией.', 'Поддержать розничные точки рядом со станциями.', 'Сделать бренд видимым в транспортной среде.'],
         why: ['Подбираем станции по маршрутам и аудитории.', 'Адаптируем сообщение под короткий контакт.', 'Соединяем метро с промо, Telegram и digital-воронкой.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В кампании UnionPay промо у метро и городских потоков помогало привлекать участников в механику акции.',
         testimonial: 'Метро стало хорошим каналом для объяснения простого оффера массовой аудитории.',
         author: 'Координатор промо-кампании',
@@ -1074,7 +1074,7 @@ const SERVICE_PAGES = {
         ]
     },
     airport: {
-        slug: 'airport-ads.html',
+        slug: '/airport-ads',
         group: 'Наружная реклама',
         title: 'Реклама в аэропорту',
         hero: 'Реклама в аэропорту для премиального контакта',
@@ -1083,7 +1083,7 @@ const SERVICE_PAGES = {
         needs: ['Укрепить статус бренда и доверие.', 'Достучаться до деловой и международной аудитории.', 'Поддержать выход бренда на рынок Узбекистана.'],
         why: ['Подбираем зоны по маршруту пассажира.', 'Помогаем с премиальной адаптацией креатива.', 'Собираем кампанию вокруг имиджа, доверия и запоминаемости.'],
         caseName: 'KoronaPay',
-        caseUrl: 'koronapay.html',
+        caseUrl: '/koronapay',
         caseText: 'Для финансовых и международных сервисов аэропортовая среда особенно полезна: она усиливает доверие и ощущение масштаба.',
         testimonial: 'Аэропорт помог бренду выглядеть заметно и уверенно для аудитории, которая часто принимает решения быстро.',
         author: 'Директор по маркетингу международного сервиса',
@@ -1094,7 +1094,7 @@ const SERVICE_PAGES = {
         ]
     },
     seo: {
-        slug: 'seo-optimization.html',
+        slug: '/seo-optimization',
         group: 'Онлайн и поиск',
         title: 'SEO-оптимизация',
         hero: 'SEO-оптимизация для роста органического спроса',
@@ -1103,7 +1103,7 @@ const SERVICE_PAGES = {
         needs: ['Получать заявки без постоянного роста рекламного бюджета.', 'Закрывать поисковый спрос на русском и локальном рынке.', 'Улучшить сайт перед масштабированием рекламы.'],
         why: ['Связываем SEO с бизнес-целями, а не только позициями.', 'Учитываем локальные запросы и поведение аудитории.', 'Работаем вместе с контентом, аналитикой и рекламой.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В digital-механиках UnionPay сайт был частью пути пользователя: объяснял правила, принимал участие и поддерживал промо.',
         testimonial: 'Muna Media смотрит на сайт как на часть воронки, а не как на отдельную техническую задачу.',
         author: 'Руководитель digital-направления',
@@ -1114,7 +1114,7 @@ const SERVICE_PAGES = {
         ]
     },
     context: {
-        slug: 'context-ads.html',
+        slug: '/context-ads',
         group: 'Онлайн и поиск',
         title: 'Контекстная реклама',
         hero: 'Контекстная реклама с контролем заявок и бюджета',
@@ -1123,7 +1123,7 @@ const SERVICE_PAGES = {
         needs: ['Быстро получить поток обращений.', 'Проверить спрос на продукт или услугу.', 'Управлять стоимостью привлечения клиента.'],
         why: ['Строим кампании вокруг целей бизнеса.', 'Настраиваем аналитику до запуска бюджета.', 'Регулярно чистим запросы и улучшаем объявления.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В кампании UnionPay платные каналы помогали вести аудиторию к сайту, Telegram-боту и механике участия.',
         testimonial: 'Команда не просто запускала объявления, а объясняла, что происходит с бюджетом и заявками.',
         author: 'Performance lead',
@@ -1134,7 +1134,7 @@ const SERVICE_PAGES = {
         ]
     },
     smm: {
-        slug: 'smm.html',
+        slug: '/smm',
         group: 'Соцсети и инфлюенсеры',
         title: 'SMM',
         hero: 'SMM для регулярной коммуникации бренда',
@@ -1143,7 +1143,7 @@ const SERVICE_PAGES = {
         needs: ['Сделать бренд живым и понятным для аудитории.', 'Регулярно рассказывать о продуктах и акциях.', 'Поддерживать доверие через контент и ответы.'],
         why: ['Работаем с локальным контекстом и языком аудитории.', 'Соединяем контент, инфлюенсеров и рекламу.', 'Держим визуальный стандарт бренда.'],
         caseName: 'Xiaomi',
-        caseUrl: 'xiaomi.html',
+        caseUrl: '/xiaomi',
         caseText: 'Для Xiaomi команда Muna Media вела официальные соцсети, готовила визуальный контент и поддерживала продуктовые запуски.',
         testimonial: 'Соцсети стали регулярным каналом контакта с аудиторией, а не просто лентой публикаций.',
         author: 'Представитель consumer electronics бренда',
@@ -1154,7 +1154,7 @@ const SERVICE_PAGES = {
         ]
     },
     influence: {
-        slug: 'influencer-marketing.html',
+        slug: '/influencer-marketing',
         group: 'Соцсети и инфлюенсеры',
         title: 'Инфлюенс-маркетинг',
         hero: 'Инфлюенс-маркетинг с проверкой аудитории',
@@ -1163,7 +1163,7 @@ const SERVICE_PAGES = {
         needs: ['Быстро получить доверительный контакт с аудиторией.', 'Поддержать запуск продукта через мнения лидеров.', 'Усилить промо-кампанию живыми рекомендациями.'],
         why: ['Проверяем блогеров перед закупкой.', 'Подбираем формат под продукт и тон бренда.', 'Контролируем публикации, отметки, охваты и переходы.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В кампании UnionPay блогеры давали охват, объясняли механику акции и помогали привести пользователей к участию.',
         testimonial: 'Подбор блогеров был точным: мы получили не только охват, но и понятное вовлечение.',
         author: 'Маркетинг-координатор промо-акции',
@@ -1174,7 +1174,7 @@ const SERVICE_PAGES = {
         ]
     },
     telegram: {
-        slug: 'telegram-marketing.html',
+        slug: '/telegram-marketing',
         group: 'Соцсети и инфлюенсеры',
         title: 'Telegram-маркетинг',
         hero: 'Telegram-маркетинг для локального охвата',
@@ -1183,7 +1183,7 @@ const SERVICE_PAGES = {
         needs: ['Быстро донести сообщение до локальной аудитории.', 'Поддержать промо или запуск продукта.', 'Получить охват в канале, которому аудитория уже доверяет.'],
         why: ['Подбираем каналы вручную, а не по голым цифрам.', 'Пишем нативные тексты под формат площадки.', 'Сверяем выходы и собираем отчетность.'],
         caseName: 'UnionPay',
-        caseUrl: 'unionpay.html',
+        caseUrl: '/unionpay',
         caseText: 'В кампании UnionPay Telegram дал 38 размещений и более 1.15 млн охвата публикаций.',
         testimonial: 'Telegram стал одним из самых сильных каналов кампании по скорости и локальному охвату.',
         author: 'Онлайн-менеджер финтех-проекта',
@@ -1194,7 +1194,7 @@ const SERVICE_PAGES = {
         ]
     },
     events: {
-        slug: 'event-management.html',
+        slug: '/event-management',
         group: 'События',
         title: 'Ивент-менеджмент',
         hero: 'Ивент-менеджмент для запусков и промо',
@@ -1203,7 +1203,7 @@ const SERVICE_PAGES = {
         needs: ['Провести запуск продукта с сильным первым впечатлением.', 'Собрать партнеров, медиа, блогеров и клиентов в одном событии.', 'Перевести бренд из рекламы в живой опыт.'],
         why: ['Держим событие как маркетинговый инструмент, а не просто организацию.', 'Берем на себя подрядчиков, тайминг и контроль площадки.', 'Связываем ивент с PR, соцсетями и инфлюенсерами.'],
         caseName: 'Xiaomi',
-        caseUrl: 'xiaomi.html',
+        caseUrl: '/xiaomi',
         caseText: 'Для Xiaomi команда Muna Media организовала презентацию линейки Xiaomi 13T и поддержала запуск визуальным контентом.',
         testimonial: 'Ивент прошел как часть общей кампании: гости, контент и инфоповоды работали в одну сторону.',
         author: 'Менеджер по запуску продукта',
@@ -1482,7 +1482,7 @@ function ServiceHero() {
                     React.createElement("a", { href: "#contact", className: "btn lime", style: { background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)' } },
                         "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                         React.createElement("span", { className: "arrow" }, "\u2192")),
-                    React.createElement("a", { href: "services-uzbekistan.html", className: "btn ghost" },
+                    React.createElement("a", { href: "/services-uzbekistan", className: "btn ghost" },
                         "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438",
                         React.createElement("span", { className: "arrow" }, "\u2192")))))));
 }
@@ -1635,7 +1635,7 @@ function ServiceCTA() {
             React.createElement("div", { className: "card", style: { padding: 'clamp(38px, 6vw, 72px)', textAlign: 'center', background: 'var(--accent)', color: 'white' } },
                 React.createElement("h2", { className: "display", style: { fontSize: 'clamp(36px, 6vw, 72px)', margin: '0 0 18px', color: 'white' } }, s.ctaTitle || `Запустить услугу «${s.title}»?`),
                 React.createElement("p", { style: { fontSize: 18, lineHeight: 1.6, maxWidth: 720, margin: '0 auto 28px', color: 'rgba(255,255,255,.86)' } }, s.ctaText || 'Подготовим медиаплан, механику и понятный план запуска под вашу задачу, сроки и рынок Узбекистана.'),
-                React.createElement("a", { href: "index.html#contact", className: "btn", style: { background: 'white', color: 'var(--ink)', justifyContent: 'center' } },
+                React.createElement("a", { href: "/#contact", className: "btn", style: { background: 'white', color: 'var(--ink)', justifyContent: 'center' } },
                     "\u041E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443",
                     React.createElement("span", { className: "arrow" }, "\u2192"))))));
 }
@@ -1762,7 +1762,7 @@ function InfluenceMarketingPage() {
                             React.createElement("div", { className: "card", style: { padding: 20, boxShadow: 'none' } },
                                 React.createElement("div", { className: "num-big", style: { fontSize: 34, color: 'var(--accent)' } }, "13,91%"),
                                 React.createElement("div", { className: "mono", style: { color: 'var(--muted)', marginTop: 6 } }, "\u0432\u043E\u0432\u043B\u0435\u0447\u0435\u043D\u043D\u043E\u0441\u0442\u044C"))),
-                        React.createElement("a", { href: "unionpay.html", className: "btn lime", style: { justifyContent: 'center', background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)' } },
+                        React.createElement("a", { href: "/unionpay", className: "btn lime", style: { justifyContent: 'center', background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)' } },
                             "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441",
                             React.createElement("span", { className: "arrow" }, "\u2192")))))),
         React.createElement("section", { id: "standards", style: { background: 'var(--bg-2)', borderBottom: '1.5px solid var(--ink)' } },
@@ -1822,7 +1822,7 @@ function InfluenceMarketingPage() {
                 React.createElement("div", { className: "card", style: { padding: 'clamp(38px, 6vw, 72px)', textAlign: 'center', background: 'var(--accent)', color: 'white' } },
                     React.createElement("h2", { className: "display", style: { fontSize: 'clamp(36px, 6vw, 72px)', margin: '0 0 18px', color: 'white' } }, "\u0413\u043E\u0442\u043E\u0432\u044B \u0432\u044B\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043A\u0430\u043D\u0430\u043B?"),
                     React.createElement("p", { style: { fontSize: 18, lineHeight: 1.6, maxWidth: 820, margin: '0 auto 28px', color: 'rgba(255,255,255,.86)' } }, "\u0420\u0430\u0441\u0441\u043A\u0430\u0436\u0438\u0442\u0435 \u043E \u0432\u0430\u0448\u0435\u043C \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0435 - \u043C\u044B \u043F\u043E\u043A\u0430\u0436\u0435\u043C, \u043A\u0430\u043A\u0438\u0435 \u043B\u0438\u0434\u0435\u0440\u044B \u043C\u043D\u0435\u043D\u0438\u0439 \u0440\u0435\u0430\u043B\u044C\u043D\u043E \u0440\u0430\u0431\u043E\u0442\u0430\u044E\u0442 \u0432 \u0432\u0430\u0448\u0435\u0439 \u043D\u0438\u0448\u0435 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435 \u0438 \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u0434\u0435\u0442 \u0441\u0442\u043E\u0438\u0442\u044C \u043E\u0434\u0438\u043D \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u043D\u044B\u0439 \u043A\u043B\u0438\u0435\u043D\u0442."),
-                    React.createElement("a", { href: "index.html#contact", className: "btn", style: { background: 'white', color: 'var(--ink)', justifyContent: 'center' } },
+                    React.createElement("a", { href: "/#contact", className: "btn", style: { background: 'white', color: 'var(--ink)', justifyContent: 'center' } },
                         "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E",
                         React.createElement("span", { className: "arrow" }, "\u2192"))))),
         React.createElement(ServiceFooter, null)));

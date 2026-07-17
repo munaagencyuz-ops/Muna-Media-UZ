@@ -197,7 +197,7 @@ function KPConclusions() {
           </p>
         </div>
         <div style={{textAlign: 'center', marginTop: 56}}>
-          <a href="index.html#contact" className="btn lime" style={{background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
+          <a href="/#contact" className="btn lime" style={{background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
             Запустить аналогичный проект
             <span className="arrow">→</span>
           </a>

@@ -216,7 +216,7 @@ function InfluenceCase() {
             </div>
             <h2 className="display sec-title" style={{margin: 0}}>Xiaomi: запуск Redmi Note 14</h2>
           </div>
-          <a href="koronapay.html" className="btn ghost">
+          <a href="/koronapay" className="btn ghost">
             Читать другие кейсы
             <span className="arrow">→</span>
           </a>

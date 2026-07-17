@@ -29,7 +29,7 @@ function ServicesHero() {
               Забронировать встречу
               <span className="arrow">→</span>
             </a>
-            <a href="koronapay.html" className="btn ghost">
+            <a href="/koronapay" className="btn ghost">
               Смотреть кейсы
               <span className="arrow">→</span>
             </a>
@@ -138,7 +138,7 @@ function ServicesFormats() {
   const formats = [
     {
       id: 'service-led',
-      href: 'led-screens.html',
+      href: '/led-screens',
       title: 'LED-экраны',
       desc: 'Городские LED-размещения для сильного визуального охвата.',
       deliverables: ['Подбор экранов', 'Медиаплан', 'Адаптация роликов'],
@@ -146,7 +146,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-gas',
-      href: 'gas-station-ads.html',
+      href: '/gas-station-ads',
       title: 'Реклама на АЗС',
       desc: 'Носители на заправках для аудитории автомобилистов.',
       deliverables: ['Выбор сети', 'Макеты', 'Контроль размещений'],
@@ -154,7 +154,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-malls',
-      href: 'mall-ads.html',
+      href: '/mall-ads',
       title: 'Реклама в торговых центрах',
       desc: 'Внутренние форматы, навигация и промо-точки рядом с покупкой.',
       deliverables: ['Подбор ТЦ', 'План размещений', 'Промо-механика'],
@@ -162,7 +162,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-buses',
-      href: 'bus-ads.html',
+      href: '/bus-ads',
       title: 'Реклама на автобусах',
       desc: 'Брендирование транспорта для массового городского охвата.',
       deliverables: ['Маршруты', 'Дизайн адаптация', 'Фотоотчет'],
@@ -170,7 +170,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-bus-stops',
-      href: 'bus-stop-ads.html',
+      href: '/bus-stop-ads',
       title: 'Реклама на автобусных остановках',
       desc: 'Сити-форматы и остановочные павильоны в точках ожидания.',
       deliverables: ['Карта локаций', 'Макеты', 'Контроль выхода'],
@@ -178,7 +178,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-metro',
-      href: 'metro-ads.html',
+      href: '/metro-ads',
       title: 'Реклама в метро',
       desc: 'Размещения на станциях и в переходах с высоким потоком.',
       deliverables: ['Станции', 'Форматы', 'Период размещения'],
@@ -186,7 +186,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-airport',
-      href: 'airport-ads.html',
+      href: '/airport-ads',
       title: 'Реклама в аэропорту',
       desc: 'Премиальные форматы для деловой и туристической аудитории.',
       deliverables: ['Зоны аэропорта', 'Форматы', 'Производство макетов'],
@@ -194,7 +194,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-seo',
-      href: 'seo-optimization.html',
+      href: '/seo-optimization',
       title: 'SEO-оптимизация',
       desc: 'Техническая, контентная и локальная оптимизация сайта.',
       deliverables: ['Аудит сайта', 'Семантика', 'Контент-план'],
@@ -202,7 +202,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-context',
-      href: 'context-ads.html',
+      href: '/context-ads',
       title: 'Контекстная реклама',
       desc: 'Поисковые и медийные кампании с прозрачной аналитикой.',
       deliverables: ['Настройка кампаний', 'Креативы', 'Оптимизация заявок'],
@@ -210,7 +210,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-smm',
-      href: 'smm.html',
+      href: '/smm',
       title: 'SMM',
       desc: 'Ведение соцсетей, контент-план и визуальная система бренда.',
       deliverables: ['Стратегия', 'Контент', 'Комьюнити-менеджмент'],
@@ -218,7 +218,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-influence',
-      href: 'influencer-marketing.html',
+      href: '/influencer-marketing',
       title: 'Инфлюенс-маркетинг',
       desc: 'Подбор блогеров, закупка и аналитика.',
       deliverables: ['Аудит аудитории', 'Контрактование', 'Контроль публикаций'],
@@ -226,7 +226,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-telegram',
-      href: 'telegram-marketing.html',
+      href: '/telegram-marketing',
       title: 'Telegram-маркетинг',
       desc: 'Посевы и реклама в ключевом канале региона.',
       deliverables: ['Подбор каналов', 'Прямая закупка', 'Отчетность'],
@@ -234,7 +234,7 @@ function ServicesFormats() {
     },
     {
       id: 'service-events',
-      href: 'event-management.html',
+      href: '/event-management',
       title: 'Ивент-менеджмент',
       desc: 'Презентации, промо-мероприятия и запуски продуктов.',
       deliverables: ['Сценарий', 'Подрядчики', 'Координация события'],

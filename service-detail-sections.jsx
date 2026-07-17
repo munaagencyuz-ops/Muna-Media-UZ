@@ -31,7 +31,7 @@ function ServiceHero() {
               Запустить проект
               <span className="arrow">→</span>
             </a>
-            <a href="services-uzbekistan.html" className="btn ghost">
+            <a href="/services-uzbekistan" className="btn ghost">
               Все услуги
               <span className="arrow">→</span>
             </a>
@@ -276,7 +276,7 @@ function ServiceCTA() {
           <p style={{fontSize: 18, lineHeight: 1.6, maxWidth: 720, margin: '0 auto 28px', color: 'rgba(255,255,255,.86)'}}>
             {s.ctaText || 'Подготовим медиаплан, механику и понятный план запуска под вашу задачу, сроки и рынок Узбекистана.'}
           </p>
-          <a href="index.html#contact" className="btn" style={{background: 'white', color: 'var(--ink)', justifyContent: 'center'}}>
+          <a href="/#contact" className="btn" style={{background: 'white', color: 'var(--ink)', justifyContent: 'center'}}>
             Оставить заявку
             <span className="arrow">→</span>
           </a>
@@ -450,7 +450,7 @@ function InfluenceMarketingPage() {
                   <div className="mono" style={{color: 'var(--muted)', marginTop: 6}}>вовлеченность</div>
                 </div>
               </div>
-              <a href="unionpay.html" className="btn lime" style={{justifyContent: 'center', background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
+              <a href="/unionpay" className="btn lime" style={{justifyContent: 'center', background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
                 Смотреть кейс
                 <span className="arrow">→</span>
               </a>
@@ -549,7 +549,7 @@ function InfluenceMarketingPage() {
             <p style={{fontSize: 18, lineHeight: 1.6, maxWidth: 820, margin: '0 auto 28px', color: 'rgba(255,255,255,.86)'}}>
               Расскажите о вашем продукте - мы покажем, какие лидеры мнений реально работают в вашей нише в Узбекистане и сколько будет стоить один привлеченный клиент.
             </p>
-            <a href="index.html#contact" className="btn" style={{background: 'white', color: 'var(--ink)', justifyContent: 'center'}}>
+            <a href="/#contact" className="btn" style={{background: 'white', color: 'var(--ink)', justifyContent: 'center'}}>
               Запустить кампанию
               <span className="arrow">→</span>
             </a>

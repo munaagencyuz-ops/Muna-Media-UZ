@@ -121,7 +121,7 @@ function TopCases() {
       ],
       bg: 'var(--accent)',
       tags: ['Инфлюенсеры', 'Наружка и ритейл', 'Медиазакупка'],
-      href: 'xiaomi.html',
+      href: '/xiaomi',
     },
     {
       brand: 'UnionPay',
@@ -138,7 +138,7 @@ function TopCases() {
       ],
       bg: 'var(--accent-2)',
       tags: ['Промо-активация', 'Ритейл', 'Узнаваемость'],
-      href: 'unionpay.html',
+      href: '/unionpay',
     },
   ];
 
@@ -381,34 +381,34 @@ function Services() {
     {
       group: 'Наружная реклама',
       items: [
-        { id: 'service-led', href: 'led-screens.html', title: 'LED-экраны', desc: 'Размещения на городских LED-экранах с подбором локаций по трафику и аудитории.' },
-        { id: 'service-gas', href: 'gas-station-ads.html', title: 'Реклама на АЗС', desc: 'Видимые форматы на заправках для автомобилистов и ежедневных маршрутов.' },
-        { id: 'service-malls', href: 'mall-ads.html', title: 'Реклама в торговых центрах', desc: 'Навигация, внутренние носители и промо-точки в местах покупки.' },
-        { id: 'service-buses', href: 'bus-ads.html', title: 'Реклама на автобусах', desc: 'Брендирование транспорта для широкого городского охвата.' },
-        { id: 'service-bus-stops', href: 'bus-stop-ads.html', title: 'Реклама на автобусных остановках', desc: 'Сити-форматы и остановочные павильоны в точках ожидания.' },
-        { id: 'service-metro', href: 'metro-ads.html', title: 'Реклама в метро', desc: 'Размещения на станциях и в переходах с высокой частотой контакта.' },
-        { id: 'service-airport', href: 'airport-ads.html', title: 'Реклама в аэропорту', desc: 'Премиальные форматы для деловой и туристической аудитории.' },
+        { id: 'service-led', href: '/led-screens', title: 'LED-экраны', desc: 'Размещения на городских LED-экранах с подбором локаций по трафику и аудитории.' },
+        { id: 'service-gas', href: '/gas-station-ads', title: 'Реклама на АЗС', desc: 'Видимые форматы на заправках для автомобилистов и ежедневных маршрутов.' },
+        { id: 'service-malls', href: '/mall-ads', title: 'Реклама в торговых центрах', desc: 'Навигация, внутренние носители и промо-точки в местах покупки.' },
+        { id: 'service-buses', href: '/bus-ads', title: 'Реклама на автобусах', desc: 'Брендирование транспорта для широкого городского охвата.' },
+        { id: 'service-bus-stops', href: '/bus-stop-ads', title: 'Реклама на автобусных остановках', desc: 'Сити-форматы и остановочные павильоны в точках ожидания.' },
+        { id: 'service-metro', href: '/metro-ads', title: 'Реклама в метро', desc: 'Размещения на станциях и в переходах с высокой частотой контакта.' },
+        { id: 'service-airport', href: '/airport-ads', title: 'Реклама в аэропорту', desc: 'Премиальные форматы для деловой и туристической аудитории.' },
       ],
     },
     {
       group: 'Онлайн и поиск',
       items: [
-        { id: 'service-seo', href: 'seo-optimization.html', title: 'SEO-оптимизация', desc: 'Техническая, контентная и локальная оптимизация для роста поискового спроса.' },
-        { id: 'service-context', href: 'context-ads.html', title: 'Контекстная реклама', desc: 'Поисковые и медийные кампании с прозрачной аналитикой и контролем заявок.' },
+        { id: 'service-seo', href: '/seo-optimization', title: 'SEO-оптимизация', desc: 'Техническая, контентная и локальная оптимизация для роста поискового спроса.' },
+        { id: 'service-context', href: '/context-ads', title: 'Контекстная реклама', desc: 'Поисковые и медийные кампании с прозрачной аналитикой и контролем заявок.' },
       ],
     },
     {
       group: 'Соцсети и инфлюенсеры',
       items: [
-        { id: 'service-smm', href: 'smm.html', title: 'SMM', desc: 'Ведение социальных сетей, контент-план, визуальная система и регулярная коммуникация.' },
-        { id: 'service-influence', href: 'influencer-marketing.html', title: 'Инфлюенс-маркетинг', desc: 'Подбор блогеров, проверка аудитории, интеграции и отчетность по результатам.' },
-        { id: 'service-telegram', href: 'telegram-marketing.html', title: 'Telegram-маркетинг', desc: 'Посевы, закупка в каналах, спецпроекты и работа с локальными сообществами.' },
+        { id: 'service-smm', href: '/smm', title: 'SMM', desc: 'Ведение социальных сетей, контент-план, визуальная система и регулярная коммуникация.' },
+        { id: 'service-influence', href: '/influencer-marketing', title: 'Инфлюенс-маркетинг', desc: 'Подбор блогеров, проверка аудитории, интеграции и отчетность по результатам.' },
+        { id: 'service-telegram', href: '/telegram-marketing', title: 'Telegram-маркетинг', desc: 'Посевы, закупка в каналах, спецпроекты и работа с локальными сообществами.' },
       ],
     },
     {
       group: 'События',
       items: [
-        { id: 'service-events', href: 'event-management.html', title: 'Ивент-менеджмент', desc: 'Презентации, промо-мероприятия, запуск продукта и управление подрядчиками.' },
+        { id: 'service-events', href: '/event-management', title: 'Ивент-менеджмент', desc: 'Презентации, промо-мероприятия, запуск продукта и управление подрядчиками.' },
       ],
     },
   ];

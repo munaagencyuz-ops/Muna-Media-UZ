@@ -14,66 +14,66 @@
       };
     }, [isOpen]);
     const links = [
-      { label: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F", href: "index.html" },
+      { label: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F", href: "/" },
       {
         label: "\u0423\u0441\u043B\u0443\u0433\u0438",
-        href: "services-uzbekistan.html",
+        href: "/services-uzbekistan",
         match: [
-          "services-uzbekistan.html",
-          "influence.html",
-          "led-screens.html",
-          "gas-station-ads.html",
-          "mall-ads.html",
-          "bus-ads.html",
-          "bus-stop-ads.html",
-          "metro-ads.html",
-          "airport-ads.html",
-          "seo-optimization.html",
-          "context-ads.html",
-          "smm.html",
-          "influencer-marketing.html",
-          "telegram-marketing.html",
-          "event-management.html"
+          "/services-uzbekistan",
+          "/influence",
+          "/led-screens",
+          "/gas-station-ads",
+          "/mall-ads",
+          "/bus-ads",
+          "/bus-stop-ads",
+          "/metro-ads",
+          "/airport-ads",
+          "/seo-optimization",
+          "/context-ads",
+          "/smm",
+          "/influencer-marketing",
+          "/telegram-marketing",
+          "/event-management"
         ],
         children: [
-          { label: "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", href: "services-uzbekistan.html" },
+          { label: "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", href: "/services-uzbekistan" },
           { type: "group", label: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430" },
-          { label: "LED-\u044D\u043A\u0440\u0430\u043D\u044B", href: "led-screens.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", href: "gas-station-ads.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445", href: "mall-ads.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", href: "bus-ads.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445", href: "bus-stop-ads.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E", href: "metro-ads.html" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443", href: "airport-ads.html" },
+          { label: "LED-\u044D\u043A\u0440\u0430\u043D\u044B", href: "/led-screens" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", href: "/gas-station-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445", href: "/mall-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", href: "/bus-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445", href: "/bus-stop-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E", href: "/metro-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443", href: "/airport-ads" },
           { type: "group", label: "\u041E\u043D\u043B\u0430\u0439\u043D \u0438 \u043F\u043E\u0438\u0441\u043A" },
-          { label: "SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", href: "seo-optimization.html" },
-          { label: "\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", href: "context-ads.html" },
+          { label: "SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", href: "/seo-optimization" },
+          { label: "\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", href: "/context-ads" },
           { type: "group", label: "\u0421\u043E\u0446\u0441\u0435\u0442\u0438 \u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B" },
-          { label: "SMM", href: "smm.html" },
-          { label: "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "influencer-marketing.html" },
-          { label: "Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "telegram-marketing.html" },
+          { label: "SMM", href: "/smm" },
+          { label: "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/influencer-marketing" },
+          { label: "Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/telegram-marketing" },
           { type: "group", label: "\u0421\u043E\u0431\u044B\u0442\u0438\u044F" },
-          { label: "\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", href: "event-management.html" }
+          { label: "\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", href: "/event-management" }
         ]
       },
       {
         label: "\u041A\u0435\u0439\u0441\u044B",
-        href: "cases.html",
-        match: ["cases.html", "xiaomi.html", "unionpay.html", "koronapay.html"],
+        href: "/cases",
+        match: ["/cases", "/xiaomi", "/unionpay", "/koronapay"],
         children: [
-          { label: "\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B", href: "cases.html" },
-          { label: "\u041A\u0435\u0439\u0441 Xiaomi", href: "xiaomi.html" },
-          { label: "\u041A\u0435\u0439\u0441 UnionPay", href: "unionpay.html" },
-          { label: "\u041A\u0435\u0439\u0441 KoronaPay", href: "koronapay.html" }
+          { label: "\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B", href: "/cases" },
+          { label: "\u041A\u0435\u0439\u0441 Xiaomi", href: "/xiaomi" },
+          { label: "\u041A\u0435\u0439\u0441 UnionPay", href: "/unionpay" },
+          { label: "\u041A\u0435\u0439\u0441 KoronaPay", href: "/koronapay" }
         ]
       },
       { label: "\u0411\u043B\u043E\u0433", href: "/blog", match: ["blog"] },
-      { label: "\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", href: "about.html" }
+      { label: "\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", href: "/about" }
     ];
     const getActiveLink = () => {
       const path = window.location.pathname;
-      const page = path.split("/").pop() || "index.html";
-      if (page === "" || page === "/") return "index.html";
+      const page = path.split("/").pop() || "/";
+      if (page === "" || page === "/") return "/";
       return page;
     };
     const activePage = getActiveLink();
@@ -340,7 +340,7 @@
             text-align: center;
           }
         }
-      ` } }), /* @__PURE__ */ React.createElement("nav", { className: "nav" }, /* @__PURE__ */ React.createElement("div", { className: "nav-inner" }, /* @__PURE__ */ React.createElement("a", { href: "index.html", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" }, /* @__PURE__ */ React.createElement(
+      ` } }), /* @__PURE__ */ React.createElement("nav", { className: "nav" }, /* @__PURE__ */ React.createElement("div", { className: "nav-inner" }, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" }, /* @__PURE__ */ React.createElement(
       "img",
       {
         src: "/assets/logo/muna-media-navbar-logo.jpg",
@@ -367,7 +367,7 @@
     )))))), /* @__PURE__ */ React.createElement(
       "a",
       {
-        href: "index.html#contact",
+        href: "/#contact",
         className: "btn lime nav-links",
         style: { padding: "10px 20px", fontSize: "14px", margin: 0 }
       },
@@ -405,7 +405,7 @@
     ))))), /* @__PURE__ */ React.createElement("div", { className: "mobile-drawer-footer" }, /* @__PURE__ */ React.createElement(
       "a",
       {
-        href: "index.html#contact",
+        href: "/#contact",
         className: "btn lime mobile-drawer-cta",
         style: { padding: "18px 24px", fontSize: "16px" },
         onClick: () => setIsOpen(false)
@@ -420,39 +420,39 @@
       {
         title: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430",
         links: [
-          ["LED-\u044D\u043A\u0440\u0430\u043D\u044B", "led-screens.html"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", "gas-station-ads.html"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0422\u0426", "mall-ads.html"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", "bus-ads.html"],
-          ["\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438", "bus-stop-ads.html"],
-          ["\u041C\u0435\u0442\u0440\u043E", "metro-ads.html"],
-          ["\u0410\u044D\u0440\u043E\u043F\u043E\u0440\u0442", "airport-ads.html"]
+          ["LED-\u044D\u043A\u0440\u0430\u043D\u044B", "/led-screens"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", "/gas-station-ads"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0422\u0426", "/mall-ads"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", "/bus-ads"],
+          ["\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438", "/bus-stop-ads"],
+          ["\u041C\u0435\u0442\u0440\u043E", "/metro-ads"],
+          ["\u0410\u044D\u0440\u043E\u043F\u043E\u0440\u0442", "/airport-ads"]
         ]
       },
       {
         title: "Digital",
         links: [
-          ["SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", "seo-optimization.html"],
-          ["\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", "context-ads.html"],
-          ["SMM", "smm.html"],
-          ["\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "influencer-marketing.html"],
-          ["Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "telegram-marketing.html"],
-          ["\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", "event-management.html"]
+          ["SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", "/seo-optimization"],
+          ["\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", "/context-ads"],
+          ["SMM", "/smm"],
+          ["\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/influencer-marketing"],
+          ["Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/telegram-marketing"],
+          ["\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", "/event-management"]
         ]
       }
     ];
     const footerLinks = {
       pages: [
-        ["\u0413\u043B\u0430\u0432\u043D\u0430\u044F", "index.html"],
-        ["\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", "services-uzbekistan.html"],
-        ["\u041A\u0435\u0439\u0441\u044B", "cases.html"],
-        ["\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", "about.html"],
-        ["\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B", "index.html#contact"]
+        ["\u0413\u043B\u0430\u0432\u043D\u0430\u044F", "/"],
+        ["\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", "/services-uzbekistan"],
+        ["\u041A\u0435\u0439\u0441\u044B", "/cases"],
+        ["\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", "/about"],
+        ["\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B", "/#contact"]
       ],
       cases: [
-        ["Xiaomi", "xiaomi.html"],
-        ["UnionPay", "unionpay.html"],
-        ["KoronaPay", "koronapay.html"]
+        ["Xiaomi", "/xiaomi"],
+        ["UnionPay", "/unionpay"],
+        ["KoronaPay", "/koronapay"]
       ]
     };
     const linkStyle = {
@@ -468,7 +468,7 @@
       gridTemplateColumns: "minmax(260px, 1.05fr) minmax(0, 1.65fr)",
       gap: 42,
       alignItems: "start"
-    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "index.html", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "index.html#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "cases.html", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(4, minmax(140px, 1fr))",
       gap: 26
@@ -1007,7 +1007,7 @@
       right: -100,
       opacity: 0.12,
       filter: "blur(80px)"
-    } }), /* @__PURE__ */ React.createElement("div", { className: "container", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28 } }, /* @__PURE__ */ React.createElement("span", { className: "pill solid" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u041C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u044B\u0435 \u0440\u0435\u0448\u0435\u043D\u0438\u044F"), /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--muted)" } }, "Uzbekistan")), /* @__PURE__ */ React.createElement("h1", { className: "display", style: { fontSize: "clamp(44px, 7.5vw, 96px)", margin: "0 0 28px", maxWidth: 1100, lineHeight: 1.05 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u044B\u0435 \u0443\u0441\u043B\u0443\u0433\u0438 \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435 | Muna Media"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap", marginBottom: 44 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 22, lineHeight: 1.5, maxWidth: 840, margin: 0, color: "var(--ink-soft)" } }, "Muna Media \u0440\u0435\u0430\u043B\u0438\u0437\u0443\u0435\u0442 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u043D\u044B\u0435 \u0440\u0435\u0448\u0435\u043D\u0438\u044F \u0434\u043B\u044F \u0432\u044B\u0445\u043E\u0434\u0430 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430. \u041C\u044B \u0443\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C \u044E\u043D\u0438\u0442-\u044D\u043A\u043E\u043D\u043E\u043C\u0438\u043A\u043E\u0439, \u0441\u043D\u0438\u0436\u0430\u0435\u043C \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u044F \u0438 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u043C \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u044E \u0431\u0440\u0435\u043D\u0434\u0430."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 14, flexWrap: "wrap", marginTop: 6 } }, /* @__PURE__ */ React.createElement("a", { href: "#contact", className: "btn lime", style: { background: "var(--accent)", color: "white", borderColor: "var(--accent)" } }, "\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0432\u0441\u0442\u0440\u0435\u0447\u0443", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "koronapay.html", className: "btn ghost" }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192"))))));
+    } }), /* @__PURE__ */ React.createElement("div", { className: "container", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28 } }, /* @__PURE__ */ React.createElement("span", { className: "pill solid" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u041C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u044B\u0435 \u0440\u0435\u0448\u0435\u043D\u0438\u044F"), /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--muted)" } }, "Uzbekistan")), /* @__PURE__ */ React.createElement("h1", { className: "display", style: { fontSize: "clamp(44px, 7.5vw, 96px)", margin: "0 0 28px", maxWidth: 1100, lineHeight: 1.05 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u044B\u0435 \u0443\u0441\u043B\u0443\u0433\u0438 \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435 | Muna Media"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap", marginBottom: 44 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 22, lineHeight: 1.5, maxWidth: 840, margin: 0, color: "var(--ink-soft)" } }, "Muna Media \u0440\u0435\u0430\u043B\u0438\u0437\u0443\u0435\u0442 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u043D\u044B\u0435 \u0440\u0435\u0448\u0435\u043D\u0438\u044F \u0434\u043B\u044F \u0432\u044B\u0445\u043E\u0434\u0430 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430. \u041C\u044B \u0443\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C \u044E\u043D\u0438\u0442-\u044D\u043A\u043E\u043D\u043E\u043C\u0438\u043A\u043E\u0439, \u0441\u043D\u0438\u0436\u0430\u0435\u043C \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u044F \u0438 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u043C \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u044E \u0431\u0440\u0435\u043D\u0434\u0430."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 14, flexWrap: "wrap", marginTop: 6 } }, /* @__PURE__ */ React.createElement("a", { href: "#contact", className: "btn lime", style: { background: "var(--accent)", color: "white", borderColor: "var(--accent)" } }, "\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0432\u0441\u0442\u0440\u0435\u0447\u0443", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/koronapay", className: "btn ghost" }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192"))))));
   }
   function ServicesWhy() {
     const benefits = [
@@ -1036,7 +1036,7 @@
     const formats = [
       {
         id: "service-led",
-        href: "led-screens.html",
+        href: "/led-screens",
         title: "LED-\u044D\u043A\u0440\u0430\u043D\u044B",
         desc: "\u0413\u043E\u0440\u043E\u0434\u0441\u043A\u0438\u0435 LED-\u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F \u0434\u043B\u044F \u0441\u0438\u043B\u044C\u043D\u043E\u0433\u043E \u0432\u0438\u0437\u0443\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u043E\u0445\u0432\u0430\u0442\u0430.",
         deliverables: ["\u041F\u043E\u0434\u0431\u043E\u0440 \u044D\u043A\u0440\u0430\u043D\u043E\u0432", "\u041C\u0435\u0434\u0438\u0430\u043F\u043B\u0430\u043D", "\u0410\u0434\u0430\u043F\u0442\u0430\u0446\u0438\u044F \u0440\u043E\u043B\u0438\u043A\u043E\u0432"],
@@ -1044,7 +1044,7 @@
       },
       {
         id: "service-gas",
-        href: "gas-station-ads.html",
+        href: "/gas-station-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421",
         desc: "\u041D\u043E\u0441\u0438\u0442\u0435\u043B\u0438 \u043D\u0430 \u0437\u0430\u043F\u0440\u0430\u0432\u043A\u0430\u0445 \u0434\u043B\u044F \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0438 \u0430\u0432\u0442\u043E\u043C\u043E\u0431\u0438\u043B\u0438\u0441\u0442\u043E\u0432.",
         deliverables: ["\u0412\u044B\u0431\u043E\u0440 \u0441\u0435\u0442\u0438", "\u041C\u0430\u043A\u0435\u0442\u044B", "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u0439"],
@@ -1052,7 +1052,7 @@
       },
       {
         id: "service-malls",
-        href: "mall-ads.html",
+        href: "/mall-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445",
         desc: "\u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u0438\u0435 \u0444\u043E\u0440\u043C\u0430\u0442\u044B, \u043D\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044F \u0438 \u043F\u0440\u043E\u043C\u043E-\u0442\u043E\u0447\u043A\u0438 \u0440\u044F\u0434\u043E\u043C \u0441 \u043F\u043E\u043A\u0443\u043F\u043A\u043E\u0439.",
         deliverables: ["\u041F\u043E\u0434\u0431\u043E\u0440 \u0422\u0426", "\u041F\u043B\u0430\u043D \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u0439", "\u041F\u0440\u043E\u043C\u043E-\u043C\u0435\u0445\u0430\u043D\u0438\u043A\u0430"],
@@ -1060,7 +1060,7 @@
       },
       {
         id: "service-buses",
-        href: "bus-ads.html",
+        href: "/bus-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445",
         desc: "\u0411\u0440\u0435\u043D\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0442\u0440\u0430\u043D\u0441\u043F\u043E\u0440\u0442\u0430 \u0434\u043B\u044F \u043C\u0430\u0441\u0441\u043E\u0432\u043E\u0433\u043E \u0433\u043E\u0440\u043E\u0434\u0441\u043A\u043E\u0433\u043E \u043E\u0445\u0432\u0430\u0442\u0430.",
         deliverables: ["\u041C\u0430\u0440\u0448\u0440\u0443\u0442\u044B", "\u0414\u0438\u0437\u0430\u0439\u043D \u0430\u0434\u0430\u043F\u0442\u0430\u0446\u0438\u044F", "\u0424\u043E\u0442\u043E\u043E\u0442\u0447\u0435\u0442"],
@@ -1068,7 +1068,7 @@
       },
       {
         id: "service-bus-stops",
-        href: "bus-stop-ads.html",
+        href: "/bus-stop-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u043D\u044B\u0445 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445",
         desc: "\u0421\u0438\u0442\u0438-\u0444\u043E\u0440\u043C\u0430\u0442\u044B \u0438 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u0447\u043D\u044B\u0435 \u043F\u0430\u0432\u0438\u043B\u044C\u043E\u043D\u044B \u0432 \u0442\u043E\u0447\u043A\u0430\u0445 \u043E\u0436\u0438\u0434\u0430\u043D\u0438\u044F.",
         deliverables: ["\u041A\u0430\u0440\u0442\u0430 \u043B\u043E\u043A\u0430\u0446\u0438\u0439", "\u041C\u0430\u043A\u0435\u0442\u044B", "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C \u0432\u044B\u0445\u043E\u0434\u0430"],
@@ -1076,7 +1076,7 @@
       },
       {
         id: "service-metro",
-        href: "metro-ads.html",
+        href: "/metro-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E",
         desc: "\u0420\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F \u043D\u0430 \u0441\u0442\u0430\u043D\u0446\u0438\u044F\u0445 \u0438 \u0432 \u043F\u0435\u0440\u0435\u0445\u043E\u0434\u0430\u0445 \u0441 \u0432\u044B\u0441\u043E\u043A\u0438\u043C \u043F\u043E\u0442\u043E\u043A\u043E\u043C.",
         deliverables: ["\u0421\u0442\u0430\u043D\u0446\u0438\u0438", "\u0424\u043E\u0440\u043C\u0430\u0442\u044B", "\u041F\u0435\u0440\u0438\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F"],
@@ -1084,7 +1084,7 @@
       },
       {
         id: "service-airport",
-        href: "airport-ads.html",
+        href: "/airport-ads",
         title: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443",
         desc: "\u041F\u0440\u0435\u043C\u0438\u0430\u043B\u044C\u043D\u044B\u0435 \u0444\u043E\u0440\u043C\u0430\u0442\u044B \u0434\u043B\u044F \u0434\u0435\u043B\u043E\u0432\u043E\u0439 \u0438 \u0442\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0438.",
         deliverables: ["\u0417\u043E\u043D\u044B \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0430", "\u0424\u043E\u0440\u043C\u0430\u0442\u044B", "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u043E \u043C\u0430\u043A\u0435\u0442\u043E\u0432"],
@@ -1092,7 +1092,7 @@
       },
       {
         id: "service-seo",
-        href: "seo-optimization.html",
+        href: "/seo-optimization",
         title: "SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F",
         desc: "\u0422\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0430\u044F, \u043A\u043E\u043D\u0442\u0435\u043D\u0442\u043D\u0430\u044F \u0438 \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F \u0441\u0430\u0439\u0442\u0430.",
         deliverables: ["\u0410\u0443\u0434\u0438\u0442 \u0441\u0430\u0439\u0442\u0430", "\u0421\u0435\u043C\u0430\u043D\u0442\u0438\u043A\u0430", "\u041A\u043E\u043D\u0442\u0435\u043D\u0442-\u043F\u043B\u0430\u043D"],
@@ -1100,7 +1100,7 @@
       },
       {
         id: "service-context",
-        href: "context-ads.html",
+        href: "/context-ads",
         title: "\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430",
         desc: "\u041F\u043E\u0438\u0441\u043A\u043E\u0432\u044B\u0435 \u0438 \u043C\u0435\u0434\u0438\u0439\u043D\u044B\u0435 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0438 \u0441 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0439 \u0430\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u043E\u0439.",
         deliverables: ["\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0439", "\u041A\u0440\u0435\u0430\u0442\u0438\u0432\u044B", "\u041E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F \u0437\u0430\u044F\u0432\u043E\u043A"],
@@ -1108,7 +1108,7 @@
       },
       {
         id: "service-smm",
-        href: "smm.html",
+        href: "/smm",
         title: "SMM",
         desc: "\u0412\u0435\u0434\u0435\u043D\u0438\u0435 \u0441\u043E\u0446\u0441\u0435\u0442\u0435\u0439, \u043A\u043E\u043D\u0442\u0435\u043D\u0442-\u043F\u043B\u0430\u043D \u0438 \u0432\u0438\u0437\u0443\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0431\u0440\u0435\u043D\u0434\u0430.",
         deliverables: ["\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F", "\u041A\u043E\u043D\u0442\u0435\u043D\u0442", "\u041A\u043E\u043C\u044C\u044E\u043D\u0438\u0442\u0438-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442"],
@@ -1116,7 +1116,7 @@
       },
       {
         id: "service-influence",
-        href: "influencer-marketing.html",
+        href: "/influencer-marketing",
         title: "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433",
         desc: "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u043B\u043E\u0433\u0435\u0440\u043E\u0432, \u0437\u0430\u043A\u0443\u043F\u043A\u0430 \u0438 \u0430\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430.",
         deliverables: ["\u0410\u0443\u0434\u0438\u0442 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0438", "\u041A\u043E\u043D\u0442\u0440\u0430\u043A\u0442\u043E\u0432\u0430\u043D\u0438\u0435", "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0439"],
@@ -1124,7 +1124,7 @@
       },
       {
         id: "service-telegram",
-        href: "telegram-marketing.html",
+        href: "/telegram-marketing",
         title: "Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433",
         desc: "\u041F\u043E\u0441\u0435\u0432\u044B \u0438 \u0440\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043A\u043B\u044E\u0447\u0435\u0432\u043E\u043C \u043A\u0430\u043D\u0430\u043B\u0435 \u0440\u0435\u0433\u0438\u043E\u043D\u0430.",
         deliverables: ["\u041F\u043E\u0434\u0431\u043E\u0440 \u043A\u0430\u043D\u0430\u043B\u043E\u0432", "\u041F\u0440\u044F\u043C\u0430\u044F \u0437\u0430\u043A\u0443\u043F\u043A\u0430", "\u041E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C"],
@@ -1132,7 +1132,7 @@
       },
       {
         id: "service-events",
-        href: "event-management.html",
+        href: "/event-management",
         title: "\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442",
         desc: "\u041F\u0440\u0435\u0437\u0435\u043D\u0442\u0430\u0446\u0438\u0438, \u043F\u0440\u043E\u043C\u043E-\u043C\u0435\u0440\u043E\u043F\u0440\u0438\u044F\u0442\u0438\u044F \u0438 \u0437\u0430\u043F\u0443\u0441\u043A\u0438 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432.",
         deliverables: ["\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439", "\u041F\u043E\u0434\u0440\u044F\u0434\u0447\u0438\u043A\u0438", "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0446\u0438\u044F \u0441\u043E\u0431\u044B\u0442\u0438\u044F"],

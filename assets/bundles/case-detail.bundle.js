@@ -15,67 +15,67 @@ function Nav() {
         };
     }, [isOpen]);
     const links = [
-        { label: 'Главная', href: 'index.html' },
+        { label: 'Главная', href: '/' },
         {
             label: 'Услуги',
-            href: 'services-uzbekistan.html',
+            href: '/services-uzbekistan',
             match: [
-                'services-uzbekistan.html',
-                'influence.html',
-                'led-screens.html',
-                'gas-station-ads.html',
-                'mall-ads.html',
-                'bus-ads.html',
-                'bus-stop-ads.html',
-                'metro-ads.html',
-                'airport-ads.html',
-                'seo-optimization.html',
-                'context-ads.html',
-                'smm.html',
-                'influencer-marketing.html',
-                'telegram-marketing.html',
-                'event-management.html'
+                '/services-uzbekistan',
+                '/influence',
+                '/led-screens',
+                '/gas-station-ads',
+                '/mall-ads',
+                '/bus-ads',
+                '/bus-stop-ads',
+                '/metro-ads',
+                '/airport-ads',
+                '/seo-optimization',
+                '/context-ads',
+                '/smm',
+                '/influencer-marketing',
+                '/telegram-marketing',
+                '/event-management'
             ],
             children: [
-                { label: 'Все услуги', href: 'services-uzbekistan.html' },
+                { label: 'Все услуги', href: '/services-uzbekistan' },
                 { type: 'group', label: 'Наружная реклама' },
-                { label: 'LED-экраны', href: 'led-screens.html' },
-                { label: 'Реклама на АЗС', href: 'gas-station-ads.html' },
-                { label: 'Реклама в торговых центрах', href: 'mall-ads.html' },
-                { label: 'Реклама на автобусах', href: 'bus-ads.html' },
-                { label: 'Реклама на остановках', href: 'bus-stop-ads.html' },
-                { label: 'Реклама в метро', href: 'metro-ads.html' },
-                { label: 'Реклама в аэропорту', href: 'airport-ads.html' },
+                { label: 'LED-экраны', href: '/led-screens' },
+                { label: 'Реклама на АЗС', href: '/gas-station-ads' },
+                { label: 'Реклама в торговых центрах', href: '/mall-ads' },
+                { label: 'Реклама на автобусах', href: '/bus-ads' },
+                { label: 'Реклама на остановках', href: '/bus-stop-ads' },
+                { label: 'Реклама в метро', href: '/metro-ads' },
+                { label: 'Реклама в аэропорту', href: '/airport-ads' },
                 { type: 'group', label: 'Онлайн и поиск' },
-                { label: 'SEO-оптимизация', href: 'seo-optimization.html' },
-                { label: 'Контекстная реклама', href: 'context-ads.html' },
+                { label: 'SEO-оптимизация', href: '/seo-optimization' },
+                { label: 'Контекстная реклама', href: '/context-ads' },
                 { type: 'group', label: 'Соцсети и инфлюенсеры' },
-                { label: 'SMM', href: 'smm.html' },
-                { label: 'Инфлюенс-маркетинг', href: 'influencer-marketing.html' },
-                { label: 'Telegram-маркетинг', href: 'telegram-marketing.html' },
+                { label: 'SMM', href: '/smm' },
+                { label: 'Инфлюенс-маркетинг', href: '/influencer-marketing' },
+                { label: 'Telegram-маркетинг', href: '/telegram-marketing' },
                 { type: 'group', label: 'События' },
-                { label: 'Ивент-менеджмент', href: 'event-management.html' }
+                { label: 'Ивент-менеджмент', href: '/event-management' }
             ]
         },
         {
             label: 'Кейсы',
-            href: 'cases.html',
-            match: ['cases.html', 'xiaomi.html', 'unionpay.html', 'koronapay.html'],
+            href: '/cases',
+            match: ['/cases', '/xiaomi', '/unionpay', '/koronapay'],
             children: [
-                { label: 'Все кейсы', href: 'cases.html' },
-                { label: 'Кейс Xiaomi', href: 'xiaomi.html' },
-                { label: 'Кейс UnionPay', href: 'unionpay.html' },
-                { label: 'Кейс KoronaPay', href: 'koronapay.html' }
+                { label: 'Все кейсы', href: '/cases' },
+                { label: 'Кейс Xiaomi', href: '/xiaomi' },
+                { label: 'Кейс UnionPay', href: '/unionpay' },
+                { label: 'Кейс KoronaPay', href: '/koronapay' }
             ]
         },
         { label: 'Блог', href: '/blog', match: ['blog'] },
-        { label: 'О компании', href: 'about.html' }
+        { label: 'О компании', href: '/about' }
     ];
     const getActiveLink = () => {
         const path = window.location.pathname;
-        const page = path.split('/').pop() || 'index.html';
+        const page = path.split('/').pop() || '/';
         if (page === '' || page === '/')
-            return 'index.html';
+            return '/';
         return page;
     };
     const activePage = getActiveLink();
@@ -346,7 +346,7 @@ function Nav() {
       ` } }),
         React.createElement("nav", { className: "nav" },
             React.createElement("div", { className: "nav-inner" },
-                React.createElement("a", { href: "index.html", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" },
+                React.createElement("a", { href: "/", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" },
                     React.createElement("img", { src: "/assets/logo/muna-media-navbar-logo.jpg", alt: "MUNA MEDIA", style: { width: 156, maxWidth: '42vw', height: 'auto', display: 'block', flexShrink: 0 } })),
                 React.createElement("div", { className: "nav-links" }, links.map((link, idx) => (React.createElement("div", { className: "nav-item", key: idx },
                     React.createElement("a", { href: link.href, className: `nav-link ${isActive(link) ? 'active' : ''}` },
@@ -355,7 +355,7 @@ function Nav() {
                     link.children && (React.createElement("div", { className: "nav-dropdown" }, link.children.map((child, childIdx) => (child.type === 'group' ? (React.createElement("div", { key: childIdx, className: "nav-dropdown-group" }, child.label)) : (React.createElement("a", { key: childIdx, href: child.href, className: `nav-dropdown-link ${activePage === child.href ? 'active' : ''}` },
                         child.label,
                         React.createElement("span", null, "\u2192"))))))))))),
-                React.createElement("a", { href: "index.html#contact", className: "btn lime nav-links", style: { padding: '10px 20px', fontSize: '14px', margin: 0 } },
+                React.createElement("a", { href: "/#contact", className: "btn lime nav-links", style: { padding: '10px 20px', fontSize: '14px', margin: 0 } },
                     "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                     React.createElement("span", { className: "arrow" }, "\u2192")),
                 React.createElement("button", { className: `burger-btn ${isOpen ? 'open' : ''}`, onClick: () => setIsOpen(!isOpen), "aria-label": "Toggle navigation menu" },
@@ -372,7 +372,7 @@ function Nav() {
                         React.createElement("span", null, child.label),
                         React.createElement("span", { className: "chevron" }, "\u2192"))))))))),
                 React.createElement("div", { className: "mobile-drawer-footer" },
-                    React.createElement("a", { href: "index.html#contact", className: "btn lime mobile-drawer-cta", style: { padding: '18px 24px', fontSize: '16px' }, onClick: () => setIsOpen(false) },
+                    React.createElement("a", { href: "/#contact", className: "btn lime mobile-drawer-cta", style: { padding: '18px 24px', fontSize: '16px' }, onClick: () => setIsOpen(false) },
                         "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                         React.createElement("span", { className: "arrow", style: { marginLeft: '8px' } }, "\u2192")))))));
 }
@@ -383,39 +383,39 @@ function MunaFooter() {
         {
             title: 'Наружная реклама',
             links: [
-                ['LED-экраны', 'led-screens.html'],
-                ['Реклама на АЗС', 'gas-station-ads.html'],
-                ['Реклама в ТЦ', 'mall-ads.html'],
-                ['Реклама на автобусах', 'bus-ads.html'],
-                ['Остановки', 'bus-stop-ads.html'],
-                ['Метро', 'metro-ads.html'],
-                ['Аэропорт', 'airport-ads.html']
+                ['LED-экраны', '/led-screens'],
+                ['Реклама на АЗС', '/gas-station-ads'],
+                ['Реклама в ТЦ', '/mall-ads'],
+                ['Реклама на автобусах', '/bus-ads'],
+                ['Остановки', '/bus-stop-ads'],
+                ['Метро', '/metro-ads'],
+                ['Аэропорт', '/airport-ads']
             ]
         },
         {
             title: 'Digital',
             links: [
-                ['SEO-оптимизация', 'seo-optimization.html'],
-                ['Контекстная реклама', 'context-ads.html'],
-                ['SMM', 'smm.html'],
-                ['Инфлюенс-маркетинг', 'influencer-marketing.html'],
-                ['Telegram-маркетинг', 'telegram-marketing.html'],
-                ['Ивент-менеджмент', 'event-management.html']
+                ['SEO-оптимизация', '/seo-optimization'],
+                ['Контекстная реклама', '/context-ads'],
+                ['SMM', '/smm'],
+                ['Инфлюенс-маркетинг', '/influencer-marketing'],
+                ['Telegram-маркетинг', '/telegram-marketing'],
+                ['Ивент-менеджмент', '/event-management']
             ]
         }
     ];
     const footerLinks = {
         pages: [
-            ['Главная', 'index.html'],
-            ['Все услуги', 'services-uzbekistan.html'],
-            ['Кейсы', 'cases.html'],
-            ['О компании', 'about.html'],
-            ['Контакты', 'index.html#contact']
+            ['Главная', '/'],
+            ['Все услуги', '/services-uzbekistan'],
+            ['Кейсы', '/cases'],
+            ['О компании', '/about'],
+            ['Контакты', '/#contact']
         ],
         cases: [
-            ['Xiaomi', 'xiaomi.html'],
-            ['UnionPay', 'unionpay.html'],
-            ['KoronaPay', 'koronapay.html']
+            ['Xiaomi', '/xiaomi'],
+            ['UnionPay', '/unionpay'],
+            ['KoronaPay', '/koronapay']
         ]
     };
     const linkStyle = {
@@ -437,15 +437,15 @@ function MunaFooter() {
                     alignItems: 'start'
                 } },
                 React.createElement("div", null,
-                    React.createElement("a", { href: "index.html", className: "logo", style: { fontSize: 42, color: 'white', textDecoration: 'none' } },
+                    React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: 'white', textDecoration: 'none' } },
                         React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: 'var(--accent)' } }),
                         "MUNA MEDIA"),
                     React.createElement("p", { style: { margin: '18px 0 0', maxWidth: 470, color: 'rgba(255,255,255,.72)', fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."),
                     React.createElement("div", { style: { display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 26 } },
-                        React.createElement("a", { href: "index.html#contact", className: "btn", style: { background: 'var(--accent)', borderColor: 'white', color: 'white' } },
+                        React.createElement("a", { href: "/#contact", className: "btn", style: { background: 'var(--accent)', borderColor: 'white', color: 'white' } },
                             "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
                             React.createElement("span", { className: "arrow" }, "\u2192")),
-                        React.createElement("a", { href: "cases.html", className: "btn", style: { background: 'transparent', borderColor: 'white', color: 'white' } },
+                        React.createElement("a", { href: "/cases", className: "btn", style: { background: 'transparent', borderColor: 'white', color: 'white' } },
                             "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B",
                             React.createElement("span", { className: "arrow" }, "\u2192")))),
                 React.createElement("div", { style: {
@@ -1143,10 +1143,10 @@ function CaseCTA() {
     return (React.createElement("section", { style: { paddingBottom: 60 } },
         React.createElement("div", { className: "container" },
             React.createElement("div", { style: { display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' } },
-                React.createElement("a", { href: "cases.html", className: "btn ghost" },
+                React.createElement("a", { href: "/cases", className: "btn ghost" },
                     "\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B ",
                     React.createElement("span", { className: "arrow" }, "\u2192")),
-                React.createElement("a", { href: "index.html#contact", className: "btn lime" },
+                React.createElement("a", { href: "/#contact", className: "btn lime" },
                     "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442 ",
                     React.createElement("span", { className: "arrow" }, "\u2192"))))));
 }

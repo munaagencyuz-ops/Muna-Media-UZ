@@ -56,7 +56,7 @@ function layout({title, description, canonical = '', body}) {
 </script>
 <!-- /Yandex.Metrika counter -->
 </head><body>
-<noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript><nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="/services-uzbekistan.html">Услуги</a><a href="/cases.html">Кейсы</a><a href="/blog">Блог</a><a href="/about.html">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav><main class="container">${body}</main><footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer></body></html>`
+<noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript><nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="//services-uzbekistan">Услуги</a><a href="//cases">Кейсы</a><a href="/blog">Блог</a><a href="//about">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav><main class="container">${body}</main><footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer></body></html>`
 }
 
 function portableTextToHtml(blocks) {
