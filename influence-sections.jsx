@@ -476,33 +476,33 @@ function InfluenceCTA() {
                 «Если ваш инфлюенс-маркетинг невозможно измерить — вы просто теряете деньги прямо сейчас.»
               </p>
               <p style={{margin: 0, fontSize: 16, color: 'rgba(255,255,255,0.6)'}}>
-                Забронируйте встречу с нашими экспертами для разбора вашего медиаплана и подготовки сильного сценария выхода на рынок.
+                Обсудим ваш медиаплан и подготовку сценария инфлюенс-кампании в Узбекистане.
               </p>
             </div>
             <div style={{background: 'var(--bg)', color: 'var(--ink)', borderRadius: 24, padding: 32}}>
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', gap: 16}}>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Имя</label>
-                    <input className="input" placeholder="Алишер Каримов" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
+                    <label htmlFor="influence-name" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Имя</label>
+                    <input id="influence-name" name="name" autoComplete="name" className="input" placeholder="Алишер Каримов" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
                   </div>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Компания</label>
-                    <input className="input" placeholder="E-com Group" value={form.company} onChange={e => setForm({...form, company: e.target.value})} required />
+                    <label htmlFor="influence-company" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Компания</label>
+                    <input id="influence-company" name="company" autoComplete="organization" className="input" placeholder="E-com Group" value={form.company} onChange={e => setForm({...form, company: e.target.value})} required />
                   </div>
                   <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14}} className="form-contact-grid">
                     <div>
-                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Телефон</label>
-                      <input className="input" type="tel" placeholder="+998 90 123 45 67" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required />
+                      <label htmlFor="influence-phone" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Телефон</label>
+                      <input id="influence-phone" name="phone" autoComplete="tel" className="input" type="tel" placeholder="+998 90 123 45 67" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required />
                     </div>
                     <div>
-                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Email</label>
-                      <input className="input" type="email" placeholder="name@company.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required />
+                      <label htmlFor="influence-email" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Email</label>
+                      <input id="influence-email" name="email" autoComplete="email" className="input" type="email" placeholder="name@company.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required />
                     </div>
                   </div>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Бюджет</label>
-                    <select className="input" value={form.task} onChange={e => setForm({...form, task: e.target.value})} required style={{height: 58}}>
+                    <label htmlFor="influence-task" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Бюджет</label>
+                    <select id="influence-task" name="task" autoComplete="off" className="input" value={form.task} onChange={e => setForm({...form, task: e.target.value})} required style={{height: 58}}>
                       <option value="">Выберите масштаб проекта</option>
                       <option value="regional">Локальный запуск в Ташкенте</option>
                       <option value="national">Масштабная кампания по Узбекистану</option>

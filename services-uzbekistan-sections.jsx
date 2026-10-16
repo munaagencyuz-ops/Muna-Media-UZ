@@ -22,7 +22,7 @@ function ServicesHero() {
         </h1>
         <div style={{display: 'flex', alignItems: 'flex-start', gap: 40, flexWrap: 'wrap', marginBottom: 44}}>
           <p style={{fontSize: 22, lineHeight: 1.5, maxWidth: 840, margin: 0, color: 'var(--ink-soft)'}}>
-            Muna Media реализует комплексные решения для выхода на рынок Узбекистана. Мы управляем юнит-экономикой, снижаем стоимость привлечения и защищаем репутацию бренда.
+            Muna Media помогает брендам Узбекистана планировать и запускать рекламу: наружные размещения, digital, SMM, Telegram, инфлюенс-маркетинг и мероприятия.
           </p>
           <div style={{display: 'flex', gap: 14, flexWrap: 'wrap', marginTop: 6}}>
             <a href="#contact" className="btn lime" style={{background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)'}}>
@@ -481,26 +481,26 @@ function ServicesContact() {
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', gap: 16}}>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Имя</label>
-                    <input className="input" placeholder="Камиль Шарипов" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
+                    <label htmlFor="services-name" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Имя</label>
+                    <input id="services-name" name="name" autoComplete="name" className="input" placeholder="Камиль Шарипов" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
                   </div>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Компания</label>
-                    <input className="input" placeholder="Название компании" value={form.company} onChange={e => setForm({...form, company: e.target.value})} required />
+                    <label htmlFor="services-company" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Компания</label>
+                    <input id="services-company" name="company" autoComplete="organization" className="input" placeholder="Название компании" value={form.company} onChange={e => setForm({...form, company: e.target.value})} required />
                   </div>
                   <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14}} className="form-contact-grid">
                     <div>
-                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Телефон</label>
-                      <input className="input" type="tel" placeholder="+998 90 123 45 67" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required />
+                      <label htmlFor="services-phone" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Телефон</label>
+                      <input id="services-phone" name="phone" autoComplete="tel" className="input" type="tel" placeholder="+998 90 123 45 67" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required />
                     </div>
                     <div>
-                      <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Email</label>
-                      <input className="input" type="email" placeholder="name@company.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required />
+                      <label htmlFor="services-email" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Email</label>
+                      <input id="services-email" name="email" autoComplete="email" className="input" type="email" placeholder="name@company.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required />
                     </div>
                   </div>
                   <div>
-                    <label className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Планируемый бюджет</label>
-                    <select className="input" value={form.task} onChange={e => setForm({...form, task: e.target.value})} required style={{height: 58}}>
+                    <label htmlFor="services-task" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Планируемый бюджет</label>
+                    <select id="services-task" name="task" autoComplete="off" className="input" value={form.task} onChange={e => setForm({...form, task: e.target.value})} required style={{height: 58}}>
                       <option value="">Выберите масштаб проекта</option>
                       <option value="regional">Локальный запуск в Ташкенте</option>
                       <option value="national">Масштабная кампания по Узбекистану</option>

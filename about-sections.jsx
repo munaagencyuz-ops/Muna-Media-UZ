@@ -25,7 +25,7 @@ function AboutHero({ variant }) {
         </h1>
 
         <p style={{fontSize: 22, lineHeight: 1.5, maxWidth: 840, margin: 0, color:'var(--ink-soft)'}}>
-          Мы не просто агентство. Мы — ваш надежный партнер в Узбекистане, связывающий маркетинг, IT и финансы для достижения результатов уровня крупных брендов.
+          Muna Media помогает брендам Узбекистана планировать и запускать рекламу: от стратегии и выбора каналов до размещений и отчетности.
         </p>
       </div>
     </section>
@@ -45,16 +45,16 @@ function Positioning() {
               <span className="pill"><span className="dot" /> 01 — Кто мы</span>
             </div>
             <h2 className="display sec-title" style={{margin:0, maxWidth: 900}}>
-              Наша миссия: снижение рисков при выходе международных корпораций на незнакомый рынок.
+              Наша миссия — помогать брендам Узбекистана планировать и запускать рекламу.
             </h2>
           </div>
         </div>
 
         <div className="grid-2" style={{gap: 40}}>
           <div className="card" style={{padding: 40, display: 'flex', flexDirection: 'column', gap: 20}}>
-            <span className="mono" style={{color: 'var(--accent)', fontWeight: 700, fontSize: 13}}>01. Для международных брендов</span>
-            <h3 className="display" style={{fontSize: 32, margin: 0}}>Безопасный вход и локализация</h3>
-            <p style={{margin:0, color:'var(--ink-soft)', fontSize: 17, lineHeight: 1.6}}>Безопасный вход, локализация, юридическая безопасность для брендов уровня UnionPay и Xiaomi.</p>
+            <span className="mono" style={{color: 'var(--accent)', fontWeight: 700, fontSize: 13}}>01. Для брендов Узбекистана</span>
+            <h3 className="display" style={{fontSize: 32, margin: 0}}>Планирование и запуск рекламы</h3>
+            <p style={{margin:0, color:'var(--ink-soft)', fontSize: 17, lineHeight: 1.6}}>Рекламная стратегия, выбор каналов и запуск кампаний для брендов Узбекистана.</p>
           </div>
           <div className="card" style={{padding: 40, display: 'flex', flexDirection: 'column', gap: 20}}>
             <span className="mono" style={{color: 'var(--accent)', fontWeight: 700, fontSize: 13}}>02. Для локальных лидеров</span>
@@ -170,7 +170,7 @@ function Guarantees() {
   const items = [
     {
       title: 'Постоплата до 120 дней',
-      desc: 'Для крупнейших корпоративных партнеров мы предлагаем гибкие условия постоплаты и рассрочки платежей, снижая нагрузку на финансовые департаменты при выходе на рынок.'
+      desc: 'Для крупнейших корпоративных партнеров мы предлагаем гибкие условия постоплаты и рассрочки платежей, снижая нагрузку на финансовые департаменты при запуске рекламных кампаний.'
     },
     {
       title: 'Радикальная прозрачность и открытое ценообразование',
@@ -360,10 +360,10 @@ function AboutCTA() {
                 </span>
               </div>
               <h2 className="display" style={{fontSize: 'clamp(36px, 5vw, 64px)', margin: 0, color:'var(--bg)', lineHeight: 1.05}}>
-                Хотите обсудить стратегию выхода на рынок Узбекистана?
+                Хотите обсудить рекламу вашего бренда в Узбекистане?
               </h2>
               <p style={{margin: 0, fontSize: 18, color: 'rgba(255,255,255,0.78)', maxWidth: 480}}>
-                Забронируйте встречу, и мы обсудим безопасный вход, локализацию и маркетинговую архитектуру для вашего бренда.
+                Расскажите о бренде, аудитории, задаче и сроках кампании. Обсудим подходящие рекламные каналы.
               </p>
               
               <div style={{
@@ -402,8 +402,8 @@ function AboutCTA() {
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
-                    <input
+                    <label htmlFor="about-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
+                    <input id="about-name" name="name" autoComplete="name"
                       className="input"
                       placeholder="Камила Усманова"
                       value={form.name}
@@ -412,8 +412,8 @@ function AboutCTA() {
                     />
                   </div>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Компания</label>
-                    <input
+                    <label htmlFor="about-company" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Компания</label>
+                    <input id="about-company" name="company" autoComplete="organization"
                       className="input"
                       placeholder="Brand Co."
                       value={form.company}
@@ -423,8 +423,8 @@ function AboutCTA() {
                   </div>
                   <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14}} className="form-contact-grid">
                     <div>
-                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Телефон</label>
-                      <input
+                      <label htmlFor="about-phone" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Телефон</label>
+                      <input id="about-phone" name="phone" autoComplete="tel"
                         className="input"
                         type="tel"
                         placeholder="+998 90 123 45 67"
@@ -434,8 +434,8 @@ function AboutCTA() {
                       />
                     </div>
                     <div>
-                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Email</label>
-                      <input
+                      <label htmlFor="about-email" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Email</label>
+                      <input id="about-email" name="email" autoComplete="email"
                         className="input"
                         type="email"
                         placeholder="name@company.com"
@@ -446,8 +446,8 @@ function AboutCTA() {
                     </div>
                   </div>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Планируемый бюджет</label>
-                    <select
+                    <label htmlFor="about-task" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Планируемый бюджет</label>
+                    <select id="about-task" name="task" autoComplete="off"
                       className="input"
                       value={form.task}
                       onChange={e => setForm({...form, task: e.target.value})}

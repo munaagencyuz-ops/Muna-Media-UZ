@@ -20,16 +20,16 @@ function Hero({ variant }) {
 
       <div className="container" style={{position:'relative', zIndex: 1}}>
         <div style={{display:'flex', alignItems:'center', gap: 14, marginBottom: 28, flexWrap: 'wrap'}}>
-          <span className="pill solid"><span className="dot" /> Выход на рынок Узбекистана</span>
+          <span className="pill solid"><span className="dot" /> Реклама для брендов Узбекистана</span>
         </div>
 
         <h1 className="display" style={{fontSize: 'clamp(44px, 7vw, 96px)', margin: '0 0 28px', maxWidth: 1200, lineHeight: 1.05}}>
-          Рекламное агентство в Ташкенте для <span className="serif" style={{fontStyle:'italic', fontFamily:'Instrument Serif'}}>международных брендов.</span>
+          Рекламное агентство в Ташкенте для <span className="serif" style={{fontStyle:'italic', fontFamily:'Instrument Serif'}}>брендов Узбекистана.</span>
         </h1>
 
         <div className="hero-main-row" style={{display:'flex', alignItems:'flex-start', gap: 40, flexWrap:'wrap', marginBottom: 44}}>
           <p style={{fontSize: 20, lineHeight: 1.5, maxWidth: 720, margin: 0, color:'var(--ink-soft)'}}>
-            Muna Media — стратегический партнер для безопасного и эффективного выхода брендов на рынок Узбекистана. Связываем технологии, маркетинг и финансы, управляя юнит-экономикой, прозрачностью бюджета и репутацией.
+            Muna Media помогает брендам Узбекистана планировать и запускать рекламу: наружные размещения, digital, SMM, Telegram, инфлюенс-маркетинг и мероприятия.
           </p>
           <div className="hero-actions" style={{display:'flex', gap: 14, flexWrap:'wrap', marginTop: 6}}>
             <a href="#cases" className="btn ghost">
@@ -333,11 +333,11 @@ function WhyMuna() {
 function Services() {
   const packs = [
     {
-      headline: 'Безопасный вход на рынок',
+      headline: 'Рекламная кампания для бренда',
       icon: '🛡️',
-      who: 'Для международных брендов, заходящих в регион',
+      who: 'Для брендов, работающих в Узбекистане',
       includes: [
-        'Исследование выхода на рынок и локализация позиционирования',
+        'Исследование аудитории и разработка рекламной стратегии',
         'Юридическая проверка и адаптация договоров',
         'Запуск локальных соцсетей и сети инфлюенсеров (10–30 блогеров)',
         'PR и GR поддержка в местных СМИ и Telegram-каналах',
@@ -885,10 +885,10 @@ function FinalCTA() {
                 Готовы масштабировать бизнес в Узбекистане?
               </h2>
               <p style={{margin: 0, fontSize: 18, color: 'rgba(255,255,255,0.78)', maxWidth: 480}}>
-                Оставьте заявку, и мы подготовим расчет снижения стоимости привлечения клиента в Узбекистане.
+                Обсудим рекламную кампанию для вашего бренда в Узбекистане: аудиторию, задачу, каналы и сроки.
               </p>
-              <a href="#" className="btn lime final-cta-link" style={{alignSelf:'flex-start', marginTop: 8}}>
-                Забронировать 30 минут в Calendly
+              <a href="#contact" className="btn lime final-cta-link" style={{alignSelf:'flex-start', marginTop: 8}}>
+                Обсудить рекламную кампанию
                 <span className="arrow">→</span>
               </a>
 
@@ -912,7 +912,7 @@ function FinalCTA() {
                 </div>
                 <div>
                   <div className="mono" style={{opacity:.6}}>Telegram</div>
-                  <a href="#" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                  <a href="https://t.me/munamedia" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
                     @munamedia
                   </a>
                 </div>
@@ -931,8 +931,8 @@ function FinalCTA() {
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
-                    <input
+                    <label htmlFor="home-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
+                    <input id="home-name" name="name" autoComplete="name"
                       className="input"
                       placeholder="Камила Усманова"
                       value={form.name}
@@ -941,8 +941,8 @@ function FinalCTA() {
                     />
                   </div>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Компания</label>
-                    <input
+                    <label htmlFor="home-company" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Компания</label>
+                    <input id="home-company" name="company" autoComplete="organization"
                       className="input"
                       placeholder="Brand Co."
                       value={form.company}
@@ -952,8 +952,8 @@ function FinalCTA() {
                   </div>
                   <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14}} className="form-contact-grid">
                     <div>
-                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Телефон *</label>
-                      <input
+                      <label htmlFor="home-phone" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Телефон *</label>
+                      <input id="home-phone" name="phone" autoComplete="tel"
                         className="input"
                         type="tel"
                         placeholder="+998 90 123 45 67"
@@ -963,8 +963,8 @@ function FinalCTA() {
                       />
                     </div>
                     <div>
-                      <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Email *</label>
-                      <input
+                      <label htmlFor="home-email" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Email *</label>
+                      <input id="home-email" name="email" autoComplete="email"
                         className="input"
                         type="email"
                         placeholder="name@company.com"
@@ -975,10 +975,10 @@ function FinalCTA() {
                     </div>
                   </div>
                   <div>
-                    <label className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Задача & Бюджет</label>
-                    <textarea
+                    <label htmlFor="home-task" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Задача & Бюджет</label>
+                    <textarea id="home-task" name="task" autoComplete="off"
                       className="input"
-                      placeholder="Выход на рынок Узбекистана к сентябрю. Бюджет обсуждается индивидуально."
+                      placeholder="Расскажите о бренде, аудитории, задаче и сроках кампании."
                       value={form.task}
                       onChange={e => setForm({...form, task: e.target.value})}
                       required

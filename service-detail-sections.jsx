@@ -396,7 +396,7 @@ function InfluenceMarketingPage() {
           <h2 className="display sec-title" style={{margin: '0 0 24px', maxWidth: 1040}}>
             Инфлюенс-маркетинг как бизнес-инструмент, а не лотерея
           </h2>
-          <div className="card" style={{padding: 'clamp(30px, 5vw, 56px)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 34, alignItems: 'start'}}>
+          <div className="card influence-content-grid" style={{padding: 'clamp(30px, 5vw, 56px)', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 34, alignItems: 'start'}}>
             <p style={{fontSize: 20, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0}}>
               Мы переводим работу с лидерами мнений в логику бизнеса: каждый блогер - это канал с измеримой стоимостью привлечения клиента (CAC). Мы знаем, кто из них реально влияет на решение о покупке в Узбекистане, а кто продает воздух.
             </p>
@@ -429,7 +429,7 @@ function InfluenceMarketingPage() {
 
       <section id="case" style={{borderBottom: '1.5px solid var(--ink)'}}>
         <div className="container">
-          <div className="card" style={{padding: 'clamp(34px, 5vw, 58px)', display: 'grid', gridTemplateColumns: '1fr 1.05fr', gap: 42, alignItems: 'center'}}>
+          <div className="card influence-case-grid" style={{padding: 'clamp(34px, 5vw, 58px)', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.05fr)', gap: 42, alignItems: 'center'}}>
             <div>
               <div className="pill solid" style={{marginBottom: 18}}><span className="dot" /> 04 - Кейс</div>
               <h2 className="display" style={{fontSize: 'clamp(34px, 5vw, 60px)', margin: '0 0 18px'}}>

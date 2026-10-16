@@ -2,6 +2,13 @@ export async function onRequest(context) {
   const {request} = context
   const url = new URL(request.url)
 
+  // Build-control files are deployment metadata, never public documents.
+  let pathname
+  try { pathname = decodeURIComponent(url.pathname) } catch { pathname = url.pathname }
+  if (/^\/(?:_worker\.js(?:\/.*)?|_routes\.json|_headers|_redirects)$/.test(pathname)) {
+    return new Response('Not found', {status: 404, headers: {'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex'}})
+  }
+
   if (request.method === 'GET' && url.hostname === 'www.munamedia.uz') {
     return Response.redirect(`https://munamedia.uz${url.pathname}${url.search}${url.hash}`, 301)
   }
@@ -16,6 +23,8 @@ export async function onRequest(context) {
   }
 
   const response = await context.next()
+  // Keep the asset server's true 404 response and its noindex directive intact.
+  if (response.status >= 400) return response
   const contentType = response.headers.get('content-type') || ''
   if (!contentType.includes('text/html')) return response
 

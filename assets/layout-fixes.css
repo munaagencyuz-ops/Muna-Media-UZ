@@ -1,0 +1,40 @@
+/* Intrinsic sizing repairs: keep every section visible, never clip overflow. */
+section .container > *,
+.grid-2 > *, .grid-3 > *, .grid-4 > *,
+.sec-head > *, .cta-grid > *, .form-contact-grid > *,
+.influence-content-grid > *, .influence-case-grid > * {
+  min-width: 0;
+}
+section .card { min-width: 0; }
+/* This decorative glow previously extended the document by 50px. */
+#sacrifice > .blob-shape { right: 0 !important; max-width: 100%; }
+section h1, section h2, section h3,
+section p, section li, section .mono,
+section .btn, section .logo-chip:not(.brand-logo-chip) {
+  overflow-wrap: anywhere;
+}
+section .logo-chip:not(.brand-logo-chip) {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  flex-wrap: wrap;
+}
+.input { min-width: 0; max-width: 100%; }
+@media (max-width: 900px) {
+  .influence-content-grid, .influence-case-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .influence-case-grid > div { min-width: 0; }
+}
+@media (max-width: 700px) {
+  .grid-2, .grid-3, .grid-4, .cta-grid, .form-contact-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  section .btn {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  section .btn .arrow { flex-shrink: 0; }
+  section .sec-head { max-width: 100%; }
+}

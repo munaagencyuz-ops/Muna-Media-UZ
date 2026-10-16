@@ -4,7 +4,7 @@ export async function onRequestGet(context) {
   const slug = params.slug || url.pathname.split('/').filter(Boolean).pop()
   const post = await getPost(env, slug)
   if (!post) return htmlResponse(renderNotFound(), 404)
-  return htmlResponse(renderPost(post, url.origin))
+  return htmlResponse(renderPost(post, 'https://munamedia.uz'))
 }
 
 async function getPost(env, slug) {
@@ -56,7 +56,7 @@ function layout({title, description, canonical = '', body}) {
 </script>
 <!-- /Yandex.Metrika counter -->
 </head><body>
-<noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript><nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="//services-uzbekistan">Услуги</a><a href="//cases">Кейсы</a><a href="/blog">Блог</a><a href="//about">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav><main class="container">${body}</main><footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer></body></html>`
+<noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript><nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="/services-uzbekistan">Услуги</a><a href="/cases">Кейсы</a><a href="/blog">Блог</a><a href="/about">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav><main class="container">${body}</main><footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer></body></html>`
 }
 
 function portableTextToHtml(blocks) {

@@ -6,11 +6,11 @@ export async function onRequestGet(context) {
   if (slug) {
     const post = await getPost(env, slug)
     if (!post) return htmlResponse(renderNotFound(), 404)
-    return htmlResponse(renderPost(post, url.origin))
+    return htmlResponse(renderPost(post, 'https://munamedia.uz'))
   }
 
   const posts = await getPosts(env)
-  return htmlResponse(renderIndex(posts, url.origin))
+  return htmlResponse(renderIndex(posts, 'https://munamedia.uz'))
 }
 
 function getSlug(pathname) {
@@ -47,14 +47,14 @@ async function sanityQuery(env, query, params = {}) {
 
 function renderIndex(posts, origin) {
   const title = 'Блог Muna Media — маркетинг и реклама в Узбекистане'
-  const description = 'Статьи Muna Media про маркетинг, рекламу, SEO, инфлюенсеров и выход брендов на рынок Узбекистана.'
+  const description = 'Статьи Muna Media про маркетинг, рекламу, SEO и инфлюенсеров для брендов Узбекистана.'
   const cards = posts.length ? posts.map(post => `
     <article class="post-card">
       <div class="mono">${formatDate(post.publishedAt)}</div>
       <h2><a href="/blog/${escapeAttr(post.slug)}">${escapeHtml(post.title)}</a></h2>
       ${post.excerpt ? `<p>${escapeHtml(post.excerpt)}</p>` : ''}
       <a class="read-more" href="/blog/${escapeAttr(post.slug)}">Читать статью →</a>
-    </article>`).join('') : `<div class="empty card">Пока нет опубликованных статей. Создайте первую статью в Sanity Studio → Blog Posts.</div>`
+    </article>`).join('') : `<div class="empty card">Пока нет опубликованных статей. Посмотрите <a href="/cases">кейсы</a> или <a href="/services-uzbekistan">рекламные услуги</a> Muna Media.</div>`
 
   return layout({
     title,
@@ -64,7 +64,7 @@ function renderIndex(posts, origin) {
       <section class="hero">
         <div class="pill"><span class="dot"></span> Muna Media Blog</div>
         <h1>Блог о маркетинге и рекламе в Узбекистане</h1>
-        <p>Публикуйте статьи в Sanity — они автоматически появятся здесь с SEO title, description, H1 и отдельной страницей.</p>
+        <p>Материалы о планировании и запуске рекламных кампаний в Узбекистане.</p>
       </section>
       <section class="posts-grid">${cards}</section>
     `,
@@ -130,7 +130,7 @@ ${canonical ? `<link rel="canonical" href="${escapeAttr(canonical)}">` : ''}
 </head>
 <body>
 <noscript><div><img src="https://mc.yandex.ru/watch/110435330" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="//services-uzbekistan">Услуги</a><a href="//cases">Кейсы</a><a href="/blog">Блог</a><a href="//about">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav>
+<nav class="nav"><div class="container nav-inner"><a class="brand" href="/">Muna Media</a><div class="nav-links"><a href="/services-uzbekistan">Услуги</a><a href="/cases">Кейсы</a><a href="/blog">Блог</a><a href="/about">О компании</a><a class="btn" href="/#contact">Запустить проект</a></div></div></nav>
 <main class="container">${body}</main>
 <footer><div class="container">© Muna Media · <a href="/">Главная</a></div></footer>
 </body></html>`

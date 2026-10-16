@@ -1,87 +1,84 @@
 // @ts-nocheck
-// Muna Media — Shared Navigation Component
-const { useState: navUseState, useEffect: navUseEffect } = React;
-function Nav() {
+(() => {
+  const { useState: navUseState, useEffect: navUseEffect } = React;
+  function Nav() {
     const [isOpen, setIsOpen] = navUseState(false);
     navUseEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        }
-        else {
-            document.body.style.overflow = '';
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
+      if (isOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+      return () => {
+        document.body.style.overflow = "";
+      };
     }, [isOpen]);
     const links = [
-        { label: 'Главная', href: '/' },
-        {
-            label: 'Услуги',
-            href: '/services-uzbekistan',
-            match: [
-                '/services-uzbekistan',
-                '/influence',
-                '/led-screens',
-                '/gas-station-ads',
-                '/mall-ads',
-                '/bus-ads',
-                '/bus-stop-ads',
-                '/metro-ads',
-                '/airport-ads',
-                '/seo-optimization',
-                '/context-ads',
-                '/smm',
-                '/influencer-marketing',
-                '/telegram-marketing',
-                '/event-management'
-            ],
-            children: [
-                { label: 'Все услуги', href: '/services-uzbekistan' },
-                { type: 'group', label: 'Наружная реклама' },
-                { label: 'LED-экраны', href: '/led-screens' },
-                { label: 'Реклама на АЗС', href: '/gas-station-ads' },
-                { label: 'Реклама в торговых центрах', href: '/mall-ads' },
-                { label: 'Реклама на автобусах', href: '/bus-ads' },
-                { label: 'Реклама на остановках', href: '/bus-stop-ads' },
-                { label: 'Реклама в метро', href: '/metro-ads' },
-                { label: 'Реклама в аэропорту', href: '/airport-ads' },
-                { type: 'group', label: 'Онлайн и поиск' },
-                { label: 'SEO-оптимизация', href: '/seo-optimization' },
-                { label: 'Контекстная реклама', href: '/context-ads' },
-                { type: 'group', label: 'Соцсети и инфлюенсеры' },
-                { label: 'SMM', href: '/smm' },
-                { label: 'Инфлюенс-маркетинг', href: '/influencer-marketing' },
-                { label: 'Telegram-маркетинг', href: '/telegram-marketing' },
-                { type: 'group', label: 'События' },
-                { label: 'Ивент-менеджмент', href: '/event-management' }
-            ]
-        },
-        {
-            label: 'Кейсы',
-            href: '/cases',
-            match: ['/cases', '/xiaomi', '/unionpay', '/koronapay'],
-            children: [
-                { label: 'Все кейсы', href: '/cases' },
-                { label: 'Кейс Xiaomi', href: '/xiaomi' },
-                { label: 'Кейс UnionPay', href: '/unionpay' },
-                { label: 'Кейс KoronaPay', href: '/koronapay' }
-            ]
-        },
-        { label: 'Блог', href: '/blog', match: ['blog'] },
-        { label: 'О компании', href: '/about' }
+      { label: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F", href: "/" },
+      {
+        label: "\u0423\u0441\u043B\u0443\u0433\u0438",
+        href: "/services-uzbekistan",
+        match: [
+          "/services-uzbekistan",
+          "/influence",
+          "/led-screens",
+          "/gas-station-ads",
+          "/mall-ads",
+          "/bus-ads",
+          "/bus-stop-ads",
+          "/metro-ads",
+          "/airport-ads",
+          "/seo-optimization",
+          "/context-ads",
+          "/smm",
+          "/influencer-marketing",
+          "/telegram-marketing",
+          "/event-management"
+        ],
+        children: [
+          { label: "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", href: "/services-uzbekistan" },
+          { type: "group", label: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430" },
+          { label: "LED-\u044D\u043A\u0440\u0430\u043D\u044B", href: "/led-screens" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", href: "/gas-station-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445", href: "/mall-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", href: "/bus-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445", href: "/bus-stop-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E", href: "/metro-ads" },
+          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443", href: "/airport-ads" },
+          { type: "group", label: "\u041E\u043D\u043B\u0430\u0439\u043D \u0438 \u043F\u043E\u0438\u0441\u043A" },
+          { label: "SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", href: "/seo-optimization" },
+          { label: "\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", href: "/context-ads" },
+          { type: "group", label: "\u0421\u043E\u0446\u0441\u0435\u0442\u0438 \u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B" },
+          { label: "SMM", href: "/smm" },
+          { label: "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/influencer-marketing" },
+          { label: "Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/telegram-marketing" },
+          { type: "group", label: "\u0421\u043E\u0431\u044B\u0442\u0438\u044F" },
+          { label: "\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", href: "/event-management" }
+        ]
+      },
+      {
+        label: "\u041A\u0435\u0439\u0441\u044B",
+        href: "/cases",
+        match: ["/cases", "/xiaomi", "/unionpay", "/koronapay"],
+        children: [
+          { label: "\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B", href: "/cases" },
+          { label: "\u041A\u0435\u0439\u0441 Xiaomi", href: "/xiaomi" },
+          { label: "\u041A\u0435\u0439\u0441 UnionPay", href: "/unionpay" },
+          { label: "\u041A\u0435\u0439\u0441 KoronaPay", href: "/koronapay" }
+        ]
+      },
+      { label: "\u0411\u043B\u043E\u0433", href: "/blog", match: ["blog"] },
+      { label: "\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", href: "/about" }
     ];
     const getActiveLink = () => {
-        const path = window.location.pathname;
-        const page = path.split('/').pop() || '/';
-        if (page === '' || page === '/')
-            return '/';
-        return page;
+      const path = window.location.pathname;
+      const page = path.split("/").pop() || "/";
+      if (page === "" || page === "/") return "/";
+      return page;
     };
     const activePage = getActiveLink();
     const isActive = (link) => activePage === link.href || (link.match || []).includes(activePage);
-    return (React.createElement(React.Fragment, null,
-        React.createElement("style", { dangerouslySetInnerHTML: { __html: `
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
         /* Reset & Modern overrides for Nav */
         .nav {
           position: sticky;
@@ -343,135 +340,147 @@ function Nav() {
             text-align: center;
           }
         }
-      ` } }),
-        React.createElement("nav", { className: "nav" },
-            React.createElement("div", { className: "nav-inner" },
-                React.createElement("a", { href: "/", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" },
-                    React.createElement("img", { src: "/assets/logo/muna-media-navbar-logo.jpg", alt: "MUNA MEDIA", style: { width: 156, maxWidth: '42vw', height: 'auto', display: 'block', flexShrink: 0 } })),
-                React.createElement("div", { className: "nav-links" }, links.map((link, idx) => (React.createElement("div", { className: "nav-item", key: idx },
-                    React.createElement("a", { href: link.href, className: `nav-link ${isActive(link) ? 'active' : ''}` },
-                        link.label,
-                        link.children && React.createElement("span", { className: "nav-caret" }, "\u25BE")),
-                    link.children && (React.createElement("div", { className: "nav-dropdown" }, link.children.map((child, childIdx) => (child.type === 'group' ? (React.createElement("div", { key: childIdx, className: "nav-dropdown-group" }, child.label)) : (React.createElement("a", { key: childIdx, href: child.href, className: `nav-dropdown-link ${activePage === child.href ? 'active' : ''}` },
-                        child.label,
-                        React.createElement("span", null, "\u2192"))))))))))),
-                React.createElement("a", { href: "/#contact", className: "btn lime nav-links", style: { padding: '10px 20px', fontSize: '14px', margin: 0 } },
-                    "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
-                    React.createElement("span", { className: "arrow" }, "\u2192")),
-                React.createElement("button", { className: `burger-btn ${isOpen ? 'open' : ''}`, onClick: () => setIsOpen(!isOpen), "aria-label": "Toggle navigation menu" },
-                    React.createElement("span", { className: "burger-line" }),
-                    React.createElement("span", { className: "burger-line" }),
-                    React.createElement("span", { className: "burger-line" }))),
-            React.createElement("div", { className: `mobile-drawer ${isOpen ? 'open' : ''}` },
-                React.createElement("div", { className: "mobile-drawer-links" }, links.map((link, idx) => (React.createElement(React.Fragment, { key: idx },
-                    React.createElement("a", { href: link.href, className: `mobile-drawer-link ${isActive(link) ? 'active' : ''}`, onClick: () => setIsOpen(false) },
-                        React.createElement("span", null, link.label),
-                        React.createElement("span", { className: "chevron" }, "\u2192")),
-                    link.children && link.children.map((child, childIdx) => (child.type === 'group' ? (React.createElement("div", { key: `${idx}-${childIdx}`, className: "mobile-drawer-link child", style: { boxShadow: 'none', borderStyle: 'dashed', color: 'var(--muted)', pointerEvents: 'none' } },
-                        React.createElement("span", null, child.label))) : (React.createElement("a", { key: `${idx}-${childIdx}`, href: child.href, className: `mobile-drawer-link child ${activePage === child.href ? 'active' : ''}`, onClick: () => setIsOpen(false) },
-                        React.createElement("span", null, child.label),
-                        React.createElement("span", { className: "chevron" }, "\u2192"))))))))),
-                React.createElement("div", { className: "mobile-drawer-footer" },
-                    React.createElement("a", { href: "/#contact", className: "btn lime mobile-drawer-cta", style: { padding: '18px 24px', fontSize: '16px' }, onClick: () => setIsOpen(false) },
-                        "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
-                        React.createElement("span", { className: "arrow", style: { marginLeft: '8px' } }, "\u2192")))))));
-}
-// Export Nav globally
-Object.assign(window, { Nav });
-function MunaFooter() {
+      ` } }), /* @__PURE__ */ React.createElement("nav", { className: "nav" }, /* @__PURE__ */ React.createElement("div", { className: "nav-inner" }, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", onClick: () => setIsOpen(false), "aria-label": "MUNA MEDIA" }, /* @__PURE__ */ React.createElement(
+      "img",
+      {
+        src: "/assets/logo/muna-media-navbar-logo.jpg",
+        alt: "MUNA MEDIA",
+        style: { width: 156, maxWidth: "42vw", height: "auto", display: "block", flexShrink: 0 }
+      }
+    )), /* @__PURE__ */ React.createElement("div", { className: "nav-links" }, links.map((link, idx) => /* @__PURE__ */ React.createElement("div", { className: "nav-item", key: idx }, /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        href: link.href,
+        className: `nav-link ${isActive(link) ? "active" : ""}`
+      },
+      link.label,
+      link.children && /* @__PURE__ */ React.createElement("span", { className: "nav-caret" }, "\u25BE")
+    ), link.children && /* @__PURE__ */ React.createElement("div", { className: "nav-dropdown" }, link.children.map((child, childIdx) => child.type === "group" ? /* @__PURE__ */ React.createElement("div", { key: childIdx, className: "nav-dropdown-group" }, child.label) : /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        key: childIdx,
+        href: child.href,
+        className: `nav-dropdown-link ${activePage === child.href ? "active" : ""}`
+      },
+      child.label,
+      /* @__PURE__ */ React.createElement("span", null, "\u2192")
+    )))))), /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        href: "/#contact",
+        className: "btn lime nav-links",
+        style: { padding: "10px 20px", fontSize: "14px", margin: 0 }
+      },
+      "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+      /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        className: `burger-btn ${isOpen ? "open" : ""}`,
+        onClick: () => setIsOpen(!isOpen),
+        "aria-label": "Toggle navigation menu"
+      },
+      /* @__PURE__ */ React.createElement("span", { className: "burger-line" }),
+      /* @__PURE__ */ React.createElement("span", { className: "burger-line" }),
+      /* @__PURE__ */ React.createElement("span", { className: "burger-line" })
+    )), /* @__PURE__ */ React.createElement("div", { className: `mobile-drawer ${isOpen ? "open" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "mobile-drawer-links" }, links.map((link, idx) => /* @__PURE__ */ React.createElement(React.Fragment, { key: idx }, /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        href: link.href,
+        className: `mobile-drawer-link ${isActive(link) ? "active" : ""}`,
+        onClick: () => setIsOpen(false)
+      },
+      /* @__PURE__ */ React.createElement("span", null, link.label),
+      /* @__PURE__ */ React.createElement("span", { className: "chevron" }, "\u2192")
+    ), link.children && link.children.map((child, childIdx) => child.type === "group" ? /* @__PURE__ */ React.createElement("div", { key: `${idx}-${childIdx}`, className: "mobile-drawer-link child", style: { boxShadow: "none", borderStyle: "dashed", color: "var(--muted)", pointerEvents: "none" } }, /* @__PURE__ */ React.createElement("span", null, child.label)) : /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        key: `${idx}-${childIdx}`,
+        href: child.href,
+        className: `mobile-drawer-link child ${activePage === child.href ? "active" : ""}`,
+        onClick: () => setIsOpen(false)
+      },
+      /* @__PURE__ */ React.createElement("span", null, child.label),
+      /* @__PURE__ */ React.createElement("span", { className: "chevron" }, "\u2192")
+    ))))), /* @__PURE__ */ React.createElement("div", { className: "mobile-drawer-footer" }, /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        href: "/#contact",
+        className: "btn lime mobile-drawer-cta",
+        style: { padding: "18px 24px", fontSize: "16px" },
+        onClick: () => setIsOpen(false)
+      },
+      "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+      /* @__PURE__ */ React.createElement("span", { className: "arrow", style: { marginLeft: "8px" } }, "\u2192")
+    )))));
+  }
+  Object.assign(window, { Nav });
+  function MunaFooter() {
     const serviceGroups = [
-        {
-            title: 'Наружная реклама',
-            links: [
-                ['LED-экраны', '/led-screens'],
-                ['Реклама на АЗС', '/gas-station-ads'],
-                ['Реклама в ТЦ', '/mall-ads'],
-                ['Реклама на автобусах', '/bus-ads'],
-                ['Остановки', '/bus-stop-ads'],
-                ['Метро', '/metro-ads'],
-                ['Аэропорт', '/airport-ads']
-            ]
-        },
-        {
-            title: 'Digital',
-            links: [
-                ['SEO-оптимизация', '/seo-optimization'],
-                ['Контекстная реклама', '/context-ads'],
-                ['SMM', '/smm'],
-                ['Инфлюенс-маркетинг', '/influencer-marketing'],
-                ['Telegram-маркетинг', '/telegram-marketing'],
-                ['Ивент-менеджмент', '/event-management']
-            ]
-        }
+      {
+        title: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430",
+        links: [
+          ["LED-\u044D\u043A\u0440\u0430\u043D\u044B", "/led-screens"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", "/gas-station-ads"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0422\u0426", "/mall-ads"],
+          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", "/bus-ads"],
+          ["\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438", "/bus-stop-ads"],
+          ["\u041C\u0435\u0442\u0440\u043E", "/metro-ads"],
+          ["\u0410\u044D\u0440\u043E\u043F\u043E\u0440\u0442", "/airport-ads"]
+        ]
+      },
+      {
+        title: "Digital",
+        links: [
+          ["SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", "/seo-optimization"],
+          ["\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", "/context-ads"],
+          ["SMM", "/smm"],
+          ["\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/influencer-marketing"],
+          ["Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/telegram-marketing"],
+          ["\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", "/event-management"]
+        ]
+      }
     ];
     const footerLinks = {
-        pages: [
-            ['Главная', '/'],
-            ['Все услуги', '/services-uzbekistan'],
-            ['Кейсы', '/cases'],
-            ['О компании', '/about'],
-            ['Контакты', '/#contact']
-        ],
-        cases: [
-            ['Xiaomi', '/xiaomi'],
-            ['UnionPay', '/unionpay'],
-            ['KoronaPay', '/koronapay']
-        ]
+      pages: [
+        ["\u0413\u043B\u0430\u0432\u043D\u0430\u044F", "/"],
+        ["\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", "/services-uzbekistan"],
+        ["\u041A\u0435\u0439\u0441\u044B", "/cases"],
+        ["\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", "/about"],
+        ["\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B", "/#contact"]
+      ],
+      cases: [
+        ["Xiaomi", "/xiaomi"],
+        ["UnionPay", "/unionpay"],
+        ["KoronaPay", "/koronapay"]
+      ]
     };
     const linkStyle = {
-        color: 'rgba(255,255,255,.82)',
-        textDecoration: 'none',
-        fontSize: 14,
-        lineHeight: 1.35,
-        transition: 'color .18s ease, transform .18s ease'
+      color: "rgba(255,255,255,.82)",
+      textDecoration: "none",
+      fontSize: 14,
+      lineHeight: 1.35,
+      transition: "color .18s ease, transform .18s ease"
     };
-    const Column = ({ title, links }) => (React.createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: 10, minWidth: 150 } },
-        React.createElement("div", { className: "mono", style: { color: 'rgba(255,255,255,.46)', marginBottom: 4 } }, title),
-        links.map(([label, href]) => (React.createElement("a", { key: href + label, href: href, style: linkStyle }, label)))));
-    return (React.createElement("footer", { style: { background: 'var(--ink)', color: 'white', borderTop: '1.5px solid var(--ink)', overflow: 'hidden' } },
-        React.createElement("div", { className: "container", style: { paddingTop: 56, paddingBottom: 34 } },
-            React.createElement("div", { style: {
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(260px, 1.05fr) minmax(0, 1.65fr)',
-                    gap: 42,
-                    alignItems: 'start'
-                } },
-                React.createElement("div", null,
-                    React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: 'white', textDecoration: 'none' } },
-                        React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: 'var(--accent)' } }),
-                        "MUNA MEDIA"),
-                    React.createElement("p", { style: { margin: '18px 0 0', maxWidth: 470, color: 'rgba(255,255,255,.72)', fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."),
-                    React.createElement("div", { style: { display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 26 } },
-                        React.createElement("a", { href: "/#contact", className: "btn", style: { background: 'var(--accent)', borderColor: 'white', color: 'white' } },
-                            "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
-                            React.createElement("span", { className: "arrow" }, "\u2192")),
-                        React.createElement("a", { href: "/cases", className: "btn", style: { background: 'transparent', borderColor: 'white', color: 'white' } },
-                            "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B",
-                            React.createElement("span", { className: "arrow" }, "\u2192")))),
-                React.createElement("div", { style: {
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, minmax(140px, 1fr))',
-                        gap: 26
-                    } },
-                    React.createElement(Column, { title: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B", links: footerLinks.pages }),
-                    serviceGroups.map(group => (React.createElement(Column, { key: group.title, title: group.title, links: group.links }))),
-                    React.createElement(Column, { title: "\u041A\u0435\u0439\u0441\u044B", links: footerLinks.cases }))),
-            React.createElement("div", { style: {
-                    marginTop: 44,
-                    paddingTop: 26,
-                    borderTop: '1px solid rgba(255,255,255,.22)',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr auto',
-                    gap: 22,
-                    alignItems: 'center'
-                } },
-                React.createElement("div", { style: { display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center' } },
-                    React.createElement("a", { href: "mailto:info@munamedia.me", style: Object.assign(Object.assign({}, linkStyle), { fontWeight: 700 }) }, "info@munamedia.me"),
-                    React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"),
-                    React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"),
-                    React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")),
-                React.createElement("div", { className: "mono", style: { color: 'rgba(255,255,255,.46)', textAlign: 'right' } }, "\u00A9 2019-2026 Muna Media \u00B7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D"))),
-        React.createElement("style", { dangerouslySetInnerHTML: { __html: `
+    const Column = ({ title, links }) => /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10, minWidth: 150 } }, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", marginBottom: 4 } }, title), links.map(([label, href]) => /* @__PURE__ */ React.createElement("a", { key: href + label, href, style: linkStyle }, label)));
+    return /* @__PURE__ */ React.createElement("footer", { style: { background: "var(--ink)", color: "white", borderTop: "1.5px solid var(--ink)", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { className: "container", style: { paddingTop: 56, paddingBottom: 34 } }, /* @__PURE__ */ React.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "minmax(260px, 1.05fr) minmax(0, 1.65fr)",
+      gap: 42,
+      alignItems: "start"
+    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(4, minmax(140px, 1fr))",
+      gap: 26
+    } }, /* @__PURE__ */ React.createElement(Column, { title: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B", links: footerLinks.pages }), serviceGroups.map((group) => /* @__PURE__ */ React.createElement(Column, { key: group.title, title: group.title, links: group.links })), /* @__PURE__ */ React.createElement(Column, { title: "\u041A\u0435\u0439\u0441\u044B", links: footerLinks.cases }))), /* @__PURE__ */ React.createElement("div", { style: {
+      marginTop: 44,
+      paddingTop: 26,
+      borderTop: "1px solid rgba(255,255,255,.22)",
+      display: "grid",
+      gridTemplateColumns: "1fr auto",
+      gap: 22,
+      alignItems: "center"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { ...linkStyle, fontWeight: 700 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", textAlign: "right" } }, "\xA9 2019-2026 Muna Media \xB7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D"))), /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
         footer a:hover {
           color: white !important;
           transform: translateX(2px);
@@ -504,56 +513,10 @@ function MunaFooter() {
             justify-content: center;
           }
         }
-      ` } })));
-}
-Object.assign(window, { MunaFooter });
-// tweaks-panel.jsx
-// Reusable Tweaks shell + form-control helpers.
-//
-// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
-// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
-// individual prototypes don't re-roll it. Ships a consistent set of controls so you
-// don't hand-draw <input type="range">, segmented radios, steppers, etc.
-//
-// Usage (in an HTML file that loads React + Babel):
-//
-//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-//     "primaryColor": "#D97757",
-//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
-//     "fontSize": 16,
-//     "density": "regular",
-//     "dark": false
-//   }/*EDITMODE-END*/;
-//
-//   function App() {
-//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-//     return (
-//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
-//         Hello
-//         <TweaksPanel>
-//           <TweakSection label="Typography" />
-//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
-//                        onChange={(v) => setTweak('fontSize', v)} />
-//           <TweakRadio  label="Density" value={t.density}
-//                        options={['compact', 'regular', 'comfy']}
-//                        onChange={(v) => setTweak('density', v)} />
-//           <TweakSection label="Theme" />
-//           <TweakColor  label="Primary" value={t.primaryColor}
-//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
-//                        onChange={(v) => setTweak('primaryColor', v)} />
-//           <TweakColor  label="Palette" value={t.palette}
-//                        options={[['#D97757', '#29261b', '#f6f4ef'],
-//                                  ['#475569', '#0f172a', '#f1f5f9']]}
-//                        onChange={(v) => setTweak('palette', v)} />
-//           <TweakToggle label="Dark mode" value={t.dark}
-//                        onChange={(v) => setTweak('dark', v)} />
-//         </TweaksPanel>
-//       </div>
-//     );
-//   }
-//
-// ─────────────────────────────────────────────────────────────────────────────
-const __TWEAKS_STYLE = `
+      ` } }));
+  }
+  Object.assign(window, { MunaFooter });
+  const __TWEAKS_STYLE = `
   .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
     max-height:calc(100vh - 32px);display:flex;flex-direction:column;
     transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
@@ -662,518 +625,468 @@ const __TWEAKS_STYLE = `
   .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
     filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
 `;
-// ── useTweaks ───────────────────────────────────────────────────────────────
-// Single source of truth for tweak values. setTweak persists via the host
-// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
-function useTweaks(defaults) {
+  function useTweaks(defaults) {
     const [values, setValues] = React.useState(defaults);
-    // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
-    // useState-style call doesn't write a "[object Object]" key into the persisted
-    // JSON block.
     const setTweak = React.useCallback((keyOrEdits, val) => {
-        const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
-            ? keyOrEdits : { [keyOrEdits]: val };
-        setValues((prev) => (Object.assign(Object.assign({}, prev), edits)));
-        window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
-        // Same-window signal so in-page listeners (deck-stage rail thumbnails)
-        // can react — the parent message only reaches the host, not peers.
-        window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+      const edits = typeof keyOrEdits === "object" && keyOrEdits !== null ? keyOrEdits : { [keyOrEdits]: val };
+      setValues((prev) => ({ ...prev, ...edits }));
+      window.parent.postMessage({ type: "__edit_mode_set_keys", edits }, "*");
+      window.dispatchEvent(new CustomEvent("tweakchange", { detail: edits }));
     }, []);
     return [values, setTweak];
-}
-// ── TweaksPanel ─────────────────────────────────────────────────────────────
-// Floating shell. Registers the protocol listener BEFORE announcing
-// availability — if the announce ran first, the host's activate could land
-// before our handler exists and the toolbar toggle would silently no-op.
-// The close button posts __edit_mode_dismissed so the host's toolbar toggle
-// flips off in lockstep; the host echoes __deactivate_edit_mode back which
-// is what actually hides the panel.
-function TweaksPanel({ title = 'Tweaks', children }) {
+  }
+  function TweaksPanel({ title = "Tweaks", children }) {
     const [open, setOpen] = React.useState(false);
     const dragRef = React.useRef(null);
     const offsetRef = React.useRef({ x: 16, y: 16 });
     const PAD = 16;
     const clampToViewport = React.useCallback(() => {
-        const panel = dragRef.current;
-        if (!panel)
-            return;
-        const w = panel.offsetWidth, h = panel.offsetHeight;
-        const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
-        const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
-        offsetRef.current = {
-            x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
-            y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
-        };
-        panel.style.right = offsetRef.current.x + 'px';
-        panel.style.bottom = offsetRef.current.y + 'px';
+      const panel = dragRef.current;
+      if (!panel) return;
+      const w = panel.offsetWidth, h = panel.offsetHeight;
+      const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+      const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+      offsetRef.current = {
+        x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+        y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y))
+      };
+      panel.style.right = offsetRef.current.x + "px";
+      panel.style.bottom = offsetRef.current.y + "px";
     }, []);
     React.useEffect(() => {
-        if (!open)
-            return;
-        clampToViewport();
-        if (typeof ResizeObserver === 'undefined') {
-            window.addEventListener('resize', clampToViewport);
-            return () => window.removeEventListener('resize', clampToViewport);
-        }
-        const ro = new ResizeObserver(clampToViewport);
-        ro.observe(document.documentElement);
-        return () => ro.disconnect();
+      if (!open) return;
+      clampToViewport();
+      if (typeof ResizeObserver === "undefined") {
+        window.addEventListener("resize", clampToViewport);
+        return () => window.removeEventListener("resize", clampToViewport);
+      }
+      const ro = new ResizeObserver(clampToViewport);
+      ro.observe(document.documentElement);
+      return () => ro.disconnect();
     }, [open, clampToViewport]);
     React.useEffect(() => {
-        const onMsg = (e) => {
-            var _a;
-            const t = (_a = e === null || e === void 0 ? void 0 : e.data) === null || _a === void 0 ? void 0 : _a.type;
-            if (t === '__activate_edit_mode')
-                setOpen(true);
-            else if (t === '__deactivate_edit_mode')
-                setOpen(false);
-        };
-        window.addEventListener('message', onMsg);
-        window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-        return () => window.removeEventListener('message', onMsg);
+      const onMsg = (e) => {
+        var _a;
+        const t = (_a = e == null ? void 0 : e.data) == null ? void 0 : _a.type;
+        if (t === "__activate_edit_mode") setOpen(true);
+        else if (t === "__deactivate_edit_mode") setOpen(false);
+      };
+      window.addEventListener("message", onMsg);
+      window.parent.postMessage({ type: "__edit_mode_available" }, "*");
+      return () => window.removeEventListener("message", onMsg);
     }, []);
     const dismiss = () => {
-        setOpen(false);
-        window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+      setOpen(false);
+      window.parent.postMessage({ type: "__edit_mode_dismissed" }, "*");
     };
     const onDragStart = (e) => {
-        const panel = dragRef.current;
-        if (!panel)
-            return;
-        const r = panel.getBoundingClientRect();
-        const sx = e.clientX, sy = e.clientY;
-        const startRight = window.innerWidth - r.right;
-        const startBottom = window.innerHeight - r.bottom;
-        const move = (ev) => {
-            offsetRef.current = {
-                x: startRight - (ev.clientX - sx),
-                y: startBottom - (ev.clientY - sy),
-            };
-            clampToViewport();
+      const panel = dragRef.current;
+      if (!panel) return;
+      const r = panel.getBoundingClientRect();
+      const sx = e.clientX, sy = e.clientY;
+      const startRight = window.innerWidth - r.right;
+      const startBottom = window.innerHeight - r.bottom;
+      const move = (ev) => {
+        offsetRef.current = {
+          x: startRight - (ev.clientX - sx),
+          y: startBottom - (ev.clientY - sy)
         };
-        const up = () => {
-            window.removeEventListener('mousemove', move);
-            window.removeEventListener('mouseup', up);
-        };
-        window.addEventListener('mousemove', move);
-        window.addEventListener('mouseup', up);
+        clampToViewport();
+      };
+      const up = () => {
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseup", up);
+      };
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseup", up);
     };
-    if (!open)
-        return null;
-    return (React.createElement(React.Fragment, null,
-        React.createElement("style", null, __TWEAKS_STYLE),
-        React.createElement("div", { ref: dragRef, className: "twk-panel", "data-omelette-chrome": "", style: { right: offsetRef.current.x, bottom: offsetRef.current.y } },
-            React.createElement("div", { className: "twk-hd", onMouseDown: onDragStart },
-                React.createElement("b", null, title),
-                React.createElement("button", { className: "twk-x", "aria-label": "Close tweaks", onMouseDown: (e) => e.stopPropagation(), onClick: dismiss }, "\u2715")),
-            React.createElement("div", { className: "twk-body" }, children))));
-}
-// ── Layout helpers ──────────────────────────────────────────────────────────
-function TweakSection({ label, children }) {
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: "twk-sect" }, label),
-        children));
-}
-function TweakRow({ label, value, children, inline = false }) {
-    return (React.createElement("div", { className: inline ? 'twk-row twk-row-h' : 'twk-row' },
-        React.createElement("div", { className: "twk-lbl" },
-            React.createElement("span", null, label),
-            value != null && React.createElement("span", { className: "twk-val" }, value)),
-        children));
-}
-// ── Controls ────────────────────────────────────────────────────────────────
-function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
-    return (React.createElement(TweakRow, { label: label, value: `${value}${unit}` },
-        React.createElement("input", { type: "range", className: "twk-slider", min: min, max: max, step: step, value: value, onChange: (e) => onChange(Number(e.target.value)) })));
-}
-function TweakToggle({ label, value, onChange }) {
-    return (React.createElement("div", { className: "twk-row twk-row-h" },
-        React.createElement("div", { className: "twk-lbl" },
-            React.createElement("span", null, label)),
-        React.createElement("button", { type: "button", className: "twk-toggle", "data-on": value ? '1' : '0', role: "switch", "aria-checked": !!value, onClick: () => onChange(!value) },
-            React.createElement("i", null))));
-}
-function TweakRadio({ label, value, options, onChange }) {
+    if (!open) return null;
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("style", null, __TWEAKS_STYLE), /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        ref: dragRef,
+        className: "twk-panel",
+        "data-omelette-chrome": "",
+        style: { right: offsetRef.current.x, bottom: offsetRef.current.y }
+      },
+      /* @__PURE__ */ React.createElement("div", { className: "twk-hd", onMouseDown: onDragStart }, /* @__PURE__ */ React.createElement("b", null, title), /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          className: "twk-x",
+          "aria-label": "Close tweaks",
+          onMouseDown: (e) => e.stopPropagation(),
+          onClick: dismiss
+        },
+        "\u2715"
+      )),
+      /* @__PURE__ */ React.createElement("div", { className: "twk-body" }, children)
+    ));
+  }
+  function TweakSection({ label, children }) {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "twk-sect" }, label), children);
+  }
+  function TweakRow({ label, value, children, inline = false }) {
+    return /* @__PURE__ */ React.createElement("div", { className: inline ? "twk-row twk-row-h" : "twk-row" }, /* @__PURE__ */ React.createElement("div", { className: "twk-lbl" }, /* @__PURE__ */ React.createElement("span", null, label), value != null && /* @__PURE__ */ React.createElement("span", { className: "twk-val" }, value)), children);
+  }
+  function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = "", onChange }) {
+    return /* @__PURE__ */ React.createElement(TweakRow, { label, value: `${value}${unit}` }, /* @__PURE__ */ React.createElement(
+      "input",
+      {
+        type: "range",
+        className: "twk-slider",
+        min,
+        max,
+        step,
+        value,
+        onChange: (e) => onChange(Number(e.target.value))
+      }
+    ));
+  }
+  function TweakToggle({ label, value, onChange }) {
+    return /* @__PURE__ */ React.createElement("div", { className: "twk-row twk-row-h" }, /* @__PURE__ */ React.createElement("div", { className: "twk-lbl" }, /* @__PURE__ */ React.createElement("span", null, label)), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "twk-toggle",
+        "data-on": value ? "1" : "0",
+        role: "switch",
+        "aria-checked": !!value,
+        onClick: () => onChange(!value)
+      },
+      /* @__PURE__ */ React.createElement("i", null)
+    ));
+  }
+  function TweakRadio({ label, value, options, onChange }) {
     var _a;
     const trackRef = React.useRef(null);
     const [dragging, setDragging] = React.useState(false);
-    // The active value is read by pointer-move handlers attached for the lifetime
-    // of a drag — ref it so a stale closure doesn't fire onChange for every move.
     const valueRef = React.useRef(value);
     valueRef.current = value;
-    // Segments wrap mid-word once per-segment width runs out. The track is
-    // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
-    // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
-    // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
-    // back to a dropdown rather than wrap.
-    const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+    const labelLen = (o) => String(typeof o === "object" ? o.label : o).length;
     const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
-    const fitsAsSegments = maxLen <= ((_a = { 2: 16, 3: 10 }[options.length]) !== null && _a !== void 0 ? _a : 0);
+    const fitsAsSegments = maxLen <= ((_a = { 2: 16, 3: 10 }[options.length]) != null ? _a : 0);
     if (!fitsAsSegments) {
-        // <select> emits strings — map back to the original option value so the
-        // fallback stays type-preserving (numbers, booleans) like the segment path.
-        const resolve = (s) => {
-            const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
-            return m === undefined ? s : typeof m === 'object' ? m.value : m;
-        };
-        return React.createElement(TweakSelect, { label: label, value: value, options: options, onChange: (s) => onChange(resolve(s)) });
+      const resolve = (s) => {
+        const m = options.find((o) => String(typeof o === "object" ? o.value : o) === s);
+        return m === void 0 ? s : typeof m === "object" ? m.value : m;
+      };
+      return /* @__PURE__ */ React.createElement(
+        TweakSelect,
+        {
+          label,
+          value,
+          options,
+          onChange: (s) => onChange(resolve(s))
+        }
+      );
     }
-    const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+    const opts = options.map((o) => typeof o === "object" ? o : { value: o, label: o });
     const idx = Math.max(0, opts.findIndex((o) => o.value === value));
     const n = opts.length;
     const segAt = (clientX) => {
-        const r = trackRef.current.getBoundingClientRect();
-        const inner = r.width - 4;
-        const i = Math.floor(((clientX - r.left - 2) / inner) * n);
-        return opts[Math.max(0, Math.min(n - 1, i))].value;
+      const r = trackRef.current.getBoundingClientRect();
+      const inner = r.width - 4;
+      const i = Math.floor((clientX - r.left - 2) / inner * n);
+      return opts[Math.max(0, Math.min(n - 1, i))].value;
     };
     const onPointerDown = (e) => {
-        setDragging(true);
-        const v0 = segAt(e.clientX);
-        if (v0 !== valueRef.current)
-            onChange(v0);
-        const move = (ev) => {
-            if (!trackRef.current)
-                return;
-            const v = segAt(ev.clientX);
-            if (v !== valueRef.current)
-                onChange(v);
-        };
-        const up = () => {
-            setDragging(false);
-            window.removeEventListener('pointermove', move);
-            window.removeEventListener('pointerup', up);
-        };
-        window.addEventListener('pointermove', move);
-        window.addEventListener('pointerup', up);
+      setDragging(true);
+      const v0 = segAt(e.clientX);
+      if (v0 !== valueRef.current) onChange(v0);
+      const move = (ev) => {
+        if (!trackRef.current) return;
+        const v = segAt(ev.clientX);
+        if (v !== valueRef.current) onChange(v);
+      };
+      const up = () => {
+        setDragging(false);
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", up);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
     };
-    return (React.createElement(TweakRow, { label: label },
-        React.createElement("div", { ref: trackRef, role: "radiogroup", onPointerDown: onPointerDown, className: dragging ? 'twk-seg dragging' : 'twk-seg' },
-            React.createElement("div", { className: "twk-seg-thumb", style: { left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
-                    width: `calc((100% - 4px) / ${n})` } }),
-            opts.map((o) => (React.createElement("button", { key: o.value, type: "button", role: "radio", "aria-checked": o.value === value }, o.label))))));
-}
-function TweakSelect({ label, value, options, onChange }) {
-    return (React.createElement(TweakRow, { label: label },
-        React.createElement("select", { className: "twk-field", value: value, onChange: (e) => onChange(e.target.value) }, options.map((o) => {
-            const v = typeof o === 'object' ? o.value : o;
-            const l = typeof o === 'object' ? o.label : o;
-            return React.createElement("option", { key: v, value: v }, l);
-        }))));
-}
-function TweakText({ label, value, placeholder, onChange }) {
-    return (React.createElement(TweakRow, { label: label },
-        React.createElement("input", { className: "twk-field", type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })));
-}
-function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+    return /* @__PURE__ */ React.createElement(TweakRow, { label }, /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        ref: trackRef,
+        role: "radiogroup",
+        onPointerDown,
+        className: dragging ? "twk-seg dragging" : "twk-seg"
+      },
+      /* @__PURE__ */ React.createElement(
+        "div",
+        {
+          className: "twk-seg-thumb",
+          style: {
+            left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+            width: `calc((100% - 4px) / ${n})`
+          }
+        }
+      ),
+      opts.map((o) => /* @__PURE__ */ React.createElement("button", { key: o.value, type: "button", role: "radio", "aria-checked": o.value === value }, o.label))
+    ));
+  }
+  function TweakSelect({ label, value, options, onChange }) {
+    return /* @__PURE__ */ React.createElement(TweakRow, { label }, /* @__PURE__ */ React.createElement("select", { className: "twk-field", value, onChange: (e) => onChange(e.target.value) }, options.map((o) => {
+      const v = typeof o === "object" ? o.value : o;
+      const l = typeof o === "object" ? o.label : o;
+      return /* @__PURE__ */ React.createElement("option", { key: v, value: v }, l);
+    })));
+  }
+  function TweakText({ label, value, placeholder, onChange }) {
+    return /* @__PURE__ */ React.createElement(TweakRow, { label }, /* @__PURE__ */ React.createElement(
+      "input",
+      {
+        className: "twk-field",
+        type: "text",
+        value,
+        placeholder,
+        onChange: (e) => onChange(e.target.value)
+      }
+    ));
+  }
+  function TweakNumber({ label, value, min, max, step = 1, unit = "", onChange }) {
     const clamp = (n) => {
-        if (min != null && n < min)
-            return min;
-        if (max != null && n > max)
-            return max;
-        return n;
+      if (min != null && n < min) return min;
+      if (max != null && n > max) return max;
+      return n;
     };
     const startRef = React.useRef({ x: 0, val: 0 });
     const onScrubStart = (e) => {
-        e.preventDefault();
-        startRef.current = { x: e.clientX, val: value };
-        const decimals = (String(step).split('.')[1] || '').length;
-        const move = (ev) => {
-            const dx = ev.clientX - startRef.current.x;
-            const raw = startRef.current.val + dx * step;
-            const snapped = Math.round(raw / step) * step;
-            onChange(clamp(Number(snapped.toFixed(decimals))));
-        };
-        const up = () => {
-            window.removeEventListener('pointermove', move);
-            window.removeEventListener('pointerup', up);
-        };
-        window.addEventListener('pointermove', move);
-        window.addEventListener('pointerup', up);
+      e.preventDefault();
+      startRef.current = { x: e.clientX, val: value };
+      const decimals = (String(step).split(".")[1] || "").length;
+      const move = (ev) => {
+        const dx = ev.clientX - startRef.current.x;
+        const raw = startRef.current.val + dx * step;
+        const snapped = Math.round(raw / step) * step;
+        onChange(clamp(Number(snapped.toFixed(decimals))));
+      };
+      const up = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", up);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
     };
-    return (React.createElement("div", { className: "twk-num" },
-        React.createElement("span", { className: "twk-num-lbl", onPointerDown: onScrubStart }, label),
-        React.createElement("input", { type: "number", value: value, min: min, max: max, step: step, onChange: (e) => onChange(clamp(Number(e.target.value))) }),
-        unit && React.createElement("span", { className: "twk-num-unit" }, unit)));
-}
-// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
-// read on both #111 and #fafafa without per-option configuration. Hex input
-// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
-function __twkIsLight(hex) {
-    const h = String(hex).replace('#', '');
-    const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+    return /* @__PURE__ */ React.createElement("div", { className: "twk-num" }, /* @__PURE__ */ React.createElement("span", { className: "twk-num-lbl", onPointerDown: onScrubStart }, label), /* @__PURE__ */ React.createElement(
+      "input",
+      {
+        type: "number",
+        value,
+        min,
+        max,
+        step,
+        onChange: (e) => onChange(clamp(Number(e.target.value)))
+      }
+    ), unit && /* @__PURE__ */ React.createElement("span", { className: "twk-num-unit" }, unit));
+  }
+  function __twkIsLight(hex) {
+    const h = String(hex).replace("#", "");
+    const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, "0");
     const n = parseInt(x.slice(0, 6), 16);
-    if (Number.isNaN(n))
-        return true;
-    const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
-    return r * 299 + g * 587 + b * 114 > 148000;
-}
-const __TwkCheck = ({ light }) => (React.createElement("svg", { viewBox: "0 0 14 14", "aria-hidden": "true" },
-    React.createElement("path", { d: "M3 7.2 5.8 10 11 4.2", fill: "none", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", stroke: light ? 'rgba(0,0,0,.78)' : '#fff' })));
-// TweakColor — curated color/palette picker. Each option is either a single
-// hex string or an array of 1-5 hex strings; the card adapts — a lone color
-// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
-// rest stacked in a sharp column on the right. onChange emits the
-// option in the shape it was passed (string stays string, array stays array).
-// Without options it falls back to the native color input for back-compat.
-function TweakColor({ label, value, options, onChange }) {
-    if (!options || !options.length) {
-        return (React.createElement("div", { className: "twk-row twk-row-h" },
-            React.createElement("div", { className: "twk-lbl" },
-                React.createElement("span", null, label)),
-            React.createElement("input", { type: "color", className: "twk-swatch", value: value, onChange: (e) => onChange(e.target.value) })));
+    if (Number.isNaN(n)) return true;
+    const r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255;
+    return r * 299 + g * 587 + b * 114 > 148e3;
+  }
+  const __TwkCheck = ({ light }) => /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 14 14", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement(
+    "path",
+    {
+      d: "M3 7.2 5.8 10 11 4.2",
+      fill: "none",
+      strokeWidth: "2.2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      stroke: light ? "rgba(0,0,0,.78)" : "#fff"
     }
-    // Native <input type=color> emits lowercase hex per the HTML spec, so
-    // compare case-insensitively. String() guards JSON.stringify(undefined),
-    // which returns the primitive undefined (no .toLowerCase).
+  ));
+  function TweakColor({ label, value, options, onChange }) {
+    if (!options || !options.length) {
+      return /* @__PURE__ */ React.createElement("div", { className: "twk-row twk-row-h" }, /* @__PURE__ */ React.createElement("div", { className: "twk-lbl" }, /* @__PURE__ */ React.createElement("span", null, label)), /* @__PURE__ */ React.createElement(
+        "input",
+        {
+          type: "color",
+          className: "twk-swatch",
+          value,
+          onChange: (e) => onChange(e.target.value)
+        }
+      ));
+    }
     const key = (o) => String(JSON.stringify(o)).toLowerCase();
     const cur = key(value);
-    return (React.createElement(TweakRow, { label: label },
-        React.createElement("div", { className: "twk-chips", role: "radiogroup" }, options.map((o, i) => {
-            const colors = Array.isArray(o) ? o : [o];
-            const [hero, ...rest] = colors;
-            const sup = rest.slice(0, 4);
-            const on = key(o) === cur;
-            return (React.createElement("button", { key: i, type: "button", className: "twk-chip", role: "radio", "aria-checked": on, "data-on": on ? '1' : '0', "aria-label": colors.join(', '), title: colors.join(' · '), style: { background: hero }, onClick: () => onChange(o) },
-                sup.length > 0 && (React.createElement("span", null, sup.map((c, j) => React.createElement("i", { key: j, style: { background: c } })))),
-                on && React.createElement(__TwkCheck, { light: __twkIsLight(hero) })));
-        }))));
-}
-function TweakButton({ label, onClick, secondary = false }) {
-    return (React.createElement("button", { type: "button", className: secondary ? 'twk-btn secondary' : 'twk-btn', onClick: onClick }, label));
-}
-Object.assign(window, {
-    useTweaks, TweaksPanel, TweakSection, TweakRow,
-    TweakSlider, TweakToggle, TweakRadio, TweakSelect,
-    TweakText, TweakNumber, TweakColor, TweakButton,
-});
-// Muna Media — Korona Pay Case Study Page Sections
-const { useState, useEffect, useRef } = React;
-// ─────────────────────────────────────────────────────────────
-// 1. HERO (Overview & Key Metrics)
-// ─────────────────────────────────────────────────────────────
-function KPHero() {
-    return (React.createElement("section", { id: "kp-hero", style: { paddingTop: 100, paddingBottom: 60, overflow: 'hidden' } },
-        React.createElement("div", { className: "blob-shape", style: {
-                width: 400, height: 400, background: 'var(--accent)',
-                top: -100, right: -100, opacity: .12, filter: 'blur(80px)'
-            } }),
-        React.createElement("div", { className: "container", style: { position: 'relative', zIndex: 1 } },
-            React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 } },
-                React.createElement("span", { className: "pill solid" },
-                    React.createElement("span", { className: "dot" }),
-                    " \u0424\u0438\u043D\u0442\u0435\u0445-\u043A\u0435\u0439\u0441"),
-                React.createElement("span", { className: "mono", style: { color: 'var(--muted)' } }, "Korona Pay \u00B7 \u041B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F")),
-            React.createElement("h1", { className: "display", style: { fontSize: 'clamp(44px, 7.5vw, 96px)', margin: '0 0 28px', maxWidth: 1200, lineHeight: 1.05 } },
-                "KoronaPay: \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u043B\u044F \u0440\u043E\u0441\u0442\u0430 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0438 ",
-                React.createElement("span", { className: "serif", style: { fontFamily: 'Instrument Serif', fontStyle: 'italic' } }, "\u0434\u043E\u0432\u0435\u0440\u0438\u044F"),
-                " \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435."),
-            React.createElement("div", { style: { display: 'flex', alignItems: 'flex-start', gap: 40, flexWrap: 'wrap', marginBottom: 44 } },
-                React.createElement("p", { style: { fontSize: 22, lineHeight: 1.5, maxWidth: 820, margin: 0, color: 'var(--ink-soft)' } }, "\u0417\u0430 2021-2022 \u0433\u043E\u0434\u044B Muna Media \u043F\u043E\u043C\u043E\u0433\u043B\u0430 KoronaPay \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438 \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u043D\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E \u043F\u043E \u0432\u0441\u0435\u043C\u0443 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0443: \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438, \u043D\u0430\u0440\u0443\u0436\u043D\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F \u0438 \u043B\u043E\u0433\u0438\u043A\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043D\u0430 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0438 \u043D\u0430 \u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438, \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0438 \u0441\u043D\u0438\u0436\u0435\u043D\u0438\u0435 \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430 \u0434\u043E\u0432\u0435\u0440\u0438\u044F.")),
-            React.createElement("div", { style: {
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                    gap: 0,
-                    border: '1.5px solid var(--ink)',
-                    borderRadius: 24,
-                    overflow: 'hidden',
-                    background: 'var(--cream-card)'
-                } }, [
-                ['344 762', 'просмотра у инфлюенсеров'],
-                ['4 918', 'взаимодействий с контентом'],
-                ['2 486', 'кликов после интеграций'],
-                ['$300k', 'бюджет кампании'],
-            ].map(([n, t], i) => (React.createElement("div", { key: i, style: {
-                    padding: '24px 28px',
-                    borderRight: '1.5px solid var(--ink)',
-                    borderBottom: '1.5px solid var(--ink)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 4
-                } },
-                React.createElement("div", { className: "num-big", style: { fontSize: 48, color: 'var(--accent)' } }, n),
-                React.createElement("div", { className: "mono", style: { color: 'var(--muted)', fontSize: 11 } }, t))))))));
-}
-// ─────────────────────────────────────────────────────────────
-// 2. CHALLENGE (Проблема & Цели)
-// ─────────────────────────────────────────────────────────────
-function KPChallenge() {
-    return (React.createElement("section", { id: "kp-challenge", style: { background: 'var(--bg-2)', borderTop: '1.5px solid var(--ink)', borderBottom: '1.5px solid var(--ink)' } },
-        React.createElement("div", { className: "container" },
-            React.createElement("div", { className: "grid-2", style: { gap: 56, alignItems: 'center' } },
-                React.createElement("div", null,
-                    React.createElement("div", { className: "sec-eyebrow" },
-                        React.createElement("span", { className: "pill" },
-                            React.createElement("span", { className: "dot" }),
-                            " 02 \u2014 \u0412\u044B\u0437\u043E\u0432")),
-                    React.createElement("h2", { className: "display", style: { fontSize: 'clamp(36px, 5vw, 64px)', margin: '0 0 28px', lineHeight: 1.05 } }, "\u0417\u0430\u0434\u0430\u0447\u0430: \u043F\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u044E \u0438\u0437 \u043E\u0444\u043B\u0430\u0439\u043D\u0430 \u0432 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."),
-                    React.createElement("p", { style: { fontSize: 18, lineHeight: 1.6, color: 'var(--ink-soft)', margin: '0 0 20px' } }, "\u041A\u043B\u0438\u0435\u043D\u0442\u0443 \u043D\u0443\u0436\u043D\u043E \u0431\u044B\u043B\u043E \u0438\u043D\u0438\u0446\u0438\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0442\u0440\u0435\u0445\u043C\u0435\u0441\u044F\u0447\u043D\u0443\u044E \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E \u043F\u043E \u0432\u0441\u0435\u043C\u0443 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0443 \u0438 \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442\u044C \u043E\u0431\u044A\u0435\u043C \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0432 \u0420\u043E\u0441\u0441\u0438\u044E \u0447\u0435\u0440\u0435\u0437 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 KoronaPay."),
-                    React.createElement("p", { style: { fontSize: 16, lineHeight: 1.6, color: 'var(--muted)', margin: 0 } }, "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0431\u0430\u0440\u044C\u0435\u0440 \u0437\u0430\u043A\u043B\u044E\u0447\u0430\u043B\u0441\u044F \u0432 \u0441\u0442\u0438\u043C\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\u043E\u043A \u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0439 \u043F\u0440\u0438 \u043E\u0434\u043D\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u043C \u043F\u0440\u0435\u043E\u0434\u043E\u043B\u0435\u043D\u0438\u0438 \u0437\u043D\u0430\u0447\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430 \u0434\u043E\u0432\u0435\u0440\u0438\u044F \u043A \u0444\u0438\u043D\u0430\u043D\u0441\u043E\u0432\u044B\u043C \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u0430\u043C.")),
-                React.createElement("div", { className: "card", style: { padding: 40, display: 'flex', flexDirection: 'column', gap: 20 } },
-                    React.createElement("span", { className: "mono", style: { color: 'var(--accent)', fontWeight: 700 } }, "\u041A\u041B\u042E\u0427\u0415\u0412\u042B\u0415 \u0411\u0410\u0420\u042C\u0415\u0420\u042B:"),
-                    React.createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: 14 } },
-                        React.createElement("div", null,
-                            React.createElement("strong", null, "\u2715 \u0420\u044B\u043D\u043E\u043A:"),
-                            " \u043A\u043E\u0440\u0438\u0434\u043E\u0440 \u0434\u0435\u043D\u0435\u0436\u043D\u044B\u0445 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0438\u0437 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u0432 \u0420\u043E\u0441\u0441\u0438\u044E."),
-                        React.createElement("div", null,
-                            React.createElement("strong", null, "\u2715 \u041F\u0440\u043E\u0431\u043B\u0435\u043C\u0430:"),
-                            " \u0441\u0430\u043D\u043A\u0446\u0438\u043E\u043D\u043D\u044B\u0439 \u0444\u043E\u043D \u0438 \u043C\u043E\u0448\u0435\u043D\u043D\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0443\u0441\u0438\u043B\u0438\u043B\u0438 \u0434\u0435\u0444\u0438\u0446\u0438\u0442 \u0434\u043E\u0432\u0435\u0440\u0438\u044F."),
-                        React.createElement("div", null,
-                            React.createElement("strong", null, "\u2715 \u041A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u044B:"),
-                            " \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0435 SuperApps \u0432\u0440\u043E\u0434\u0435 Uzum \u0438 Click \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u043B\u0438 \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439.")))))));
-}
-// ─────────────────────────────────────────────────────────────
-// 3. SOLUTION (Решение Muna)
-// ─────────────────────────────────────────────────────────────
-function KPSolution() {
+    return /* @__PURE__ */ React.createElement(TweakRow, { label }, /* @__PURE__ */ React.createElement("div", { className: "twk-chips", role: "radiogroup" }, options.map((o, i) => {
+      const colors = Array.isArray(o) ? o : [o];
+      const [hero, ...rest] = colors;
+      const sup = rest.slice(0, 4);
+      const on = key(o) === cur;
+      return /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          key: i,
+          type: "button",
+          className: "twk-chip",
+          role: "radio",
+          "aria-checked": on,
+          "data-on": on ? "1" : "0",
+          "aria-label": colors.join(", "),
+          title: colors.join(" \xB7 "),
+          style: { background: hero },
+          onClick: () => onChange(o)
+        },
+        sup.length > 0 && /* @__PURE__ */ React.createElement("span", null, sup.map((c, j) => /* @__PURE__ */ React.createElement("i", { key: j, style: { background: c } }))),
+        on && /* @__PURE__ */ React.createElement(__TwkCheck, { light: __twkIsLight(hero) })
+      );
+    })));
+  }
+  function TweakButton({ label, onClick, secondary = false }) {
+    return /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: secondary ? "twk-btn secondary" : "twk-btn",
+        onClick
+      },
+      label
+    );
+  }
+  Object.assign(window, {
+    useTweaks,
+    TweaksPanel,
+    TweakSection,
+    TweakRow,
+    TweakSlider,
+    TweakToggle,
+    TweakRadio,
+    TweakSelect,
+    TweakText,
+    TweakNumber,
+    TweakColor,
+    TweakButton
+  });
+  const { useState, useEffect, useRef } = React;
+  function KPHero() {
+    return /* @__PURE__ */ React.createElement("section", { id: "kp-hero", style: { paddingTop: 100, paddingBottom: 60, overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { className: "blob-shape", style: {
+      width: 400,
+      height: 400,
+      background: "var(--accent)",
+      top: -100,
+      right: -100,
+      opacity: 0.12,
+      filter: "blur(80px)"
+    } }), /* @__PURE__ */ React.createElement("div", { className: "container", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28 } }, /* @__PURE__ */ React.createElement("span", { className: "pill solid" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u0424\u0438\u043D\u0442\u0435\u0445-\u043A\u0435\u0439\u0441"), /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--muted)" } }, "Korona Pay \xB7 \u041B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F")), /* @__PURE__ */ React.createElement("h1", { className: "display", style: { fontSize: "clamp(44px, 7.5vw, 96px)", margin: "0 0 28px", maxWidth: 1200, lineHeight: 1.05 } }, "KoronaPay: \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u043B\u044F \u0440\u043E\u0441\u0442\u0430 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0438 ", /* @__PURE__ */ React.createElement("span", { className: "serif", style: { fontFamily: "Instrument Serif", fontStyle: "italic" } }, "\u0434\u043E\u0432\u0435\u0440\u0438\u044F"), " \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap", marginBottom: 44 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 22, lineHeight: 1.5, maxWidth: 820, margin: 0, color: "var(--ink-soft)" } }, "\u0417\u0430 2021-2022 \u0433\u043E\u0434\u044B Muna Media \u043F\u043E\u043C\u043E\u0433\u043B\u0430 KoronaPay \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438 \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u043D\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E \u043F\u043E \u0432\u0441\u0435\u043C\u0443 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0443: \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438, \u043D\u0430\u0440\u0443\u0436\u043D\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F \u0438 \u043B\u043E\u0433\u0438\u043A\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043D\u0430 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0438 \u043D\u0430 \u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438, \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0438 \u0441\u043D\u0438\u0436\u0435\u043D\u0438\u0435 \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430 \u0434\u043E\u0432\u0435\u0440\u0438\u044F.")), /* @__PURE__ */ React.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: 0,
+      border: "1.5px solid var(--ink)",
+      borderRadius: 24,
+      overflow: "hidden",
+      background: "var(--cream-card)"
+    } }, [
+      ["344 762", "\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u0443 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u043E\u0432"],
+      ["4 918", "\u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0441 \u043A\u043E\u043D\u0442\u0435\u043D\u0442\u043E\u043C"],
+      ["2 486", "\u043A\u043B\u0438\u043A\u043E\u0432 \u043F\u043E\u0441\u043B\u0435 \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0439"],
+      ["$300k", "\u0431\u044E\u0434\u0436\u0435\u0442 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0438"]
+    ].map(([n, t], i) => /* @__PURE__ */ React.createElement("div", { key: i, style: {
+      padding: "24px 28px",
+      borderRight: "1.5px solid var(--ink)",
+      borderBottom: "1.5px solid var(--ink)",
+      display: "flex",
+      flexDirection: "column",
+      gap: 4
+    } }, /* @__PURE__ */ React.createElement("div", { className: "num-big", style: { fontSize: 48, color: "var(--accent)" } }, n), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "var(--muted)", fontSize: 11 } }, t))))));
+  }
+  function KPChallenge() {
+    return /* @__PURE__ */ React.createElement("section", { id: "kp-challenge", style: { background: "var(--bg-2)", borderTop: "1.5px solid var(--ink)", borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "grid-2", style: { gap: 56, alignItems: "center" } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 02 \u2014 \u0412\u044B\u0437\u043E\u0432")), /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 64px)", margin: "0 0 28px", lineHeight: 1.05 } }, "\u0417\u0430\u0434\u0430\u0447\u0430: \u043F\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u044E \u0438\u0437 \u043E\u0444\u043B\u0430\u0439\u043D\u0430 \u0432 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 18, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 20px" } }, "\u041A\u043B\u0438\u0435\u043D\u0442\u0443 \u043D\u0443\u0436\u043D\u043E \u0431\u044B\u043B\u043E \u0438\u043D\u0438\u0446\u0438\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0442\u0440\u0435\u0445\u043C\u0435\u0441\u044F\u0447\u043D\u0443\u044E \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E \u043F\u043E \u0432\u0441\u0435\u043C\u0443 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0443 \u0438 \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442\u044C \u043E\u0431\u044A\u0435\u043C \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0432 \u0420\u043E\u0441\u0441\u0438\u044E \u0447\u0435\u0440\u0435\u0437 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 KoronaPay."), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 16, lineHeight: 1.6, color: "var(--muted)", margin: 0 } }, "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0431\u0430\u0440\u044C\u0435\u0440 \u0437\u0430\u043A\u043B\u044E\u0447\u0430\u043B\u0441\u044F \u0432 \u0441\u0442\u0438\u043C\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\u043E\u043A \u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0439 \u043F\u0440\u0438 \u043E\u0434\u043D\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u043C \u043F\u0440\u0435\u043E\u0434\u043E\u043B\u0435\u043D\u0438\u0438 \u0437\u043D\u0430\u0447\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430 \u0434\u043E\u0432\u0435\u0440\u0438\u044F \u043A \u0444\u0438\u043D\u0430\u043D\u0441\u043E\u0432\u044B\u043C \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u0430\u043C.")), /* @__PURE__ */ React.createElement("div", { className: "card", style: { padding: 40, display: "flex", flexDirection: "column", gap: 20 } }, /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--accent)", fontWeight: 700 } }, "\u041A\u041B\u042E\u0427\u0415\u0412\u042B\u0415 \u0411\u0410\u0420\u042C\u0415\u0420\u042B:"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 14 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "\u2715 \u0420\u044B\u043D\u043E\u043A:"), " \u043A\u043E\u0440\u0438\u0434\u043E\u0440 \u0434\u0435\u043D\u0435\u0436\u043D\u044B\u0445 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0438\u0437 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u0432 \u0420\u043E\u0441\u0441\u0438\u044E."), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "\u2715 \u041F\u0440\u043E\u0431\u043B\u0435\u043C\u0430:"), " \u0441\u0430\u043D\u043A\u0446\u0438\u043E\u043D\u043D\u044B\u0439 \u0444\u043E\u043D \u0438 \u043C\u043E\u0448\u0435\u043D\u043D\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0443\u0441\u0438\u043B\u0438\u043B\u0438 \u0434\u0435\u0444\u0438\u0446\u0438\u0442 \u0434\u043E\u0432\u0435\u0440\u0438\u044F."), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("strong", null, "\u2715 \u041A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u044B:"), " \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0435 SuperApps \u0432\u0440\u043E\u0434\u0435 Uzum \u0438 Click \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u043B\u0438 \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439."))))));
+  }
+  function KPSolution() {
     const steps = [
-        { title: 'Позиционирование', desc: 'Создали категорию одного: KoronaPay как специалист по безопасной трансграничной поддержке семей.' },
-        { title: 'Тройная гарантия безопасности', desc: 'Сделали акцент на европейской лицензии EMI, PCI DSS и поддержке 24/7, чтобы снизить страх перед переводом.' },
-        { title: 'Гибридные медиа', desc: 'Соединили рекламу на результат с наружной рекламой, LED-экранами, автобусами, метро и инфлюенс-маркетингом для формирования доверия.' }
+      { title: "\u041F\u043E\u0437\u0438\u0446\u0438\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435", desc: "\u0421\u043E\u0437\u0434\u0430\u043B\u0438 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044E \u043E\u0434\u043D\u043E\u0433\u043E: KoronaPay \u043A\u0430\u043A \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442 \u043F\u043E \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0439 \u0442\u0440\u0430\u043D\u0441\u0433\u0440\u0430\u043D\u0438\u0447\u043D\u043E\u0439 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0435 \u0441\u0435\u043C\u0435\u0439." },
+      { title: "\u0422\u0440\u043E\u0439\u043D\u0430\u044F \u0433\u0430\u0440\u0430\u043D\u0442\u0438\u044F \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0441\u0442\u0438", desc: "\u0421\u0434\u0435\u043B\u0430\u043B\u0438 \u0430\u043A\u0446\u0435\u043D\u0442 \u043D\u0430 \u0435\u0432\u0440\u043E\u043F\u0435\u0439\u0441\u043A\u043E\u0439 \u043B\u0438\u0446\u0435\u043D\u0437\u0438\u0438 EMI, PCI DSS \u0438 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0435 24/7, \u0447\u0442\u043E\u0431\u044B \u0441\u043D\u0438\u0437\u0438\u0442\u044C \u0441\u0442\u0440\u0430\u0445 \u043F\u0435\u0440\u0435\u0434 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u043C." },
+      { title: "\u0413\u0438\u0431\u0440\u0438\u0434\u043D\u044B\u0435 \u043C\u0435\u0434\u0438\u0430", desc: "\u0421\u043E\u0435\u0434\u0438\u043D\u0438\u043B\u0438 \u0440\u0435\u043A\u043B\u0430\u043C\u0443 \u043D\u0430 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0441 \u043D\u0430\u0440\u0443\u0436\u043D\u043E\u0439 \u0440\u0435\u043A\u043B\u0430\u043C\u043E\u0439, LED-\u044D\u043A\u0440\u0430\u043D\u0430\u043C\u0438, \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u043C\u0438, \u043C\u0435\u0442\u0440\u043E \u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u043C \u0434\u043B\u044F \u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0434\u043E\u0432\u0435\u0440\u0438\u044F." }
     ];
-    return (React.createElement("section", { id: "kp-solution", style: { borderBottom: '1.5px solid var(--ink)' } },
-        React.createElement("div", { className: "container" },
-            React.createElement("div", { style: { textAlign: 'center', marginBottom: 56 } },
-                React.createElement("div", { className: "pill solid", style: { marginBottom: 16 } },
-                    React.createElement("span", { className: "dot" }),
-                    " 03 \u2014 \u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F"),
-                React.createElement("h2", { className: "display", style: { fontSize: 'clamp(36px, 5vw, 64px)', margin: 0 } }, "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F")),
-            React.createElement("div", { className: "grid-3", style: { gap: 32 } }, steps.map((s, idx) => (React.createElement("div", { key: idx, className: "card", style: { padding: 32, display: 'flex', flexDirection: 'column', gap: 16 } },
-                React.createElement("span", { className: "mono", style: { color: 'var(--accent)', fontWeight: 700, fontSize: 13 } },
-                    "STAGE 0",
-                    idx + 1,
-                    " //"),
-                React.createElement("h3", { className: "display", style: { fontSize: 22, margin: 0 } }, s.title),
-                React.createElement("p", { style: { margin: 0, color: 'var(--ink-soft)', fontSize: 15, lineHeight: 1.6 } }, s.desc))))))));
-}
-// ─────────────────────────────────────────────────────────────
-// 4. RESULTS (Итоговые результаты)
-// ─────────────────────────────────────────────────────────────
-function KPResults() {
-    return (React.createElement("section", { id: "kp-results", style: { background: 'var(--bg-2)', borderBottom: '1.5px solid var(--ink)' } },
-        React.createElement("div", { className: "container" },
-            React.createElement("div", { className: "sec-head" },
-                React.createElement("div", null,
-                    React.createElement("div", { className: "sec-eyebrow" },
-                        React.createElement("span", { className: "pill" },
-                            React.createElement("span", { className: "dot" }),
-                            " 04 \u2014 \u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B")),
-                    React.createElement("h2", { className: "display sec-title", style: { margin: 0 } }, "\u041E\u0446\u0438\u0444\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F"))),
-            React.createElement("div", { className: "card cta-grid", style: { padding: '48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' } },
-                React.createElement("div", { className: "ph", style: { height: 320 } }, "[\u041C\u0435\u0434\u0438\u0430\u043C\u0438\u043A\u0441 KoronaPay]"),
-                React.createElement("div", null,
-                    React.createElement("span", { className: "sticker", style: { marginBottom: 16 } }, "344 762 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430"),
-                    React.createElement("h3", { className: "display", style: { fontSize: 32, margin: '0 0 20px' } }, "\u0418\u0437\u043C\u0435\u0440\u0438\u043C\u043E\u0435 \u0432\u043B\u0438\u044F\u043D\u0438\u0435 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0438"),
-                    React.createElement("p", { style: { fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: '0 0 24px' } }, "\u041A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043F\u0435\u0440\u0435\u0432\u0435\u043B\u0430 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0438\u0437 \u043E\u0444\u043B\u0430\u0439\u043D-\u043A\u0430\u043D\u0430\u043B\u043E\u0432 \u0432 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0441\u043D\u0438\u0437\u0438\u043B\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0435 \u0440\u0430\u0441\u0445\u043E\u0434\u044B. \u0418\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438 \u0434\u0430\u043B\u0438 344 762 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430, 4 918 \u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0438 2 486 \u043A\u043B\u0438\u043A\u043E\u0432, \u0430 \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430 \u0443\u0441\u0438\u043B\u0438\u043B \u0434\u043E\u0432\u0435\u0440\u0438\u0435 \u0432 \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0445 \u0433\u043E\u0440\u043E\u0434\u0441\u043A\u0438\u0445 \u0442\u043E\u0447\u043A\u0430\u0445."),
-                    React.createElement("div", { style: { display: 'flex', gap: 24 } },
-                        React.createElement("div", null,
-                            React.createElement("div", { className: "num-big", style: { fontSize: 36, color: 'var(--accent)' } }, "27"),
-                            React.createElement("div", { className: "mono", style: { fontSize: 10, color: 'var(--muted)' } }, "LED-\u044D\u043A\u0440\u0430\u043D\u043E\u0432")),
-                        React.createElement("div", null,
-                            React.createElement("div", { className: "num-big", style: { fontSize: 36, color: 'var(--accent)' } }, "15"),
-                            React.createElement("div", { className: "mono", style: { fontSize: 10, color: 'var(--muted)' } }, "\u0441\u0442\u0430\u043D\u0446\u0438\u0439 \u043C\u0435\u0442\u0440\u043E"))))))));
-}
-// ─────────────────────────────────────────────────────────────
-// 5. CONCLUSIONS (Выводы для бизнеса)
-// ─────────────────────────────────────────────────────────────
-function KPConclusions() {
-    return (React.createElement("section", { id: "kp-conclusions", style: { borderBottom: '1.5px solid var(--ink)' } },
-        React.createElement("div", { className: "container", style: { maxWidth: 1000 } },
-            React.createElement("div", { style: { textAlign: 'center', marginBottom: 48 } },
-                React.createElement("div", { className: "pill solid", style: { marginBottom: 20 } },
-                    React.createElement("span", { className: "dot" }),
-                    " \u0412\u044B\u0432\u043E\u0434\u044B"),
-                React.createElement("h2", { className: "display", style: { fontSize: 'clamp(36px, 5vw, 64px)', margin: 0 } }, "\u0412\u044B\u0432\u043E\u0434\u044B \u0434\u043B\u044F fintech-\u0431\u0440\u0435\u043D\u0434\u043E\u0432")),
-            React.createElement("div", { style: { display: 'flex', flexDirection: 'column', gap: 32, fontSize: 18, lineHeight: 1.6, color: 'var(--ink-soft)' } },
-                React.createElement("p", null,
-                    "1. ",
-                    React.createElement("strong", null, "\u0414\u043E\u0432\u0435\u0440\u0438\u0435 \u043F\u0435\u0440\u0432\u0435\u0435 \u0440\u0435\u043A\u043B\u0430\u043C\u044B."),
-                    " \u0412 \u0444\u0438\u043D\u0430\u043D\u0441\u043E\u0432\u043E\u043C \u0441\u0435\u043A\u0442\u043E\u0440\u0435 \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u043D\u0443\u0436\u043D\u043E \u0434\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0441\u0442\u044C \u0438 \u043F\u043E\u043D\u044F\u0442\u043D\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430, \u0430 \u0443\u0436\u0435 \u043F\u043E\u0442\u043E\u043C \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443 \u043D\u0430 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442."),
-                React.createElement("p", null,
-                    "2. ",
-                    React.createElement("strong", null, "\u0413\u0438\u0431\u0440\u0438\u0434\u043D\u044B\u0435 \u043C\u0435\u0434\u0438\u0430 \u0443\u0441\u0438\u043B\u0438\u0432\u0430\u044E\u0442 \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F \u0441\u0435\u0440\u0432\u0438\u0441\u043E\u043C."),
-                    " \u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430 \u0444\u043E\u0440\u043C\u0438\u0440\u0443\u0435\u0442 \u0443\u0437\u043D\u0430\u0432\u0430\u0435\u043C\u043E\u0441\u0442\u044C, \u0430 \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438 \u0434\u0430\u044E\u0442 \u0447\u0435\u043B\u043E\u0432\u0435\u0447\u0435\u0441\u043A\u043E\u0435 \u0434\u043E\u043A\u0430\u0437\u0430\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E \u0438 \u043F\u0435\u0440\u0435\u0445\u043E\u0434\u044B \u0432 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."),
-                React.createElement("p", null,
-                    "3. ",
-                    React.createElement("strong", null, "\u041B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442 \u0440\u0435\u0448\u0430\u0435\u0442."),
-                    " \u041A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u043E\u043B\u0436\u043D\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0435\u0439 \u0447\u0435\u0440\u0435\u0437 \u043F\u0440\u0438\u0432\u044B\u0447\u043D\u044B\u0435 \u043A\u0430\u043D\u0430\u043B\u044B \u0438 \u0443\u0447\u0438\u0442\u044B\u0432\u0430\u0442\u044C \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0446\u0438\u044E \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0445 SuperApps.")),
-            React.createElement("div", { style: { textAlign: 'center', marginTop: 56 } },
-                React.createElement("a", { href: "/#contact", className: "btn lime", style: { background: 'var(--accent)', color: 'white', borderColor: 'var(--accent)' } },
-                    "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u0430\u043D\u0430\u043B\u043E\u0433\u0438\u0447\u043D\u044B\u0439 \u043F\u0440\u043E\u0435\u043A\u0442",
-                    React.createElement("span", { className: "arrow" }, "\u2192"))))));
-}
-// ─────────────────────────────────────────────────────────────
-// FOOTER
-// ─────────────────────────────────────────────────────────────
-function Footer() {
-    return React.createElement(MunaFooter, null);
-}
-Object.assign(window, {
+    return /* @__PURE__ */ React.createElement("section", { id: "kp-solution", style: { borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 56 } }, /* @__PURE__ */ React.createElement("div", { className: "pill solid", style: { marginBottom: 16 } }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 03 \u2014 \u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F"), /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 64px)", margin: 0 } }, "\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F")), /* @__PURE__ */ React.createElement("div", { className: "grid-3", style: { gap: 32 } }, steps.map((s, idx) => /* @__PURE__ */ React.createElement("div", { key: idx, className: "card", style: { padding: 32, display: "flex", flexDirection: "column", gap: 16 } }, /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--accent)", fontWeight: 700, fontSize: 13 } }, "STAGE 0", idx + 1, " //"), /* @__PURE__ */ React.createElement("h3", { className: "display", style: { fontSize: 22, margin: 0 } }, s.title), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, color: "var(--ink-soft)", fontSize: 15, lineHeight: 1.6 } }, s.desc))))));
+  }
+  function KPResults() {
+    return /* @__PURE__ */ React.createElement("section", { id: "kp-results", style: { background: "var(--bg-2)", borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "sec-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 04 \u2014 \u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B")), /* @__PURE__ */ React.createElement("h2", { className: "display sec-title", style: { margin: 0 } }, "\u041E\u0446\u0438\u0444\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F"))), /* @__PURE__ */ React.createElement("div", { className: "card cta-grid", style: { padding: "48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" } }, /* @__PURE__ */ React.createElement("div", { className: "ph", style: { height: 320 } }, "[\u041C\u0435\u0434\u0438\u0430\u043C\u0438\u043A\u0441 KoronaPay]"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("span", { className: "sticker", style: { marginBottom: 16 } }, "344 762 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430"), /* @__PURE__ */ React.createElement("h3", { className: "display", style: { fontSize: 32, margin: "0 0 20px" } }, "\u0418\u0437\u043C\u0435\u0440\u0438\u043C\u043E\u0435 \u0432\u043B\u0438\u044F\u043D\u0438\u0435 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0438"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 17, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 24px" } }, "\u041A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043F\u0435\u0440\u0435\u0432\u0435\u043B\u0430 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u0438\u0437 \u043E\u0444\u043B\u0430\u0439\u043D-\u043A\u0430\u043D\u0430\u043B\u043E\u0432 \u0432 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0441\u043D\u0438\u0437\u0438\u043B\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0435 \u0440\u0430\u0441\u0445\u043E\u0434\u044B. \u0418\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438 \u0434\u0430\u043B\u0438 344 762 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430, 4 918 \u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0438 2 486 \u043A\u043B\u0438\u043A\u043E\u0432, \u0430 \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430 \u0443\u0441\u0438\u043B\u0438\u043B \u0434\u043E\u0432\u0435\u0440\u0438\u0435 \u0432 \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0445 \u0433\u043E\u0440\u043E\u0434\u0441\u043A\u0438\u0445 \u0442\u043E\u0447\u043A\u0430\u0445."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 24 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "num-big", style: { fontSize: 36, color: "var(--accent)" } }, "27"), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { fontSize: 10, color: "var(--muted)" } }, "LED-\u044D\u043A\u0440\u0430\u043D\u043E\u0432")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "num-big", style: { fontSize: 36, color: "var(--accent)" } }, "15"), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { fontSize: 10, color: "var(--muted)" } }, "\u0441\u0442\u0430\u043D\u0446\u0438\u0439 \u043C\u0435\u0442\u0440\u043E")))))));
+  }
+  function KPConclusions() {
+    return /* @__PURE__ */ React.createElement("section", { id: "kp-conclusions", style: { borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container", style: { maxWidth: 1e3 } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 48 } }, /* @__PURE__ */ React.createElement("div", { className: "pill solid", style: { marginBottom: 20 } }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u0412\u044B\u0432\u043E\u0434\u044B"), /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 64px)", margin: 0 } }, "\u0412\u044B\u0432\u043E\u0434\u044B \u0434\u043B\u044F fintech-\u0431\u0440\u0435\u043D\u0434\u043E\u0432")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 32, fontSize: 18, lineHeight: 1.6, color: "var(--ink-soft)" } }, /* @__PURE__ */ React.createElement("p", null, "1. ", /* @__PURE__ */ React.createElement("strong", null, "\u0414\u043E\u0432\u0435\u0440\u0438\u0435 \u043F\u0435\u0440\u0432\u0435\u0435 \u0440\u0435\u043A\u043B\u0430\u043C\u044B."), " \u0412 \u0444\u0438\u043D\u0430\u043D\u0441\u043E\u0432\u043E\u043C \u0441\u0435\u043A\u0442\u043E\u0440\u0435 \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u043D\u0443\u0436\u043D\u043E \u0434\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0441\u0442\u044C \u0438 \u043F\u043E\u043D\u044F\u0442\u043D\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430, \u0430 \u0443\u0436\u0435 \u043F\u043E\u0442\u043E\u043C \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443 \u043D\u0430 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442."), /* @__PURE__ */ React.createElement("p", null, "2. ", /* @__PURE__ */ React.createElement("strong", null, "\u0413\u0438\u0431\u0440\u0438\u0434\u043D\u044B\u0435 \u043C\u0435\u0434\u0438\u0430 \u0443\u0441\u0438\u043B\u0438\u0432\u0430\u044E\u0442 \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F \u0441\u0435\u0440\u0432\u0438\u0441\u043E\u043C."), " \u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430 \u0444\u043E\u0440\u043C\u0438\u0440\u0443\u0435\u0442 \u0443\u0437\u043D\u0430\u0432\u0430\u0435\u043C\u043E\u0441\u0442\u044C, \u0430 \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0441 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u0430\u043C\u0438 \u0434\u0430\u044E\u0442 \u0447\u0435\u043B\u043E\u0432\u0435\u0447\u0435\u0441\u043A\u043E\u0435 \u0434\u043E\u043A\u0430\u0437\u0430\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E \u0438 \u043F\u0435\u0440\u0435\u0445\u043E\u0434\u044B \u0432 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."), /* @__PURE__ */ React.createElement("p", null, "3. ", /* @__PURE__ */ React.createElement("strong", null, "\u041B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442 \u0440\u0435\u0448\u0430\u0435\u0442."), " \u041A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u043E\u043B\u0436\u043D\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0435\u0439 \u0447\u0435\u0440\u0435\u0437 \u043F\u0440\u0438\u0432\u044B\u0447\u043D\u044B\u0435 \u043A\u0430\u043D\u0430\u043B\u044B \u0438 \u0443\u0447\u0438\u0442\u044B\u0432\u0430\u0442\u044C \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0446\u0438\u044E \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0445 SuperApps.")), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginTop: 56 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn lime", style: { background: "var(--accent)", color: "white", borderColor: "var(--accent)" } }, "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u0430\u043D\u0430\u043B\u043E\u0433\u0438\u0447\u043D\u044B\u0439 \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))));
+  }
+  function Footer() {
+    return /* @__PURE__ */ React.createElement(MunaFooter, null);
+  }
+  Object.assign(window, {
     KPHero,
     KPChallenge,
     KPSolution,
     KPResults,
     KPConclusions,
     Footer
-});
-// Muna Media — Korona Pay App
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/ {
-    "palette": "blue",
-    "heroLayout": "default",
-    "borderStyle": "hard"
-} /*EDITMODE-END*/;
-const PALETTES = {
-    blue: { accent: '#295AE9', accent2: '#000000', label: 'Blue + Black' },
-    electric: { accent: '#295AE9', accent2: '#295AE9', label: 'Electric Blue' },
-    classic: { accent: '#000000', accent2: '#295AE9', label: 'Black + Blue' },
-};
-function App() {
+  });
+  const TWEAK_DEFAULTS = (
+    /*EDITMODE-BEGIN*/
+    {
+      "palette": "blue",
+      "heroLayout": "default",
+      "borderStyle": "hard"
+    }
+  );
+  const PALETTES = {
+    blue: { accent: "#295AE9", accent2: "#000000", label: "Blue + Black" },
+    electric: { accent: "#295AE9", accent2: "#295AE9", label: "Electric Blue" },
+    classic: { accent: "#000000", accent2: "#295AE9", label: "Black + Blue" }
+  };
+  function App() {
     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
     React.useEffect(() => {
-        const p = PALETTES[t.palette] || PALETTES.blue;
-        document.documentElement.style.setProperty('--accent', p.accent);
-        document.documentElement.style.setProperty('--accent-2', p.accent2);
-        if (t.borderStyle === 'soft') {
-            document.documentElement.style.setProperty('--shadow', '0 14px 32px -10px rgba(14,14,12,0.22)');
-        }
-        else {
-            document.documentElement.style.setProperty('--shadow', '6px 6px 0 0 var(--ink)');
-        }
+      const p = PALETTES[t.palette] || PALETTES.blue;
+      document.documentElement.style.setProperty("--accent", p.accent);
+      document.documentElement.style.setProperty("--accent-2", p.accent2);
+      if (t.borderStyle === "soft") {
+        document.documentElement.style.setProperty("--shadow", "0 14px 32px -10px rgba(14,14,12,0.22)");
+      } else {
+        document.documentElement.style.setProperty("--shadow", "6px 6px 0 0 var(--ink)");
+      }
     }, [t.palette, t.borderStyle]);
     React.useEffect(() => {
-        if (window.location.hash) {
-            const handleScroll = () => {
-                const id = window.location.hash.substring(1);
-                const el = document.getElementById(id);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                }
-            };
-            // Give React/Babel standalone some time to render components
-            const timer = setTimeout(handleScroll, 400);
-            return () => clearTimeout(timer);
-        }
+      if (window.location.hash) {
+        const handleScroll = () => {
+          const id = window.location.hash.substring(1);
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        };
+        const timer = setTimeout(handleScroll, 400);
+        return () => clearTimeout(timer);
+      }
     }, []);
-    return (React.createElement(React.Fragment, null,
-        React.createElement(Nav, null),
-        React.createElement(KPHero, null),
-        React.createElement(KPChallenge, null),
-        React.createElement(KPSolution, null),
-        React.createElement(KPResults, null),
-        React.createElement(KPConclusions, null),
-        React.createElement(Footer, null),
-        React.createElement(TweaksPanel, { title: "Tweaks" },
-            React.createElement(TweakSection, { label: "\u041F\u0430\u043B\u0438\u0442\u0440\u0430" }),
-            React.createElement(TweakRadio, { label: "\u0421\u0445\u0435\u043C\u0430", value: t.palette, options: [
-                    { value: 'blue', label: 'Blue' },
-                    { value: 'electric', label: 'Electric' },
-                    { value: 'classic', label: 'Black/Blue' },
-                ], onChange: v => setTweak('palette', v) }),
-            React.createElement(TweakSection, { label: "\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438" }),
-            React.createElement(TweakRadio, { label: "\u0422\u0435\u043D\u0438", value: t.borderStyle, options: [
-                    { value: 'hard', label: 'Брутальные' },
-                    { value: 'soft', label: 'Мягкие' },
-                ], onChange: v => setTweak('borderStyle', v) }))));
-}
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(App, null));
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Nav, null), /* @__PURE__ */ React.createElement(KPHero, null), /* @__PURE__ */ React.createElement(KPChallenge, null), /* @__PURE__ */ React.createElement(KPSolution, null), /* @__PURE__ */ React.createElement(KPResults, null), /* @__PURE__ */ React.createElement(KPConclusions, null), /* @__PURE__ */ React.createElement(Footer, null), /* @__PURE__ */ React.createElement(TweaksPanel, { title: "Tweaks" }, /* @__PURE__ */ React.createElement(TweakSection, { label: "\u041F\u0430\u043B\u0438\u0442\u0440\u0430" }), /* @__PURE__ */ React.createElement(
+      TweakRadio,
+      {
+        label: "\u0421\u0445\u0435\u043C\u0430",
+        value: t.palette,
+        options: [
+          { value: "blue", label: "Blue" },
+          { value: "electric", label: "Electric" },
+          { value: "classic", label: "Black/Blue" }
+        ],
+        onChange: (v) => setTweak("palette", v)
+      }
+    ), /* @__PURE__ */ React.createElement(TweakSection, { label: "\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438" }), /* @__PURE__ */ React.createElement(
+      TweakRadio,
+      {
+        label: "\u0422\u0435\u043D\u0438",
+        value: t.borderStyle,
+        options: [
+          { value: "hard", label: "\u0411\u0440\u0443\u0442\u0430\u043B\u044C\u043D\u044B\u0435" },
+          { value: "soft", label: "\u041C\u044F\u0433\u043A\u0438\u0435" }
+        ],
+        onChange: (v) => setTweak("borderStyle", v)
+      }
+    )));
+  }
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(/* @__PURE__ */ React.createElement(App, null));
+})();

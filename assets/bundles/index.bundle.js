@@ -982,7 +982,7 @@
       left: -80,
       opacity: 0.1,
       filter: "blur(90px)"
-    } }), /* @__PURE__ */ React.createElement("div", { className: "container", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { className: "pill solid" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u0412\u044B\u0445\u043E\u0434 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430")), /* @__PURE__ */ React.createElement("h1", { className: "display", style: { fontSize: "clamp(44px, 7vw, 96px)", margin: "0 0 28px", maxWidth: 1200, lineHeight: 1.05 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u0432 \u0422\u0430\u0448\u043A\u0435\u043D\u0442\u0435 \u0434\u043B\u044F ", /* @__PURE__ */ React.createElement("span", { className: "serif", style: { fontStyle: "italic", fontFamily: "Instrument Serif" } }, "\u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0445 \u0431\u0440\u0435\u043D\u0434\u043E\u0432.")), /* @__PURE__ */ React.createElement("div", { className: "hero-main-row", style: { display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap", marginBottom: 44 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 20, lineHeight: 1.5, maxWidth: 720, margin: 0, color: "var(--ink-soft)" } }, "Muna Media \u2014 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u0430\u0440\u0442\u043D\u0435\u0440 \u0434\u043B\u044F \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0433\u043E \u0438 \u044D\u0444\u0444\u0435\u043A\u0442\u0438\u0432\u043D\u043E\u0433\u043E \u0432\u044B\u0445\u043E\u0434\u0430 \u0431\u0440\u0435\u043D\u0434\u043E\u0432 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430. \u0421\u0432\u044F\u0437\u044B\u0432\u0430\u0435\u043C \u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u0438, \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433 \u0438 \u0444\u0438\u043D\u0430\u043D\u0441\u044B, \u0443\u043F\u0440\u0430\u0432\u043B\u044F\u044F \u044E\u043D\u0438\u0442-\u044D\u043A\u043E\u043D\u043E\u043C\u0438\u043A\u043E\u0439, \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u044C\u044E \u0431\u044E\u0434\u0436\u0435\u0442\u0430 \u0438 \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u0435\u0439."), /* @__PURE__ */ React.createElement("div", { className: "hero-actions", style: { display: "flex", gap: 14, flexWrap: "wrap", marginTop: 6 } }, /* @__PURE__ */ React.createElement("a", { href: "#cases", className: "btn ghost" }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "#contact", className: "btn lime" }, "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }), /* @__PURE__ */ React.createElement("div", { className: "container", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { className: "pill solid" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " \u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0434\u043B\u044F \u0431\u0440\u0435\u043D\u0434\u043E\u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430")), /* @__PURE__ */ React.createElement("h1", { className: "display", style: { fontSize: "clamp(44px, 7vw, 96px)", margin: "0 0 28px", maxWidth: 1200, lineHeight: 1.05 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u0432 \u0422\u0430\u0448\u043A\u0435\u043D\u0442\u0435 \u0434\u043B\u044F ", /* @__PURE__ */ React.createElement("span", { className: "serif", style: { fontStyle: "italic", fontFamily: "Instrument Serif" } }, "\u0431\u0440\u0435\u043D\u0434\u043E\u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430.")), /* @__PURE__ */ React.createElement("div", { className: "hero-main-row", style: { display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap", marginBottom: 44 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 20, lineHeight: 1.5, maxWidth: 720, margin: 0, color: "var(--ink-soft)" } }, "Muna Media \u043F\u043E\u043C\u043E\u0433\u0430\u0435\u0442 \u0431\u0440\u0435\u043D\u0434\u0430\u043C \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0438 \u0437\u0430\u043F\u0443\u0441\u043A\u0430\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443: \u043D\u0430\u0440\u0443\u0436\u043D\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0449\u0435\u043D\u0438\u044F, digital, SMM, Telegram, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433 \u0438 \u043C\u0435\u0440\u043E\u043F\u0440\u0438\u044F\u0442\u0438\u044F."), /* @__PURE__ */ React.createElement("div", { className: "hero-actions", style: { display: "flex", gap: 14, flexWrap: "wrap", marginTop: 6 } }, /* @__PURE__ */ React.createElement("a", { href: "#cases", className: "btn ghost" }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "#contact", className: "btn lime" }, "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
       gap: 0,
@@ -1141,11 +1141,11 @@
   function Services() {
     const packs = [
       {
-        headline: "\u0411\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u044B\u0439 \u0432\u0445\u043E\u0434 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A",
+        headline: "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u0430\u044F \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u043B\u044F \u0431\u0440\u0435\u043D\u0434\u0430",
         icon: "\u{1F6E1}\uFE0F",
-        who: "\u0414\u043B\u044F \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0445 \u0431\u0440\u0435\u043D\u0434\u043E\u0432, \u0437\u0430\u0445\u043E\u0434\u044F\u0449\u0438\u0445 \u0432 \u0440\u0435\u0433\u0438\u043E\u043D",
+        who: "\u0414\u043B\u044F \u0431\u0440\u0435\u043D\u0434\u043E\u0432, \u0440\u0430\u0431\u043E\u0442\u0430\u044E\u0449\u0438\u0445 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435",
         includes: [
-          "\u0418\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435 \u0432\u044B\u0445\u043E\u0434\u0430 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0438 \u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F \u043F\u043E\u0437\u0438\u0446\u0438\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F",
+          "\u0418\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435 \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0438 \u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0439 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0438",
           "\u042E\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u0438 \u0430\u0434\u0430\u043F\u0442\u0430\u0446\u0438\u044F \u0434\u043E\u0433\u043E\u0432\u043E\u0440\u043E\u0432",
           "\u0417\u0430\u043F\u0443\u0441\u043A \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0445 \u0441\u043E\u0446\u0441\u0435\u0442\u0435\u0439 \u0438 \u0441\u0435\u0442\u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u043E\u0432 (10\u201330 \u0431\u043B\u043E\u0433\u0435\u0440\u043E\u0432)",
           "PR \u0438 GR \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430 \u0432 \u043C\u0435\u0441\u0442\u043D\u044B\u0445 \u0421\u041C\u0418 \u0438 Telegram-\u043A\u0430\u043D\u0430\u043B\u0430\u0445"
@@ -1517,41 +1517,50 @@
       background: "var(--accent-2)",
       opacity: 0.2,
       border: "1.5px solid var(--bg)"
-    } }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56 }, className: "cta-grid" }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 24 } }, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill solid", style: { borderColor: "var(--bg)", color: "var(--bg)" } }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 07 \u2014 \u041C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435")), /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 72px)", margin: 0, color: "var(--bg)", lineHeight: 1.05 } }, "\u0413\u043E\u0442\u043E\u0432\u044B \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0431\u0438\u0437\u043D\u0435\u0441 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435?"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 18, color: "rgba(255,255,255,0.78)", maxWidth: 480 } }, "\u041E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u0437\u0430\u044F\u0432\u043A\u0443, \u0438 \u043C\u044B \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u0438\u043C \u0440\u0430\u0441\u0447\u0435\u0442 \u0441\u043D\u0438\u0436\u0435\u043D\u0438\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u0438 \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435."), /* @__PURE__ */ React.createElement("a", { href: "#", className: "btn lime final-cta-link", style: { alignSelf: "flex-start", marginTop: 8 } }, "\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C 30 \u043C\u0438\u043D\u0443\u0442 \u0432 Calendly", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("div", { style: {
+    } }), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56 }, className: "cta-grid" }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 24 } }, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill solid", style: { borderColor: "var(--bg)", color: "var(--bg)" } }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 07 \u2014 \u041C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435")), /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 72px)", margin: 0, color: "var(--bg)", lineHeight: 1.05 } }, "\u0413\u043E\u0442\u043E\u0432\u044B \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0431\u0438\u0437\u043D\u0435\u0441 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435?"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 18, color: "rgba(255,255,255,0.78)", maxWidth: 480 } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u043C \u0440\u0435\u043A\u043B\u0430\u043C\u043D\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E \u0434\u043B\u044F \u0432\u0430\u0448\u0435\u0433\u043E \u0431\u0440\u0435\u043D\u0434\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u044E, \u0437\u0430\u0434\u0430\u0447\u0443, \u043A\u0430\u043D\u0430\u043B\u044B \u0438 \u0441\u0440\u043E\u043A\u0438."), /* @__PURE__ */ React.createElement("a", { href: "#contact", className: "btn lime final-cta-link", style: { alignSelf: "flex-start", marginTop: 8 } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u043D\u0443\u044E \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044E", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("div", { style: {
       marginTop: 24,
       paddingTop: 24,
       borderTop: "1px solid rgba(255,255,255,0.18)",
       display: "flex",
       gap: 32,
       flexWrap: "wrap"
-    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "Email"), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "info@munamedia.me")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "+998 33 130 13 13")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "#", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "@munamedia")))), /* @__PURE__ */ React.createElement("div", { className: "contact-form-card", style: {
+    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "Email"), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "info@munamedia.me")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "+998 33 130 13 13")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6 } }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "@munamedia")))), /* @__PURE__ */ React.createElement("div", { className: "contact-form-card", style: {
       background: "var(--bg)",
       color: "var(--ink)",
       border: "1.5px solid var(--bg)",
       borderRadius: 24,
       padding: 32,
       position: "relative"
-    } }, !submitted ? /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit, style: { display: "flex", flexDirection: "column", gap: 16 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0418\u043C\u044F"), /* @__PURE__ */ React.createElement(
+    } }, !submitted ? /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit, style: { display: "flex", flexDirection: "column", gap: 16 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "home-name", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0418\u043C\u044F"), /* @__PURE__ */ React.createElement(
       "input",
       {
+        id: "home-name",
+        name: "name",
+        autoComplete: "name",
         className: "input",
         placeholder: "\u041A\u0430\u043C\u0438\u043B\u0430 \u0423\u0441\u043C\u0430\u043D\u043E\u0432\u0430",
         value: form.name,
         onChange: (e) => setForm({ ...form, name: e.target.value }),
         required: true
       }
-    )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"), /* @__PURE__ */ React.createElement(
+    )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "home-company", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F"), /* @__PURE__ */ React.createElement(
       "input",
       {
+        id: "home-company",
+        name: "company",
+        autoComplete: "organization",
         className: "input",
         placeholder: "Brand Co.",
         value: form.company,
         onChange: (e) => setForm({ ...form, company: e.target.value }),
         required: true
       }
-    )), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }, className: "form-contact-grid" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0422\u0435\u043B\u0435\u0444\u043E\u043D *"), /* @__PURE__ */ React.createElement(
+    )), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }, className: "form-contact-grid" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "home-phone", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0422\u0435\u043B\u0435\u0444\u043E\u043D *"), /* @__PURE__ */ React.createElement(
       "input",
       {
+        id: "home-phone",
+        name: "phone",
+        autoComplete: "tel",
         className: "input",
         type: "tel",
         placeholder: "+998 90 123 45 67",
@@ -1559,9 +1568,12 @@
         onChange: (e) => setForm({ ...form, phone: e.target.value }),
         required: true
       }
-    )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "Email *"), /* @__PURE__ */ React.createElement(
+    )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "home-email", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "Email *"), /* @__PURE__ */ React.createElement(
       "input",
       {
+        id: "home-email",
+        name: "email",
+        autoComplete: "email",
         className: "input",
         type: "email",
         placeholder: "name@company.com",
@@ -1569,11 +1581,14 @@
         onChange: (e) => setForm({ ...form, email: e.target.value }),
         required: true
       }
-    ))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0417\u0430\u0434\u0430\u0447\u0430 & \u0411\u044E\u0434\u0436\u0435\u0442"), /* @__PURE__ */ React.createElement(
+    ))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "home-task", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, "\u0417\u0430\u0434\u0430\u0447\u0430 & \u0411\u044E\u0434\u0436\u0435\u0442"), /* @__PURE__ */ React.createElement(
       "textarea",
       {
+        id: "home-task",
+        name: "task",
+        autoComplete: "off",
         className: "input",
-        placeholder: "\u0412\u044B\u0445\u043E\u0434 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u043A \u0441\u0435\u043D\u0442\u044F\u0431\u0440\u044E. \u0411\u044E\u0434\u0436\u0435\u0442 \u043E\u0431\u0441\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044F \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E.",
+        placeholder: "\u0420\u0430\u0441\u0441\u043A\u0430\u0436\u0438\u0442\u0435 \u043E \u0431\u0440\u0435\u043D\u0434\u0435, \u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u0438, \u0437\u0430\u0434\u0430\u0447\u0435 \u0438 \u0441\u0440\u043E\u043A\u0430\u0445 \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u0438.",
         value: form.task,
         onChange: (e) => setForm({ ...form, task: e.target.value }),
         required: true
@@ -1670,4 +1685,3 @@
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(/* @__PURE__ */ React.createElement(App, null));
 })();
-
