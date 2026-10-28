@@ -53,22 +53,4 @@ test('blog populated index stays indexable, renders existing article, public can
   }finally{global.fetch=old;}
 });
 
-test('existing contact handler: synthetic recording transport only; payload and dispatch unchanged',async()=>{
-  const old=global.fetch;const calls=[];
-  global.fetch=async(url,options)=>{calls.push({url,options});return Response.json({ok:true});};
-  try{
-    const fn=await load('functions/api/contact.js');
-    const payload={name:'SYNTHETIC QA',company:'SYNTHETIC ONLY',phone:'+998000000000',email:'synthetic@example.invalid',task:'SYNTHETIC NO DELIVERY',page:'/'};
-    const response=await fn.onRequestPost({request:new Request('http://localhost/api/contact',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}),env});
-    assert.equal(response.status,200);
-    assert.deepEqual(await response.json(),{ok:true,message:'Заявка принята.'});
-    assert.equal(calls.length,2);
-    assert.equal(new URL(calls[0].url).hostname,'synthetic-only.api.sanity.io');
-    assert.equal(new URL(calls[1].url).hostname,'api.telegram.org');
-    const lead=JSON.parse(calls[0].options.body).mutations[0].create;
-    for(const [k,v] of Object.entries(payload))assert.equal(lead[k],v);
-    const telegram=JSON.parse(calls[1].options.body);
-    assert.equal(telegram.chat_id,'synthetic-only');
-    assert.ok(telegram.text.includes('SYNTHETIC NO DELIVERY'));
-  }finally{global.fetch=old;}
-});
+// Contact capture is tested separately against a private-dataset mock transport.
