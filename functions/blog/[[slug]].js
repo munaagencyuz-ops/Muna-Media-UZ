@@ -10,11 +10,11 @@ export async function onRequestGet(context) {
   }
 
   const posts = await getPosts(env)
-  return htmlResponse(renderIndex(posts, 'https://munamedia.uz'))
+  return htmlResponse(localizeIndex(renderIndex(posts, 'https://munamedia.uz'), url.pathname.startsWith('/ru/')))
 }
 
 function getSlug(pathname) {
-  const cleaned = pathname.replace(/^\/blog\/?/, '').replace(/\/$/, '')
+  const cleaned = pathname.replace(/^\/ru(?=\/)/, '').replace(/^\/blog\/?/, '').replace(/\/$/, '')
   return cleaned || ''
 }
 
@@ -39,7 +39,7 @@ async function sanityQuery(env, query, params = {}) {
   const headers = env.SANITY_API_TOKEN ? {authorization: `Bearer ${env.SANITY_API_TOKEN}`} : {}
   const response = await fetch(endpoint, {headers})
   if (!response.ok) {
-    console.error('Sanity blog query failed', response.status, await response.text())
+    // Do not log CMS response bodies.
     return null
   }
   return response.json()
@@ -175,3 +175,28 @@ function escapeHtml(value) {
 }
 
 function escapeAttr(value) { return escapeHtml(value) }
+
+function localizeIndex(html, russian) {
+ const base='https://munamedia.uz';
+ const cards=[];html=html.replace(/<article class="post-card">[\s\S]*?<\/article>/g,card=>{cards.push(card);return 'MUNA_ARCHIVE_CARD_'+(cards.length-1)+'_END';});
+ if(russian) {
+  html=html.replace('href="'+base+'/blog"','href="'+base+'/ru/blog"');
+  html=html.replace(/href="\/(?!blog\/)([^"\s]*)"/g,(_,p)=>'href="/ru/'+p+'"');
+ } else {
+  const text={
+   'Блог Muna Media — маркетинг и реклама в Узбекистане':"Marketing va reklama blogi | Muna Media",
+   'Статьи Muna Media про маркетинг, рекламу, SEO и инфлюенсеров для брендов Узбекистана.':"O'zbekistondagi brendlar uchun marketing, reklama, SEO va blogerlar haqida maqolalar.",
+   'Блог о маркетинге и рекламе в Узбекистане':"O'zbekistonda marketing va reklama blogi",
+   'Материалы о планировании и запуске рекламных кампаний в Узбекистане.':"O'zbekistonda reklama kampaniyasini rejalashtirish va boshqarish haqida materiallar. Arxiv maqolalari asl tilida saqlanadi.",
+   'Пока нет опубликованных статей. Посмотрите ':"Hozircha maqolalar yo'q. Muna Media ",
+   'кейсы':'loyihalari',' или ':' yoki ','рекламные услуги':"reklama xizmatlarini ko'ring",
+   'Читать статью →':"Maqolani o'qish →",'Услуги':'Xizmatlar','Кейсы':'Loyihalar','Блог':'Blog','О компании':'Biz haqimizda','Запустить проект':'Loyihani boshlash','Главная':'Bosh sahifa'
+  };
+  for(const [ru,uz] of Object.entries(text)) html=html.replaceAll(ru,uz);
+  html=html.replace('<html lang="ru">','<html lang="uz">').replaceAll('<article class="post-card">','<article class="post-card" lang="ru">');
+ }
+ html=html.replace(/MUNA_ARCHIVE_CARD_(\d+)_END/g,(_,i)=>russian?cards[Number(i)]:cards[Number(i)].replace('<article class="post-card">','<article class="post-card" lang="ru">').replace('Читать статью →',"Maqolani o'qish →"));
+ const switcher='<a href="'+(russian?'/blog':'/ru/blog')+'" lang="'+(russian?'uz':'ru')+'">'+(russian?"O'zbekcha":'Русский')+'</a>';
+ html=html.replace('</footer>',switcher+'</footer>');
+ return html.replace('</head>','<link rel="alternate" hreflang="uz" href="'+base+'/blog"><link rel="alternate" hreflang="ru" href="'+base+'/ru/blog"><link rel="alternate" hreflang="x-default" href="'+base+'/blog"></head>');
+}

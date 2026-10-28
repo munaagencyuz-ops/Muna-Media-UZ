@@ -38,3 +38,12 @@ section .logo-chip:not(.brand-logo-chip) {
   section .btn .arrow { flex-shrink: 0; }
   section .sec-head { max-width: 100%; }
 }
+
+/* Preserve intrinsic metric content without extending the 360px viewport. */
+.cases-list-metrics > div { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+ .cases-list-metrics { grid-template-columns: 1fr !important; gap: 16px !important; }
+ .cases-list-metrics > div { padding: 0 0 12px !important; border-right: 0 !important; border-bottom: 1px dashed var(--ink); }
+ .cases-list-metrics > div:last-child { border-bottom: 0; }
+}
+.city-entry[hidden] { display: none !important; }

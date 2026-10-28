@@ -87,7 +87,7 @@ function CasesGrid() {
               <div style={{display: 'flex', gap: 8, flexWrap: 'wrap'}}>
                 {item.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
               </div>
-              <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, borderTop: '1.5px solid var(--ink)', paddingTop: 18, marginTop: 'auto'}}>
+              <div className="cases-list-metrics" style={{display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 0, borderTop: '1.5px solid var(--ink)', paddingTop: 18, marginTop: 'auto'}}>
                 {item.metrics.map(([n, label], i) => (
                   <div key={i} style={{paddingRight: 12, paddingLeft: i > 0 ? 12 : 0, borderRight: i < 2 ? '1px dashed var(--ink)' : 'none'}}>
                     <div className="num-big" style={{fontSize: 30, color: 'var(--accent)'}}>{n}</div>

@@ -822,7 +822,7 @@ function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ name: '', company: '', phone: '', email: '', task: '' });
+  const [form, setForm] = useState({ name: '', company: '', phone: '', email: '', task: munaCityTask() });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -837,7 +837,7 @@ function FinalCTA() {
       });
       const result = await response.json().catch(() => ({}));
 
-      if (!response.ok || result.ok === false) {
+      if (!response.ok || result.ok !== true || result.stored !== true) {
         throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте позже.');
       }
 
@@ -930,6 +930,7 @@ function FinalCTA() {
             }}>
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
+                  <p style={{fontSize:13,lineHeight:1.5,margin:0}}>{MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : 'Данные сохраняются для обработки обращения и могут быть переданы ответственной команде через Telegram. Не указывайте конфиденциальные документы и платежные данные.'}</p>
                   <div>
                     <label htmlFor="home-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
                     <input id="home-name" name="name" autoComplete="name"

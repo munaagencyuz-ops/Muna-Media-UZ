@@ -40,8 +40,11 @@ const builds = [
 ];
 
 async function buildOne({ out, inputs }) {
-  const source = inputs
-    .map((file) => `// ---- ${file} ----\n${fs.readFileSync(file, 'utf8')}`)
+  const localeDir = path.resolve(__dirname, '../locales');
+  const serviceCopy = require(path.join(localeDir, 'services-uz.cjs'));
+  const cityNames = Object.fromEntries(require(path.join(localeDir,'city-roster.json')).cities.map(c=>[c.soato_code,c.name_uz_display]));
+  const source = 'const MUNA_CITY_NAMES = '+JSON.stringify(cityNames)+';\n'+fs.readFileSync(path.join(localeDir, 'runtime.jsx'), 'utf8') + '\n' + inputs
+    .map((file) => `// ---- ${file} ----\n${fs.readFileSync(file, 'utf8')}` + (file === 'service-detail-data.jsx' ? `\nif (MUNA_UZ) Object.entries(${JSON.stringify(serviceCopy)}).forEach(([key,value]) => {if(SERVICE_PAGES[key]) Object.assign(SERVICE_PAGES[key],value)});` : ''))
     .join('\n\n');
   const result = await esbuild.transform(source, {
     loader: 'jsx',
@@ -52,7 +55,14 @@ async function buildOne({ out, inputs }) {
     banner: '// @ts-nocheck',
   });
   fs.mkdirSync(path.dirname(out), { recursive: true });
-  fs.writeFileSync(out, result.code.trimEnd() + '\n');
+  const catalog = require(path.join(localeDir, 'uz.json'));
+  const localized = result.code.replace(/"(?:[^"\\]|\\.)*"/g, token => {
+    let value; try { value=JSON.parse(token.replace(/\\x([a-f0-9]{2})/gi, '\\u00$1')); } catch { return token; }
+    if (!Object.hasOwn(catalog,value)) return token;
+    const uz=value.match(/^\s*/)[0]+catalog[value].trim()+value.match(/\s*$/)[0];
+    return `munaText(${token},${JSON.stringify(uz)})`;
+  });
+  fs.writeFileSync(out, localized.trimEnd() + '\n');
   console.log(`built ${out} from ${inputs.join(', ')}`);
 }
 

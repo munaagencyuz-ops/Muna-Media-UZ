@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '..');
 const dist = path.join(root, 'dist');
 const build = path.join(root, '.build');
 const files = require('./public-files.json');
-const forbidden = /(^|\/)(node_modules|studio|functions|scripts|tests|\.git|\.env[^/]*|\.dev\.vars)(\/|$)|\.(jsx|ts|map)$|(^|\/)package[^/]*\.json$/;
+const forbidden = /(^|\/)(node_modules|studio|functions|server|locales|scripts|tests|\.git|\.env[^/]*|\.dev\.vars)(\/|$)|\.(jsx|ts|map)$|(^|\/)package[^/]*\.json$/;
 if (new Set(files).size !== files.length) throw new Error('Duplicate public allowlist entry');
 for (const file of files) {
   if (file.includes('..') || path.isAbsolute(file) || forbidden.test(file)) throw new Error(`Forbidden public file: ${file}`);
@@ -20,6 +20,7 @@ for (const file of files) {
   fs.mkdirSync(path.dirname(path.join(dist, file)), {recursive:true});
   fs.copyFileSync(path.join(root, file), path.join(dist, file));
 }
+const generated = require('./stage-locales.cjs')(root, dist, files);
 execFileSync(path.join(root, 'node_modules/.bin/wrangler'), [
   'pages', 'functions', 'build', 'functions',
   '--outdir', path.join(build, 'functions'),
@@ -27,7 +28,7 @@ execFileSync(path.join(root, 'node_modules/.bin/wrangler'), [
   '--compatibility-date=2025-01-01',
 ], {cwd:root, stdio:'inherit'});
 fs.copyFileSync(path.join(build, 'functions/index.js'), path.join(dist, '_worker.js'));
-const manifest = [...files, '_worker.js', '_routes.json'].sort().map(file => ({
+const manifest = [...new Set([...files, ...generated, '_worker.js', '_routes.json'])].sort().map(file => ({
   file,
   bytes: fs.statSync(path.join(dist, file)).size,
   sha256: crypto.createHash('sha256').update(fs.readFileSync(path.join(dist, file))).digest('hex'),

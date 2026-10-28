@@ -1,28 +1,20 @@
-# Muna Media — реклама для брендов Узбекистана
+# Muna Media: O'zbekistondagi brendlar uchun reklama
 
-> Этот сайт предназначен для локальных узбекских брендов, работающих в Узбекистане. Muna Media планирует и запускает рекламные кампании: наружную рекламу, digital, SMM, Telegram, инфлюенс-маркетинг и мероприятия.
+> munamedia.uz O'zbekiston bozori uchun reklama rejalashtirish va boshqarishga bag'ishlangan. Asosiy til o'zbekcha; ruscha sahifalar /ru/ bo'limida.
 
-## Сфера трёх сайтов
+- [Xizmatlar](https://munamedia.uz/services-uzbekistan): tashqi reklama, SMM, SEO, qidiruv reklamasi, Telegram, blogerlar va tadbirlar.
+- [Shaharlar](https://munamedia.uz/shaharlar): rasmiy klassifikator suratiga asoslangan 120 shahar tanlovi va 14 markaz uchun amaliy brif. Bu barcha shaharlarda xizmat, ofis yoki tayyor inventar borligi haqidagi da'vo emas.
+- [Biz haqimizda](https://munamedia.uz/about)
+- [Loyihalar arxivi](https://munamedia.uz/cases): xalqaro mijozlarning tarixiy materiallari asl tilida saqlangan. Arxiv raqamlari yangi natijaga kafolat emas.
+- [Blog](https://munamedia.uz/blog)
+- [Brif yuborish](https://munamedia.uz/#contact)
+- [Ruscha versiya](https://munamedia.uz/ru/)
 
-- [munamedia.uz](https://munamedia.uz/): реклама и продвижение локальных узбекских брендов в Узбекистане.
-- [munaagency.com](https://munaagency.com/): работа с международными брендами, выходящими на рынки Центральной Азии.
-- munaagency.uz: отдельный специализированный сайт об инфлюенс-маркетинге в Узбекистане. Ссылка не публикуется до восстановления его публичной доступности. Услуга на этом сайте доступна по ссылке ниже.
+Joylar, pudratchilar, narx va bajarish shartlari brifdan keyin tasdiqlanadi. Shahar sahifalari mahalliy bozor statistikasi yoki reklama joylari ro'yxati emas.
 
-## Страницы этого сайта
-
-- [Услуги](https://munamedia.uz/services-uzbekistan)
-- [Инфлюенс-маркетинг](https://munamedia.uz/influencer-marketing)
-- [SMM](https://munamedia.uz/smm)
-- [Telegram-маркетинг](https://munamedia.uz/telegram-marketing)
-- [Кейсы](https://munamedia.uz/cases)
-- [О компании](https://munamedia.uz/about)
-- [Обсудить рекламную кампанию](https://munamedia.uz/#contact)
-
-Исторические кейсы международных клиентов описывают выполненные проекты и не меняют локальную аудиторию этого сайта. Метрики и условия из отдельных кейсов нельзя считать гарантией результатов будущей кампании.
-
-## Машинное чтение
+[munadigital.uz](https://munadigital.uz/) mustaqil performance marketing agentligi sayti. U blogerlar bo'yicha maxsus sayt sifatida ta'riflanmaydi.
 
 - [Sitemap](https://munamedia.uz/sitemap.xml)
-- [Политика сканирования и использования контента](https://munamedia.uz/robots.txt)
+- [Robots](https://munamedia.uz/robots.txt)
 
-Этот файл описывает структуру сайта; он не заменяет robots.txt и не изменяет запрет на обучение моделей.
+Bu fayl robots.txt o'rnini bosmaydi va model o'qitish uchun belgilangan cheklovlarni o'zgartirmaydi.

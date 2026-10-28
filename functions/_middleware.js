@@ -18,6 +18,11 @@ export async function onRequest(context) {
     return Response.redirect(`https://munamedia.uz${cleanPath === '/' ? '/' : cleanPath}${url.search}${url.hash}`, 301)
   }
 
+  if (request.method === 'GET' && /^\/cms(?:\/|$)/.test(url.pathname) && !url.pathname.startsWith('/cms/static/') && !/\.[a-z0-9]+$/i.test(url.pathname)) {
+    if (url.pathname === '/cms') return new Response(null, {status: 308, headers: {location: '/cms/'}})
+    return context.env.ASSETS.fetch(new Request(new URL('/cms/', request.url), request))
+  }
+
   if (request.method !== 'GET' || shouldSkip(url.pathname)) {
     return context.next()
   }
@@ -29,7 +34,8 @@ export async function onRequest(context) {
   if (!contentType.includes('text/html')) return response
 
   const normalizedPath = normalizePath(url.pathname)
-  const seo = await getPageSeo(context.env, normalizedPath)
+  const isRussian = normalizedPath === '/ru' || normalizedPath.startsWith('/ru/')
+  const seo = isRussian ? await getPageSeo(context.env, normalizedPath.replace(/^\/ru/, '') || '/') : null
   const canonicalUrl = seo?.canonicalUrl || defaultCanonicalUrl(normalizedPath)
 
   const rewriter = new HTMLRewriter()
@@ -48,6 +54,8 @@ function shouldSkip(pathname) {
 
 function normalizePath(pathname) {
   if (!pathname || pathname === '/index.html') return '/'
+  if (pathname === '/ru/index.html' || pathname === '/ru/') return '/ru/'
+  pathname = pathname.replace(/\/index\.html$/, '')
   let path = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname
   if (path.endsWith('.html')) path = path.slice(0, -5)
   return path || '/'
@@ -137,7 +145,7 @@ async function sanityQuery(env, query, params = {}) {
   const headers = env.SANITY_API_TOKEN ? {authorization: `Bearer ${env.SANITY_API_TOKEN}`} : {}
   const response = await fetch(endpoint, {headers})
   if (!response.ok) {
-    console.error('Sanity SEO query failed', response.status, await response.text())
+    // Provider response bodies may contain private metadata; do not log them.
     return null
   }
   return response.json()

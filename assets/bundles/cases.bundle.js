@@ -1,5 +1,31 @@
 // @ts-nocheck
 (() => {
+  const MUNA_UZ = document.documentElement.lang === "uz";
+  function munaText(ru, uz) {
+    return MUNA_UZ ? uz : ru;
+  }
+  function munaLocaleHref(href) {
+    if (typeof href !== "string") return href;
+    if (href.startsWith("assets/")) return "/" + href;
+    if (!MUNA_UZ && href.startsWith("/") && !href.startsWith("//") && !/^\/(assets|api|cms|ru)(\/|$)/.test(href)) {
+      return "/ru" + (href === "/" ? "/" : href);
+    }
+    return href;
+  }
+  const munaCreateElement = React.createElement;
+  React.createElement = function(type, props, ...children) {
+    if (props && typeof type === "string") {
+      props = { ...props };
+      if (props.href && !props["data-locale-switch"]) props.href = munaLocaleHref(props.href);
+      if (typeof props.src === "string" && props.src.startsWith("assets/")) props.src = "/" + props.src;
+    }
+    return munaCreateElement.call(React, type, props, ...children);
+  };
+  function MunaLanguageLink() {
+    const path = window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+    const target = MUNA_UZ ? "/ru" + (path === "/" ? "/" : path) : path.replace(/^\/ru(?=\/|$)/, "") || "/";
+    return /* @__PURE__ */ React.createElement("a", { className: "nav-link", href: target, hrefLang: MUNA_UZ ? "ru" : "uz", lang: MUNA_UZ ? "ru" : "uz", "data-locale-switch": "true" }, MUNA_UZ ? "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" : "O'zbekcha");
+  }
   const { useState: navUseState, useEffect: navUseEffect } = React;
   function Nav() {
     const [isOpen, setIsOpen] = navUseState(false);
@@ -14,9 +40,9 @@
       };
     }, [isOpen]);
     const links = [
-      { label: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F", href: "/" },
+      { label: munaText("\u0413\u043B\u0430\u0432\u043D\u0430\u044F","Bosh sahifa"), href: "/" },
       {
-        label: "\u0423\u0441\u043B\u0443\u0433\u0438",
+        label: munaText("\u0423\u0441\u043B\u0443\u0433\u0438","Xizmatlar"),
         href: "/services-uzbekistan",
         match: [
           "/services-uzbekistan",
@@ -36,39 +62,40 @@
           "/event-management"
         ],
         children: [
-          { label: "\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", href: "/services-uzbekistan" },
-          { type: "group", label: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430" },
-          { label: "LED-\u044D\u043A\u0440\u0430\u043D\u044B", href: "/led-screens" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", href: "/gas-station-ads" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445", href: "/mall-ads" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", href: "/bus-ads" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445", href: "/bus-stop-ads" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E", href: "/metro-ads" },
-          { label: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443", href: "/airport-ads" },
-          { type: "group", label: "\u041E\u043D\u043B\u0430\u0439\u043D \u0438 \u043F\u043E\u0438\u0441\u043A" },
-          { label: "SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", href: "/seo-optimization" },
-          { label: "\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", href: "/context-ads" },
-          { type: "group", label: "\u0421\u043E\u0446\u0441\u0435\u0442\u0438 \u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B" },
+          { label: munaText("\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438","Barcha xizmatlar"), href: "/services-uzbekistan" },
+          { type: "group", label: munaText("\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430","Tashqi reklama") },
+          { label: munaText("LED-\u044D\u043A\u0440\u0430\u043D\u044B","LED ekranlar"), href: "/led-screens" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421","AYoQShdagi reklama"), href: "/gas-station-ads" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0442\u043E\u0440\u0433\u043E\u0432\u044B\u0445 \u0446\u0435\u043D\u0442\u0440\u0430\u0445","Savdo markazlaridagi reklama"), href: "/mall-ads" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445","Avtobuslardagi reklama"), href: "/bus-ads" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430\u0445","Bekatlardagi reklama"), href: "/bus-stop-ads" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u043C\u0435\u0442\u0440\u043E","Metrodagi reklama"), href: "/metro-ads" },
+          { label: munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0430\u044D\u0440\u043E\u043F\u043E\u0440\u0442\u0443","Aeroportdagi reklama"), href: "/airport-ads" },
+          { type: "group", label: munaText("\u041E\u043D\u043B\u0430\u0439\u043D \u0438 \u043F\u043E\u0438\u0441\u043A","Internet va qidiruv") },
+          { label: munaText("SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F","SEO"), href: "/seo-optimization" },
+          { label: munaText("\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430","Kontekst reklama"), href: "/context-ads" },
+          { type: "group", label: munaText("\u0421\u043E\u0446\u0441\u0435\u0442\u0438 \u0438 \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B","Ijtimoiy tarmoqlar va blogerlar") },
           { label: "SMM", href: "/smm" },
-          { label: "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/influencer-marketing" },
-          { label: "Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", href: "/telegram-marketing" },
-          { type: "group", label: "\u0421\u043E\u0431\u044B\u0442\u0438\u044F" },
-          { label: "\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", href: "/event-management" }
+          { label: munaText("\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433","Blogerlar bilan reklama"), href: "/influencer-marketing" },
+          { label: munaText("Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433","Telegram marketing"), href: "/telegram-marketing" },
+          { type: "group", label: munaText("\u0421\u043E\u0431\u044B\u0442\u0438\u044F","Tadbirlar") },
+          { label: munaText("\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442","Tadbirlarni boshqarish"), href: "/event-management" }
         ]
       },
       {
-        label: "\u041A\u0435\u0439\u0441\u044B",
+        label: munaText("\u041A\u0435\u0439\u0441\u044B","Loyihalar"),
         href: "/cases",
         match: ["/cases", "/xiaomi", "/unionpay", "/koronapay"],
         children: [
-          { label: "\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B", href: "/cases" },
-          { label: "\u041A\u0435\u0439\u0441 Xiaomi", href: "/xiaomi" },
-          { label: "\u041A\u0435\u0439\u0441 UnionPay", href: "/unionpay" },
-          { label: "\u041A\u0435\u0439\u0441 KoronaPay", href: "/koronapay" }
+          { label: munaText("\u0412\u0441\u0435 \u043A\u0435\u0439\u0441\u044B","Barcha loyihalar"), href: "/cases" },
+          { label: munaText("\u041A\u0435\u0439\u0441 Xiaomi","Xiaomi loyihasi"), href: "/xiaomi" },
+          { label: munaText("\u041A\u0435\u0439\u0441 UnionPay","UnionPay loyihasi"), href: "/unionpay" },
+          { label: munaText("\u041A\u0435\u0439\u0441 KoronaPay","KoronaPay loyihasi"), href: "/koronapay" }
         ]
       },
-      { label: "\u0411\u043B\u043E\u0433", href: "/blog", match: ["blog"] },
-      { label: "\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", href: "/about" }
+      { label: munaText("\u0411\u043B\u043E\u0433","Blog"), href: "/blog", match: ["blog"] },
+      { label: munaText("\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438","Biz haqimizda"), href: "/about" },
+      { label: munaText("\u0413\u043E\u0440\u043E\u0434\u0430", "Shaharlar"), href: "/shaharlar" }
     ];
     const getActiveLink = () => {
       const path = window.location.pathname;
@@ -364,14 +391,14 @@
       },
       child.label,
       /* @__PURE__ */ React.createElement("span", null, "\u2192")
-    )))))), /* @__PURE__ */ React.createElement(
+    )))))), /* @__PURE__ */ React.createElement(MunaLanguageLink, null), /* @__PURE__ */ React.createElement(
       "a",
       {
         href: "/#contact",
         className: "btn lime nav-links",
         style: { padding: "10px 20px", fontSize: "14px", margin: 0 }
       },
-      "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+      munaText("\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani boshlash"),
       /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")
     ), /* @__PURE__ */ React.createElement(
       "button",
@@ -402,7 +429,7 @@
       },
       /* @__PURE__ */ React.createElement("span", null, child.label),
       /* @__PURE__ */ React.createElement("span", { className: "chevron" }, "\u2192")
-    ))))), /* @__PURE__ */ React.createElement("div", { className: "mobile-drawer-footer" }, /* @__PURE__ */ React.createElement(
+    ))))), /* @__PURE__ */ React.createElement("div", { className: "mobile-drawer-footer" }, /* @__PURE__ */ React.createElement(MunaLanguageLink, null), /* @__PURE__ */ React.createElement(
       "a",
       {
         href: "/#contact",
@@ -410,44 +437,44 @@
         style: { padding: "18px 24px", fontSize: "16px" },
         onClick: () => setIsOpen(false)
       },
-      "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+      munaText("\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani boshlash"),
       /* @__PURE__ */ React.createElement("span", { className: "arrow", style: { marginLeft: "8px" } }, "\u2192")
-    )))));
+    )))), MUNA_UZ && /^\/(cases|xiaomi|unionpay|koronapay)(?:\/|$)/.test(window.location.pathname) && /* @__PURE__ */ React.createElement("aside", { className: "container", lang: "uz", style: { paddingTop: 18, paddingBottom: 18 } }, "Arxiv loyihalari. Asl matn va tarixiy raqamlar rus tilida saqlangan. Ular yangi kampaniya natijasiga kafolat emas."));
   }
   Object.assign(window, { Nav });
   function MunaFooter() {
     const serviceGroups = [
       {
-        title: "\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430",
+        title: munaText("\u041D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430","Tashqi reklama"),
         links: [
-          ["LED-\u044D\u043A\u0440\u0430\u043D\u044B", "/led-screens"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421", "/gas-station-ads"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0422\u0426", "/mall-ads"],
-          ["\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445", "/bus-ads"],
-          ["\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438", "/bus-stop-ads"],
-          ["\u041C\u0435\u0442\u0440\u043E", "/metro-ads"],
-          ["\u0410\u044D\u0440\u043E\u043F\u043E\u0440\u0442", "/airport-ads"]
+          [munaText("LED-\u044D\u043A\u0440\u0430\u043D\u044B","LED ekranlar"), "/led-screens"],
+          [munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0410\u0417\u0421","AYoQShdagi reklama"), "/gas-station-ads"],
+          [munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0432 \u0422\u0426","Savdo markazidagi reklama"), "/mall-ads"],
+          [munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0430 \u0430\u0432\u0442\u043E\u0431\u0443\u0441\u0430\u0445","Avtobuslardagi reklama"), "/bus-ads"],
+          [munaText("\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438","Bekatlar"), "/bus-stop-ads"],
+          [munaText("\u041C\u0435\u0442\u0440\u043E","Metro"), "/metro-ads"],
+          [munaText("\u0410\u044D\u0440\u043E\u043F\u043E\u0440\u0442","Aeroport"), "/airport-ads"]
         ]
       },
       {
         title: "Digital",
         links: [
-          ["SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F", "/seo-optimization"],
-          ["\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430", "/context-ads"],
+          [munaText("SEO-\u043E\u043F\u0442\u0438\u043C\u0438\u0437\u0430\u0446\u0438\u044F","SEO"), "/seo-optimization"],
+          [munaText("\u041A\u043E\u043D\u0442\u0435\u043A\u0441\u0442\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430","Kontekst reklama"), "/context-ads"],
           ["SMM", "/smm"],
-          ["\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/influencer-marketing"],
-          ["Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433", "/telegram-marketing"],
-          ["\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442", "/event-management"]
+          [munaText("\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433","Blogerlar bilan reklama"), "/influencer-marketing"],
+          [munaText("Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433","Telegram marketing"), "/telegram-marketing"],
+          [munaText("\u0418\u0432\u0435\u043D\u0442-\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442","Tadbirlarni boshqarish"), "/event-management"]
         ]
       }
     ];
     const footerLinks = {
       pages: [
-        ["\u0413\u043B\u0430\u0432\u043D\u0430\u044F", "/"],
-        ["\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438", "/services-uzbekistan"],
-        ["\u041A\u0435\u0439\u0441\u044B", "/cases"],
-        ["\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438", "/about"],
-        ["\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B", "/#contact"]
+        [munaText("\u0413\u043B\u0430\u0432\u043D\u0430\u044F","Bosh sahifa"), "/"],
+        [munaText("\u0412\u0441\u0435 \u0443\u0441\u043B\u0443\u0433\u0438","Barcha xizmatlar"), "/services-uzbekistan"],
+        [munaText("\u041A\u0435\u0439\u0441\u044B","Loyihalar"), "/cases"],
+        [munaText("\u041E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438","Biz haqimizda"), "/about"],
+        [munaText("\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B","Bog'lanish"), "/#contact"]
       ],
       cases: [
         ["Xiaomi", "/xiaomi"],
@@ -468,11 +495,11 @@
       gridTemplateColumns: "minmax(260px, 1.05fr) minmax(0, 1.65fr)",
       gap: 42,
       alignItems: "start"
-    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, "\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C."), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C.","O'zbekistonda reklama xizmatlari: strategiya, tashqi reklama, internet reklamasi, blogerlar, tadbirlar va xarajatlar hisoboti.")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, munaText("\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani muhokama qilish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, munaText("\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B","Loyihalarni ko'rish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(4, minmax(140px, 1fr))",
       gap: 26
-    } }, /* @__PURE__ */ React.createElement(Column, { title: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B", links: footerLinks.pages }), serviceGroups.map((group) => /* @__PURE__ */ React.createElement(Column, { key: group.title, title: group.title, links: group.links })), /* @__PURE__ */ React.createElement(Column, { title: "\u041A\u0435\u0439\u0441\u044B", links: footerLinks.cases }))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, /* @__PURE__ */ React.createElement(Column, { title: munaText("\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u044B","Sahifalar"), links: footerLinks.pages }), serviceGroups.map((group) => /* @__PURE__ */ React.createElement(Column, { key: group.title, title: group.title, links: group.links })), /* @__PURE__ */ React.createElement(Column, { title: munaText("\u041A\u0435\u0439\u0441\u044B","Loyihalar"), links: footerLinks.cases }))), /* @__PURE__ */ React.createElement("div", { style: {
       marginTop: 44,
       paddingTop: 26,
       borderTop: "1px solid rgba(255,255,255,.22)",
@@ -480,7 +507,7 @@
       gridTemplateColumns: "1fr auto",
       gap: 22,
       alignItems: "center"
-    } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { ...linkStyle, fontWeight: 700 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", textAlign: "right" } }, "\xA9 2019-2026 Muna Media \xB7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D"))), /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
+    } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { ...linkStyle, fontWeight: 700 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", textAlign: "right" } }, munaText("\xA9 2019-2026 Muna Media \xB7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D","© 2019-2026 Muna Media · Toshkent, O'zbekiston")))), /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
         footer a:hover {
           color: white !important;
           transform: translateX(2px);
@@ -980,22 +1007,22 @@
       {
         brand: "Xiaomi",
         glyph: "Mi",
-        tag: "\u0417\u0430\u043F\u0443\u0441\u043A \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
-        title: "\u041A\u0435\u0439\u0441 Xiaomi",
-        desc: "\u041F\u043E\u043B\u043D\u0430\u044F \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u0430\u044F \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430 \u043E\u0444\u0438\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430: \u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0441\u043E\u0446\u0441\u0435\u0442\u0435\u0439, \u0432\u0438\u0437\u0443\u0430\u043B\u044C\u043D\u044B\u0439 \u043A\u043E\u043D\u0442\u0435\u043D\u0442, \u043A\u043E\u043B\u043B\u0430\u0431\u043E\u0440\u0430\u0446\u0438\u0438 \u0438 \u043F\u0440\u0435\u0437\u0435\u043D\u0442\u0430\u0446\u0438\u044F Xiaomi 13T \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435.",
-        metrics: [["\u0421\u043E\u0446\u0441\u0435\u0442\u0438", "\u0441\u043E\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0435 \u0441\u0435\u0442\u0438"], ["13T", "\u043F\u0440\u0435\u0437\u0435\u043D\u0442\u0430\u0446\u0438\u044F \u043B\u0438\u043D\u0435\u0439\u043A\u0438"], ["PUBG", "\u043A\u043E\u043B\u043B\u0430\u0431\u043E\u0440\u0430\u0446\u0438\u044F"]],
+        tag: munaText("\u0417\u0430\u043F\u0443\u0441\u043A \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430","Mahsulot taqdimoti"),
+        title: munaText("\u041A\u0435\u0439\u0441 Xiaomi","Xiaomi loyihasi"),
+        desc: munaText("\u041F\u043E\u043B\u043D\u0430\u044F \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u0430\u044F \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430 \u043E\u0444\u0438\u0446\u0438\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0430: \u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0441\u043E\u0446\u0441\u0435\u0442\u0435\u0439, \u0432\u0438\u0437\u0443\u0430\u043B\u044C\u043D\u044B\u0439 \u043A\u043E\u043D\u0442\u0435\u043D\u0442, \u043A\u043E\u043B\u043B\u0430\u0431\u043E\u0440\u0430\u0446\u0438\u0438 \u0438 \u043F\u0440\u0435\u0437\u0435\u043D\u0442\u0430\u0446\u0438\u044F Xiaomi 13T \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435.","Rasmiy vakolatxonani qo'llab-quvvatlash: ijtimoiy tarmoqlar, vizual kontent, hamkorliklar va O'zbekistonda Xiaomi 13T taqdimoti."),
+        metrics: [[munaText("\u0421\u043E\u0446\u0441\u0435\u0442\u0438","Ijtimoiy tarmoqlar"), "\u0441\u043E\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0435 \u0441\u0435\u0442\u0438"], ["13T", "\u043F\u0440\u0435\u0437\u0435\u043D\u0442\u0430\u0446\u0438\u044F \u043B\u0438\u043D\u0435\u0439\u043A\u0438"], ["PUBG", "\u043A\u043E\u043B\u043B\u0430\u0431\u043E\u0440\u0430\u0446\u0438\u044F"]],
         href: "/xiaomi",
-        tags: ["\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B", "\u041D\u0430\u0440\u0443\u0436\u043A\u0430", "\u0420\u0438\u0442\u0435\u0439\u043B"]
+        tags: [munaText("\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B","Blogerlar"), "\u041D\u0430\u0440\u0443\u0436\u043A\u0430", munaText("\u0420\u0438\u0442\u0435\u0439\u043B","Chakana savdo")]
       },
       {
         brand: "UnionPay",
         glyph: "UP",
-        tag: "\u041F\u0440\u043E\u043C\u043E / \u0420\u0438\u0442\u0435\u0439\u043B",
-        title: "\u041A\u0435\u0439\u0441 UnionPay",
-        desc: "6-\u043C\u0435\u0441\u044F\u0447\u043D\u0430\u044F \u043F\u0440\u043E\u043C\u043E-\u0430\u043A\u0446\u0438\u044F \u0434\u043B\u044F \u0440\u043E\u0441\u0442\u0430 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0439 \u0432 \u0441\u0438\u0441\u0442\u0435\u043C\u0435 HUMO: \u0441\u0430\u0439\u0442, Telegram-\u0431\u043E\u0442, \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u044B\u0435 \u0442\u043E\u0447\u043A\u0438, \u0442\u0430\u0440\u0433\u0435\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B \u0438 Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433.",
-        metrics: [["6 \u043C\u0435\u0441", "\u043F\u0440\u043E\u043C\u043E-\u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F"], ["38", "Telegram-\u043A\u0430\u043D\u0430\u043B\u043E\u0432"], ["1.15M", "\u043E\u0445\u0432\u0430\u0442 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0439"]],
+        tag: munaText("\u041F\u0440\u043E\u043C\u043E / \u0420\u0438\u0442\u0435\u0439\u043B","Promo / savdo"),
+        title: munaText("\u041A\u0435\u0439\u0441 UnionPay","UnionPay loyihasi"),
+        desc: munaText("6-\u043C\u0435\u0441\u044F\u0447\u043D\u0430\u044F \u043F\u0440\u043E\u043C\u043E-\u0430\u043A\u0446\u0438\u044F \u0434\u043B\u044F \u0440\u043E\u0441\u0442\u0430 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0439 \u0432 \u0441\u0438\u0441\u0442\u0435\u043C\u0435 HUMO: \u0441\u0430\u0439\u0442, Telegram-\u0431\u043E\u0442, \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u044B\u0435 \u0442\u043E\u0447\u043A\u0438, \u0442\u0430\u0440\u0433\u0435\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B \u0438 Telegram-\u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433.","HUMO tizimidagi tranzaksiyalar uchun olti oylik aksiya: sayt, Telegram bot, savdo nuqtalari, maqsadli reklama va blogerlar."),
+        metrics: [[munaText("6 \u043C\u0435\u0441","6 oy"), munaText("\u043F\u0440\u043E\u043C\u043E-\u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F","promo kampaniya")], ["38", munaText("Telegram-\u043A\u0430\u043D\u0430\u043B\u043E\u0432","Telegram kanali")], ["1.15M", munaText("\u043E\u0445\u0432\u0430\u0442 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0439","nashrlar qamrovi")]],
         href: "/unionpay",
-        tags: ["\u041F\u0440\u043E\u043C\u043E", "\u0420\u0438\u0442\u0435\u0439\u043B", "\u0423\u0437\u043D\u0430\u0432\u0430\u0435\u043C\u043E\u0441\u0442\u044C"]
+        tags: ["\u041F\u0440\u043E\u043C\u043E", munaText("\u0420\u0438\u0442\u0435\u0439\u043B","Chakana savdo"), munaText("\u0423\u0437\u043D\u0430\u0432\u0430\u0435\u043C\u043E\u0441\u0442\u044C","Taniqlilik")]
       },
       {
         brand: "KoronaPay",
@@ -1005,22 +1032,22 @@
         desc: "\u0422\u0440\u0435\u0445\u043C\u0435\u0441\u044F\u0447\u043D\u0430\u044F \u043C\u0430\u0440\u043A\u0435\u0442\u0438\u043D\u0433\u043E\u0432\u0430\u044F \u043A\u0430\u043C\u043F\u0430\u043D\u0438\u044F \u043F\u043E \u0432\u0441\u0435\u043C\u0443 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0443 \u0434\u043B\u044F \u0440\u043E\u0441\u0442\u0430 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u043E\u0432 \u0447\u0435\u0440\u0435\u0437 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u043F\u0440\u0435\u043E\u0434\u043E\u043B\u0435\u043D\u0438\u044F \u0434\u0435\u0444\u0438\u0446\u0438\u0442\u0430 \u0434\u043E\u0432\u0435\u0440\u0438\u044F.",
         metrics: [["344 762", "\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430"], ["4 918", "\u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439"], ["2 486", "\u043A\u043B\u0438\u043A\u043E\u0432"]],
         href: "/koronapay",
-        tags: ["\u0424\u0438\u043D\u0442\u0435\u0445", "\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B", "\u041D\u0430\u0440\u0443\u0436\u043A\u0430"]
+        tags: ["\u0424\u0438\u043D\u0442\u0435\u0445", munaText("\u0418\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B","Blogerlar"), "\u041D\u0430\u0440\u0443\u0436\u043A\u0430"]
       }
     ];
-    return /* @__PURE__ */ React.createElement("section", { id: "case-list", style: { background: "var(--bg-2)", borderTop: "1.5px solid var(--ink)", borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "sec-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), " 01 \u2014 \u041A\u0435\u0439\u0441\u044B")), /* @__PURE__ */ React.createElement("h2", { className: "display sec-title", style: { margin: 0 } }, "\u0425\u0430\u0431 \u043A\u0435\u0439\u0441\u043E\u0432")), /* @__PURE__ */ React.createElement("p", { style: { maxWidth: 420, color: "var(--ink-soft)", margin: 0 } }, "\u0414\u0435\u0442\u0430\u043B\u044C\u043D\u044B\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B \u0434\u043B\u044F Xiaomi, UnionPay \u0438 KoronaPay: \u043C\u043E\u0436\u043D\u043E \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u043A\u0430\u0436\u0434\u044B\u0439 \u043A\u0435\u0439\u0441 \u0438 \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0437\u0430\u0434\u0430\u0447\u0438, \u043C\u0435\u0445\u0430\u043D\u0438\u043A\u0443 \u0438 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B.")), /* @__PURE__ */ React.createElement("div", { className: "grid-3", style: { gap: 28 } }, cases.map((item, idx) => /* @__PURE__ */ React.createElement("article", { key: idx, className: "card", style: { padding: 32, display: "flex", flexDirection: "column", gap: 18, minHeight: 440 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start" } }, /* @__PURE__ */ React.createElement("div", { className: "logo-chip", style: { fontSize: 24, opacity: 1 } }, /* @__PURE__ */ React.createElement("span", { className: "glyph" }, item.glyph), item.brand), /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--muted)", textAlign: "right" } }, item.tag)), /* @__PURE__ */ React.createElement("h3", { className: "display", style: { fontSize: 30, margin: 0 } }, item.title), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, color: "var(--ink-soft)", fontSize: 16, lineHeight: 1.6 } }, item.desc), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap" } }, item.tags.map((tag) => /* @__PURE__ */ React.createElement("span", { key: tag, className: "tag" }, tag))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, borderTop: "1.5px solid var(--ink)", paddingTop: 18, marginTop: "auto" } }, item.metrics.map(([n, label], i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { paddingRight: 12, paddingLeft: i > 0 ? 12 : 0, borderRight: i < 2 ? "1px dashed var(--ink)" : "none" } }, /* @__PURE__ */ React.createElement("div", { className: "num-big", style: { fontSize: 30, color: "var(--accent)" } }, n), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { fontSize: 10, color: "var(--muted)", marginTop: 8 } }, label)))), /* @__PURE__ */ React.createElement(
+    return /* @__PURE__ */ React.createElement("section", { id: "case-list", style: { background: "var(--bg-2)", borderTop: "1.5px solid var(--ink)", borderBottom: "1.5px solid var(--ink)" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "sec-head" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "sec-eyebrow" }, /* @__PURE__ */ React.createElement("span", { className: "pill" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), munaText(" 01 \u2014 \u041A\u0435\u0439\u0441\u044B"," 01 · Loyihalar"))), /* @__PURE__ */ React.createElement("h2", { className: "display sec-title", style: { margin: 0 } }, "\u0425\u0430\u0431 \u043A\u0435\u0439\u0441\u043E\u0432")), /* @__PURE__ */ React.createElement("p", { style: { maxWidth: 420, color: "var(--ink-soft)", margin: 0 } }, "\u0414\u0435\u0442\u0430\u043B\u044C\u043D\u044B\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B \u0434\u043B\u044F Xiaomi, UnionPay \u0438 KoronaPay: \u043C\u043E\u0436\u043D\u043E \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u043A\u0430\u0436\u0434\u044B\u0439 \u043A\u0435\u0439\u0441 \u0438 \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0437\u0430\u0434\u0430\u0447\u0438, \u043C\u0435\u0445\u0430\u043D\u0438\u043A\u0443 \u0438 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B.")), /* @__PURE__ */ React.createElement("div", { className: "grid-3", style: { gap: 28 } }, cases.map((item, idx) => /* @__PURE__ */ React.createElement("article", { key: idx, className: "card", style: { padding: 32, display: "flex", flexDirection: "column", gap: 18, minHeight: 440 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start" } }, /* @__PURE__ */ React.createElement("div", { className: "logo-chip", style: { fontSize: 24, opacity: 1 } }, /* @__PURE__ */ React.createElement("span", { className: "glyph" }, item.glyph), item.brand), /* @__PURE__ */ React.createElement("span", { className: "mono", style: { color: "var(--muted)", textAlign: "right" } }, item.tag)), /* @__PURE__ */ React.createElement("h3", { className: "display", style: { fontSize: 30, margin: 0 } }, item.title), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, color: "var(--ink-soft)", fontSize: 16, lineHeight: 1.6 } }, item.desc), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 8, flexWrap: "wrap" } }, item.tags.map((tag) => /* @__PURE__ */ React.createElement("span", { key: tag, className: "tag" }, tag))), /* @__PURE__ */ React.createElement("div", { className: "cases-list-metrics", style: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 0, borderTop: "1.5px solid var(--ink)", paddingTop: 18, marginTop: "auto" } }, item.metrics.map(([n, label], i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { paddingRight: 12, paddingLeft: i > 0 ? 12 : 0, borderRight: i < 2 ? "1px dashed var(--ink)" : "none" } }, /* @__PURE__ */ React.createElement("div", { className: "num-big", style: { fontSize: 30, color: "var(--accent)" } }, n), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { fontSize: 10, color: "var(--muted)", marginTop: 8 } }, label)))), /* @__PURE__ */ React.createElement(
       "a",
       {
         href: item.href,
         className: item.disabled ? "btn ghost" : "btn lime",
         style: { justifyContent: "center", pointerEvents: item.disabled ? "none" : "auto", opacity: item.disabled ? 0.55 : 1 }
       },
-      item.disabled ? "\u0421\u043A\u043E\u0440\u043E" : "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043A\u0435\u0439\u0441",
+      item.disabled ? "\u0421\u043A\u043E\u0440\u043E" : munaText("\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043A\u0435\u0439\u0441","Loyihani ochish"),
       /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")
     ))))));
   }
   function CasesCTA() {
-    return /* @__PURE__ */ React.createElement("section", { id: "cases-cta", style: { paddingBottom: 60 } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "card", style: { padding: "clamp(40px, 6vw, 72px)", background: "var(--ink)", color: "var(--bg)", textAlign: "center" } }, /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 64px)", margin: "0 0 20px", color: "var(--bg)" } }, "\u0425\u043E\u0442\u0438\u0442\u0435 \u0442\u0430\u043A\u043E\u0439 \u0436\u0435 \u0440\u0430\u0437\u0431\u043E\u0440 \u0434\u043B\u044F \u0432\u0430\u0448\u0435\u0433\u043E \u0431\u0440\u0435\u043D\u0434\u0430?"), /* @__PURE__ */ React.createElement("p", { style: { margin: "0 auto 28px", maxWidth: 720, color: "rgba(255,255,255,.78)", fontSize: 18 } }, "\u041E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u0437\u0430\u044F\u0432\u043A\u0443, \u0438 \u043C\u044B \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u0438\u043C \u0441\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0432\u044B\u0445\u043E\u0434\u0430 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u0441 \u043F\u0440\u043E\u0433\u043D\u043E\u0437\u043E\u043C \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u0438 \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u044F, \u0446\u0435\u043D\u043D\u043E\u0441\u0442\u0438 \u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u0438 \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445 \u0440\u0438\u0441\u043A\u043E\u0432."), /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn lime", style: { background: "var(--accent)", color: "var(--bg)" } }, "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442", /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))));
+    return /* @__PURE__ */ React.createElement("section", { id: "cases-cta", style: { paddingBottom: 60 } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { className: "card", style: { padding: "clamp(40px, 6vw, 72px)", background: "var(--ink)", color: "var(--bg)", textAlign: "center" } }, /* @__PURE__ */ React.createElement("h2", { className: "display", style: { fontSize: "clamp(36px, 5vw, 64px)", margin: "0 0 20px", color: "var(--bg)" } }, "\u0425\u043E\u0442\u0438\u0442\u0435 \u0442\u0430\u043A\u043E\u0439 \u0436\u0435 \u0440\u0430\u0437\u0431\u043E\u0440 \u0434\u043B\u044F \u0432\u0430\u0448\u0435\u0433\u043E \u0431\u0440\u0435\u043D\u0434\u0430?"), /* @__PURE__ */ React.createElement("p", { style: { margin: "0 auto 28px", maxWidth: 720, color: "rgba(255,255,255,.78)", fontSize: 18 } }, "\u041E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u0437\u0430\u044F\u0432\u043A\u0443, \u0438 \u043C\u044B \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u0438\u043C \u0441\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0432\u044B\u0445\u043E\u0434\u0430 \u043D\u0430 \u0440\u044B\u043D\u043E\u043A \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0430 \u0441 \u043F\u0440\u043E\u0433\u043D\u043E\u0437\u043E\u043C \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u0438 \u043F\u0440\u0438\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u044F, \u0446\u0435\u043D\u043D\u043E\u0441\u0442\u0438 \u043A\u043B\u0438\u0435\u043D\u0442\u0430 \u0438 \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u043E\u043D\u043D\u044B\u0445 \u0440\u0438\u0441\u043A\u043E\u0432."), /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn lime", style: { background: "var(--accent)", color: "var(--bg)" } }, munaText("\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani boshlash"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))));
   }
   function Footer() {
     return /* @__PURE__ */ React.createElement(MunaFooter, null);
@@ -1051,10 +1078,10 @@
         document.documentElement.style.setProperty("--shadow", "6px 6px 0 0 var(--ink)");
       }
     }, [t.palette, t.borderStyle]);
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Nav, null), /* @__PURE__ */ React.createElement(CasesHero, null), /* @__PURE__ */ React.createElement(CasesGrid, null), /* @__PURE__ */ React.createElement(CasesCTA, null), /* @__PURE__ */ React.createElement(Footer, null), /* @__PURE__ */ React.createElement(TweaksPanel, { title: "Tweaks" }, /* @__PURE__ */ React.createElement(TweakSection, { label: "\u041F\u0430\u043B\u0438\u0442\u0440\u0430" }), /* @__PURE__ */ React.createElement(
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Nav, null), /* @__PURE__ */ React.createElement(CasesHero, null), /* @__PURE__ */ React.createElement(CasesGrid, null), /* @__PURE__ */ React.createElement(CasesCTA, null), /* @__PURE__ */ React.createElement(Footer, null), /* @__PURE__ */ React.createElement(TweaksPanel, { title: "Tweaks" }, /* @__PURE__ */ React.createElement(TweakSection, { label: munaText("\u041F\u0430\u043B\u0438\u0442\u0440\u0430","Ranglar") }), /* @__PURE__ */ React.createElement(
       TweakRadio,
       {
-        label: "\u0421\u0445\u0435\u043C\u0430",
+        label: munaText("\u0421\u0445\u0435\u043C\u0430","Rang sxemasi"),
         value: t.palette,
         options: [
           { value: "blue", label: "Blue" },
@@ -1063,14 +1090,14 @@
         ],
         onChange: (v) => setTweak("palette", v)
       }
-    ), /* @__PURE__ */ React.createElement(TweakSection, { label: "\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438" }), /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React.createElement(TweakSection, { label: munaText("\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438","Kartochkalar") }), /* @__PURE__ */ React.createElement(
       TweakRadio,
       {
-        label: "\u0422\u0435\u043D\u0438",
+        label: munaText("\u0422\u0435\u043D\u0438","Soyalar"),
         value: t.borderStyle,
         options: [
-          { value: "hard", label: "\u0411\u0440\u0443\u0442\u0430\u043B\u044C\u043D\u044B\u0435" },
-          { value: "soft", label: "\u041C\u044F\u0433\u043A\u0438\u0435" }
+          { value: "hard", label: munaText("\u0411\u0440\u0443\u0442\u0430\u043B\u044C\u043D\u044B\u0435","Aniq") },
+          { value: "soft", label: munaText("\u041C\u044F\u0433\u043A\u0438\u0435","Yumshoq") }
         ],
         onChange: (v) => setTweak("borderStyle", v)
       }

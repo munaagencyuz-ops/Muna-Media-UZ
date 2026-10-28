@@ -70,7 +70,8 @@ function Nav() {
       ]
     },
     { label: 'Блог', href: '/blog', match: ['blog'] },
-    { label: 'О компании', href: '/about' }
+    { label: 'О компании', href: '/about' },
+    { label: munaText('Города', 'Shaharlar'), href: '/shaharlar' }
   ];
 
   const getActiveLink = () => {
@@ -392,6 +393,7 @@ function Nav() {
             ))}
           </div>
 
+          <MunaLanguageLink />
           {/* CTA (visible on desktop) */}
           <a
             href="/#contact"
@@ -449,6 +451,7 @@ function Nav() {
           </div>
           
           <div className="mobile-drawer-footer">
+            <MunaLanguageLink />
             <a
               href="/#contact"
               className="btn lime mobile-drawer-cta"
@@ -461,6 +464,7 @@ function Nav() {
           </div>
         </div>
       </nav>
+      {MUNA_UZ && /^\/(cases|xiaomi|unionpay|koronapay)(?:\/|$)/.test(window.location.pathname) && <aside className="container" lang="uz" style={{paddingTop:18,paddingBottom:18}}>Arxiv loyihalari. Asl matn va tarixiy raqamlar rus tilida saqlangan. Ular yangi kampaniya natijasiga kafolat emas.</aside>}
     </>
   );
 }

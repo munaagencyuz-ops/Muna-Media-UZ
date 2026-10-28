@@ -6,8 +6,9 @@ from playwright.sync_api import sync_playwright
 p=argparse.ArgumentParser();p.add_argument('--base',required=True);p.add_argument('--out',required=True);p.add_argument('--baseline',action='store_true');p.add_argument('--forms',action='store_true');args=p.parse_args()
 assert urlsplit(args.base).hostname in {'localhost','127.0.0.1'},'loopback only'
 ROOT=Path(__file__).resolve().parents[1];OUT=Path(args.out);OUT.mkdir(parents=True,exist_ok=True)
-paths=[urlsplit(str(n.text)).path for n in ET.fromstring((ROOT/'sitemap.xml').read_bytes()).iter() if n.tag.endswith('loc')]
-assert len(paths)==len(set(paths))==22
+paths=[urlsplit(str(n.text)).path for n in ET.fromstring((ROOT/'dist/sitemap.xml').read_bytes()).iter() if n.tag.endswith('loc')]
+manifest=json.loads((ROOT/'.build/route-manifest.json').read_text());assert len(manifest['originalPaths'])==22
+assert len(paths)==len(set(paths))==len(manifest['routes'])
 rows=[];forms=[];blocked=[];failures=[]
 EVAL='''() => ({title:document.title,description:document.querySelector('meta[name="description"]')?.content,h1:[...document.querySelectorAll('h1')].map(x=>x.innerText),canonical:[...document.querySelectorAll('link[rel="canonical"]')].map(x=>x.href),viewport:innerWidth,client:document.documentElement.clientWidth,document:document.documentElement.scrollWidth,body:document.body.scrollWidth,text:document.body.innerText,sections:[...document.querySelectorAll('section')].map(x=>({id:x.id,h:x.getBoundingClientRect().height,display:getComputedStyle(x).display})),headings:[...document.querySelectorAll('h1,h2,h3')].map(x=>x.innerText),links:[...document.querySelectorAll('a[href]')].map(x=>({href:x.getAttribute('href'),text:x.innerText})),fields:[...document.querySelectorAll('form input,form textarea,form select')].map(x=>({tag:x.tagName,id:x.id,name:x.name,label:x.labels?.[0]?.textContent,autocomplete:x.autocomplete,required:x.required,placeholder:x.placeholder})),jsonld:[...document.querySelectorAll('script[type="application/ld+json"]')].map(x=>JSON.parse(x.textContent)),offenders:[...document.querySelectorAll('section h1,section h2,section h3,section p,section a,section input,section select,section textarea,section .card')].filter(x=>{const r=x.getBoundingClientRect();return r.width && (r.left < -1 || r.right>document.documentElement.clientWidth+1)}).map(x=>({tag:x.tagName,cls:x.className,text:x.textContent.slice(0,160),left:x.getBoundingClientRect().left,right:x.getBoundingClientRect().right,width:x.getBoundingClientRect().width,html:x.outerHTML.slice(0,800)}))})'''
 with sync_playwright() as p:
@@ -24,7 +25,7 @@ with sync_playwright() as p:
   for route_path in paths:
    page=ctx.new_page();page.set_viewport_size({'width':width,'height':1000 if width==1440 else 844});errors=[]
    page.on('pageerror',lambda e:errors.append(str(e)))
-   slug=route_path.strip('/') or 'home'
+   slug=route_path.strip('/').replace('/','_') or 'home'
    try:
     response=page.goto(args.base+route_path,wait_until='domcontentloaded',timeout=30000)
     page.wait_for_timeout(250)
@@ -45,14 +46,14 @@ with sync_playwright() as p:
    except Exception as e:failures.append(f'{route_path}@{width}: {e}');rows.append({'path':route_path,'width':width,'error':str(e)})
    finally:page.close()
  if args.forms:
-  for route_path in ['/','/about','/influence','/services-uzbekistan']:
+  for route_path in ['/','/about','/influence','/services-uzbekistan','/ru/','/ru/about','/ru/influence','/ru/services-uzbekistan']:
    for success in [False,True]:
     page=ctx.new_page();captured=[]
     def fake_contact(route):
      req=route.request
      assert req.method=='POST'
      captured.append(req.post_data_json)
-     route.fulfill(status=200 if success else 502,content_type='application/json',body=json.dumps({'ok':success,**({} if success else {'error':'SYNTHETIC QA ERROR'})}))
+     route.fulfill(status=200 if success else 502,content_type='application/json',body=json.dumps({'ok':success,'stored':success,**({} if success else {'error':'SYNTHETIC QA ERROR'})}))
     page.route('**/api/contact',fake_contact)
     page.goto(args.base+route_path,wait_until='domcontentloaded');page.wait_for_selector('form')
     expected={'name':'SYNTHETIC QA','company':'SYNTHETIC ONLY','phone':'+998000000000','email':'synthetic@example.invalid','task':'SYNTHETIC NO DELIVERY','page':route_path}

@@ -57,11 +57,11 @@ test('existing unique metadata, case evidence, sender, and language controls are
       }
     }
   }
-  for (const file of ['case-study-sections.jsx','koronapay-sections.jsx','functions/api/contact.js','contact-helper.jsx','nav.jsx']) assert.equal(read(file),original(file),file);
-  // Sender blocks in each form must remain byte-identical.
+  for (const file of ['case-study-sections.jsx','koronapay-sections.jsx']) assert.equal(read(file),original(file),file);
+  // Sender blocks remain identical except the explicit durable-receipt requirement.
   for (const file of formFiles) {
     const sender=t=>t.match(/async function handleSubmit\(e\) \{[\s\S]*?\n  \}/)?.[0];
-    assert.equal(sender(read(file)),sender(original(file)),file);
+    assert.equal(sender(read(file)),sender(original(file)).replace('result.ok === false', 'result.ok !== true || result.stored !== true'),file);
     const phoneLinks=t=>[...t.matchAll(/href="tel:[^"]*"/g)].map(m=>m[0]);
     assert.deepEqual(phoneLinks(read(file)),phoneLinks(original(file)),file+' public phone links');
   }
@@ -103,8 +103,8 @@ test('robots exposes sitemap and rendering assets while retaining training opt-o
 test('llms has truthful host scope with no unverified influence link', () => {
   const text=read('llms.txt');
   assert.ok(text.includes('https://munamedia.uz'));
-  assert.ok(text.includes('https://munaagency.com'));
-  assert.ok(text.includes('munaagency.uz'));
+  assert.ok(text.includes('https://munadigital.uz'));
+  assert.ok(text.includes('performance'));
   assert.ok(!/https?:\/\/(?:www\.)?munaagency\.uz(?:\/|\b)/i.test(text));
 });
 

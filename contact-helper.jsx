@@ -16,7 +16,7 @@ async function submitLeadForm(form, page) {
     company: form.company || '',
     phone: form.phone || '',
     email: form.email || '',
-    task: form.task || form.budget || '',
+    task: [munaCityTask(), form.task || form.budget || ''].filter(Boolean).join('\n'),
     page: page || (typeof window !== 'undefined' ? window.location.pathname : ''),
   };
 
@@ -27,7 +27,7 @@ async function submitLeadForm(form, page) {
   });
 
   const result = await response.json().catch(() => ({}));
-  if (!response.ok || result.ok === false) {
+  if (!response.ok || result.ok !== true || result.stored !== true) {
     throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте позже.');
   }
   return result;
