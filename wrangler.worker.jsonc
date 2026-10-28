@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "muna-media-uz-site",
+  "account_id": "687fe94fea7c1ae98a9569ef58ba8293",
+  "main": "worker.entry.mjs",
+  "compatibility_date": "2026-10-28",
+  "assets": {
+    "directory": ".build/worker-assets",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "unsafe": {"bindings": [{"name": "LEAD_RATE_LIMITER", "type": "ratelimit", "namespace_id": "2026102801", "simple": {"limit": 5, "period": 60}}]}
+}

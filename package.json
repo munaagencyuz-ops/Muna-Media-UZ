@@ -9,13 +9,15 @@
     "build": "npm run build:bundles && node scripts/stage-public.cjs",
     "test": "node --test tests/*.test.cjs",
     "preview": "wrangler pages dev dist --compatibility-date=2025-01-01",
-    "deploy": "npm run build && npm test && wrangler pages deploy dist --project-name=muna-media-uz"
+    "build:worker": "npm run build && node scripts/prepare-worker-assets.cjs",
+    "deploy": "npm run build:worker && npm test && wrangler deploy --config wrangler.worker.jsonc",
+    "deploy:pages": "npm run build && npm test && wrangler pages deploy dist --project-name=muna-media-uz"
   },
   "engines": {
     "node": ">=20.9.0"
   },
   "devDependencies": {
-    "esbuild": "0.27.3",
+    "esbuild": "0.28.2",
     "http-server": "^14.1.1",
     "wrangler": "^4.0.0"
   }

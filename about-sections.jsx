@@ -245,7 +245,7 @@ function SLA() {
             justifyContent: 'center',
             gap: 20
           }}>
-            <div className="num-big" style={{fontSize: 'clamp(64px, 8vw, 100px)', color: 'var(--accent)'}}>99.99%</div>
+            <div className="num-big" style={{fontSize: munaText('clamp(64px, 8vw, 100px)', 'clamp(28px, 5vw, 56px)'), color: 'var(--accent)'}}>{munaText('99.99%', 'Kelishiladi')}</div>
             <div style={{fontWeight: 700, fontSize: 24, margin: 0}}>Доступность технологической инфраструктуры</div>
             <p style={{margin: 0, color: 'rgba(255, 255, 255, 0.8)', fontSize: 16, lineHeight: 1.6}}>
               Наши сквозные дашборды, системы трекинга инфлюенсеров и аналитические базы данных работают бесперебойно в режиме 24/7.
@@ -401,6 +401,7 @@ function AboutCTA() {
             }}>
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
+                  <MunaLeadContactNotice />
                   <p style={{fontSize:13,lineHeight:1.5,margin:0}}>{MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : 'Данные сохраняются для обработки обращения и могут быть переданы ответственной команде через Telegram. Не указывайте конфиденциальные документы и платежные данные.'}</p>
                   <div>
                     <label htmlFor="about-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>

@@ -1,6 +1,14 @@
 // Muna Media — Shared Navigation Component
 const { useState: navUseState, useEffect: navUseEffect } = React;
 
+function MunaLeadContactNotice() {
+  return <p role="status" style={{fontSize:14,lineHeight:1.5,margin:0}}>
+    {munaText('Онлайн-форма пока недоступна. Напишите нам: ', 'Onlayn shakl hozircha ishlamayapti. Bizga yozing: ')}
+    <a href="mailto:info@munamedia.me">info@munamedia.me</a>
+    {' · '}<a href="https://t.me/munamedia">Telegram</a>.
+  </p>;
+}
+
 function Nav() {
   const [isOpen, setIsOpen] = navUseState(false);
 

@@ -482,6 +482,7 @@ function InfluenceCTA() {
             <div style={{background: 'var(--bg)', color: 'var(--ink)', borderRadius: 24, padding: 32}}>
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', gap: 16}}>
+                  <MunaLeadContactNotice />
                   <p style={{fontSize:13,lineHeight:1.5,margin:0}}>{MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : 'Данные сохраняются для обработки обращения и могут быть переданы ответственной команде через Telegram. Не указывайте конфиденциальные документы и платежные данные.'}</p>
                   <div>
                     <label htmlFor="influence-name" className="mono" style={{color: 'var(--muted)', display: 'block', marginBottom: 8}}>Имя</label>
