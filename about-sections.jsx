@@ -259,7 +259,7 @@ function SLA() {
             justifyContent: 'center',
             gap: 20
           }}>
-            <div className="num-big" style={{fontSize: 'clamp(64px, 8vw, 100px)', color: 'var(--accent)'}}>15 мин</div>
+            <div className="num-big" style={{fontSize: munaText('clamp(64px, 8vw, 100px)', 'clamp(28px, 5vw, 56px)'), color: 'var(--accent)'}}>{munaText('15 мин', 'Kelishiladi')}</div>
             <div style={{fontWeight: 700, fontSize: 24, margin: 0, color: 'var(--ink)'}}>Время ответа поддержки</div>
             <p style={{margin: 0, color: 'var(--ink-soft)', fontSize: 16, lineHeight: 1.6}}>
               Каждому крупному клиенту выделяется личный аккаунт-директор и команда аналитиков в Telegram-чате с регламентированной скоростью реагирования.
