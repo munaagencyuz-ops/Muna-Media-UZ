@@ -2,6 +2,8 @@ const fs=require('node:fs'),path=require('node:path');
 const cities=require('../locales/cities.cjs'),services=require('../locales/services-uz.cjs');
 const catalog=require('../locales/uz.json');
 const roster=require('../locales/city-roster.json');
+const {createHash}=require('node:crypto');
+const {renderHub}=require('./city-hub/render.cjs');
 if(roster.cities.length!==120 || new Set(roster.cities.map(c=>c.soato_code)).size!==120)throw Error('City roster count mismatch');
 const ORIGIN='https://munamedia.uz';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -71,13 +73,21 @@ module.exports=function generate(root,dist,files){
  }
  for(const uz of [true,false]){
   const prefix=uz?'':'/ru',hub=prefix+'/shaharlar';routes.push(hub);
-  const title=uz?"O'zbekiston shaharlari uchun reklama rejasi | Muna Media":'Реклама по городам Узбекистана | Muna Media';
-  const intro=uz?"Ishga tushirish to'plami: 14 markaz uchun alohida brif va tekshiruv ro'yxati. Bu barcha shaharlarning to'liq qamrovi emas. Sahifa mahalliy ofis yoki mavjud reklama joyini tasdiqlamaydi.":'Стартовый набор: отдельные брифы и чек-листы для 14 центров. Это не полный охват всех городов. Страницы не подтверждают местные офисы или наличие рекламных мест.';
   const nav=`<nav class="city-nav" aria-label="${uz?'Asosiy bo\'limlar':'Основные разделы'}"><a href="${prefix}/"><img src="/assets/logo/muna-media-navbar-logo.jpg" alt="MUNA MEDIA" width="156" height="60" style="object-fit:contain;display:block"></a><a href="${prefix}/services-uzbekistan">${uz?'Xizmatlar':'Услуги'}</a><a href="${prefix}/#contact">${uz?'Brif yuborish':'Отправить бриф'}</a><a href="${uz?'/ru/shaharlar':'/shaharlar'}" lang="${uz?'ru':'uz'}">${uz?'Русский':"O'zbekcha"}</a></nav>`;
-  const directory=roster.cities.map(c=>`<article class="card city-entry" data-soato="${c.soato_code}" data-city="${esc([c.name_uz_display,c.name_ru_source,c.region_name_uz_source,c.parent_name_uz_source].join(' '))}" style="padding:20px"><h3>${esc(uz?c.name_uz_display:c.name_ru_source)}</h3><p>${esc(c.region_name_uz_source)} · ${esc(c.parent_name_uz_source)}</p><p>SOATO ${c.soato_code}</p><a href="${prefix}/?soato=${c.soato_code}#contact">${uz?'Shu shahar uchun brif':'Бриф для этого города'}</a></article>`).join('');
-  const cards=cities.map(c=>`<article class="card" data-guide="${esc(c.slug)}" style="padding:24px"><h2><a href="${hub}/${c.slug}">${esc(uz?c.name:c.ruName)}</a></h2><p>${esc(uz?c.region:c.ruRegion)}</p><p>${esc(uz?c.focus:c.ruFocus)}</p></article>`).join('');
-  let body=`<main class="seo-fallback">${nav}<h1>${esc(title.replace(' | Muna Media',''))}</h1><p>${esc(intro)}</p><label for="city-filter">${uz?'Shahar yoki hududni qidirish':'Поиск города или региона'}</label><input class="input" id="city-filter" name="city-filter" autocomplete="off" type="search"><p id="city-count" role="status">120</p><p>${uz?"Rasmiy klassifikator suratiga mos 120 shahar tanlovi. Bu xizmat ko'rsatish yoki reklama joylari mavjudligi tasdig'i emas.":'Выбор из 120 городов официального классификатора. Это не подтверждение исполнения услуг или наличия рекламных мест.'}</p><div class="grid-2">${directory}</div><h2>${uz?'14 markaz uchun amaliy briflar':'Практические брифы для 14 центров'}</h2><div class="grid-2">${cards}</div><p>${uz?'Manbalar:':'Источники:'} <a href="https://stat.uz/uz/interaktiv-xizmatlar/statistik-klassifikasiyalar">MHOBT</a>, <a href="https://siat.stat.uz/data/290/">SIAT</a>. ${uz?"2026-yil shaharlar soni bilan solishtirilgan klassifikator surati. Nom yoki maqom keyin o'zgargan bo'lishi mumkin; shaharchalar bu ro'yxatga kirmaydi.":'Снимок классификатора сверен с количеством городов за 2026 год. Названия или статус могли измениться позднее; поселки в этот список не входят.'}</p><h2>${uz?'Shahringiz ro\'yxatda yo\'qmi?':'Нет вашего города?'}</h2><p>${uz?'Shahar va xizmat hududini brifda yozing. Mavjudlik va bajarish shartlarini alohida tekshiramiz.':'Укажите город и территорию в брифе. Возможность и условия исполнения проверяются отдельно.'}</p><a class="btn lime" href="${prefix}/#contact">${uz?'Vazifani yozish':'Описать задачу'}</a></main>`;
-  write((uz?'':'ru/')+'shaharlar.html',cityPage('/shaharlar',uz,title,intro,body));
+  const rendered=renderHub(roster,cities,uz);
+  // Hub-only assets are content addressed: /assets/* is immutable for one year.
+  const hubAssets={};
+  for(const ext of ['css','js']){
+   const content=fs.readFileSync(path.join(__dirname,'city-hub/hub.'+ext),'utf8');
+   const hash=createHash('sha256').update(content).digest('hex').slice(0,16);
+   const asset='assets/city-hub.'+hash+'.'+ext;
+   write(asset,content);hubAssets[ext]='/'+asset;
+  }
+  let hubHtml=cityPage('/shaharlar',uz,rendered.title,rendered.description,rendered.body)
+   .replace(/<style>[\s\S]*?<\/style>/g,'')
+   .replace('</head>',`<link rel="stylesheet" href="${hubAssets.css}"></head>`)
+   .replace('<script src="/assets/city-directory.js" defer></script>',`<script src="${hubAssets.js}" defer></script>`);
+  write((uz?'':'ru/')+'shaharlar.html',hubHtml);
   cities.forEach((c,i)=>{
    const name=uz?c.name:c.ruName,focus=uz?c.focus:c.ruFocus;
    const official=roster.launch_centers.find(x=>x.name_uz===c.name);

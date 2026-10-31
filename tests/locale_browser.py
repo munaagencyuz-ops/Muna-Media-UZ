@@ -18,7 +18,7 @@ with sync_playwright() as p:
   page.goto(a.base+path);page.wait_for_timeout(100);text=page.locator('body').inner_text().replace('Русский','');assert not re.search('[А-Яа-яЁё]',text),(path,[x for x in text.splitlines() if re.search('[А-Яа-яЁё]',x)])
   assert page.locator('html').get_attribute('lang')=='uz';checks.append({'kind':'visible_uzbek','path':path})
  page.goto(a.base+'/shaharlar');assert page.locator('[data-soato]').count()==120
- page.locator('#city-filter').fill('Chirchiq');assert int(page.locator('#city-count').inner_text())>0
+ page.locator('#city-filter').fill('Chirchiq');assert page.locator('.city-entry:not([hidden])').count()>0
  visible=page.locator('.city-entry:visible');assert visible.count()<120
  target=visible.first.locator('a').get_attribute('href');page.goto(a.base+target);assert 'SOATO' in page.locator('[name="task"]').input_value();checks.append({'kind':'directory_filter_and_form_prefill','link':target})
  page.goto(a.base+'/shaharlar/toshkent');assert page.locator('a[lang="ru"]').get_attribute('href')=='/ru/shaharlar/toshkent'
