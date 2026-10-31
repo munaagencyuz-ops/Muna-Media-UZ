@@ -1,4 +1,5 @@
 import compiled from './dist/_worker.js';
+export { LeadDelivery } from './server/lead-delivery.mjs';
 
 export default {
   async fetch(request, env, context) {

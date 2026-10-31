@@ -51,9 +51,12 @@ with sync_playwright() as p:
     page=ctx.new_page();captured=[]
     def fake_contact(route):
      req=route.request
+     if req.method=='GET':
+      route.fulfill(status=200,content_type='application/json',body=json.dumps({'available':True}));return
      assert req.method=='POST'
+     assert req.header_value('Idempotency-Key')
      captured.append(req.post_data_json)
-     route.fulfill(status=200 if success else 502,content_type='application/json',body=json.dumps({'ok':success,'stored':success,**({} if success else {'error':'SYNTHETIC QA ERROR'})}))
+     route.fulfill(status=200 if success else 502,content_type='application/json',body=json.dumps({'ok':success,'stored':success,'delivered':{'telegram':success,'email':success},'receipt':'lead.00000000-0000-4000-8000-000000000000',**({} if success else {'code':'DELIVERY_PARTIAL'})}))
     page.route('**/api/contact',fake_contact)
     page.goto(args.base+route_path,wait_until='domcontentloaded');page.wait_for_selector('form')
     expected={'name':'SYNTHETIC QA','company':'SYNTHETIC ONLY','phone':'+998000000000','email':'synthetic@example.invalid','task':'SYNTHETIC NO DELIVERY','page':route_path}
@@ -72,7 +75,10 @@ with sync_playwright() as p:
     form.locator('button[type="submit"]').click();page.wait_for_timeout(150)
     assert captured==[expected],(route_path,captured,expected)
     if success:assert page.locator('form').count()==0
-    else:assert page.get_by_text('SYNTHETIC QA ERROR').is_visible() and page.locator('form').count()==1
+    else:
+     assert page.locator('form').count()==1
+     assert form.locator('[name="name"]').input_value()==expected['name']
+     assert page.get_by_text('Ariza ikkala kanalga ham yuborilmadi.',exact=False).is_visible() if not route_path.startswith('/ru') else page.get_by_text('Заявка отправлена не в оба канала.',exact=False).is_visible()
     forms.append({'path':route_path,'success_fixture':success,'payload':captured[0],'outbound':False});page.close()
  browser.close()
 (OUT/'census.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2));(OUT/'forms.json').write_text(json.dumps(forms,ensure_ascii=False,indent=2));(OUT/'blocked.json').write_text(json.dumps(blocked,ensure_ascii=False,indent=2))

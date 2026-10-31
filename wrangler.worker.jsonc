@@ -13,5 +13,9 @@
   },
   "workers_dev": false,
   "preview_urls": false,
+  "vars": {"LEAD_CAPTURE_ENABLED":"true"},
+  "durable_objects": {"bindings":[{"name":"LEAD_DELIVERY","class_name":"LeadDelivery"}]},
+  "migrations": [{"tag":"lead-delivery-v1","new_sqlite_classes":["LeadDelivery"]}],
+  "send_email": [{"name":"LEAD_EMAIL","allowed_sender_addresses":["leads@notifications.munamedia.uz"],"allowed_destination_addresses":["info@munamedia.me"]}],
   "unsafe": {"bindings": [{"name": "LEAD_RATE_LIMITER", "type": "ratelimit", "namespace_id": "2026102801", "simple": {"limit": 5, "period": 60}}]}
 }

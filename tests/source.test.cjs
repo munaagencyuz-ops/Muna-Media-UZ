@@ -61,9 +61,16 @@ test('existing unique metadata, case evidence, sender, and language controls are
   // Sender blocks remain identical except the explicit durable-receipt requirement.
   for (const file of formFiles) {
     const sender=t=>t.match(/async function handleSubmit\(e\) \{[\s\S]*?\n  \}/)?.[0];
-    assert.equal(sender(read(file)),sender(original(file)).replace('result.ok === false', 'result.ok !== true || result.stored !== true'),file);
+    let expected=sender(original(file));
+    if(file==='sections.jsx') {
+      // The homepage now shares the nonce/dual-ack helper. Preserve the rest of
+      // its original submit/clear/error lifecycle byte-for-byte.
+      expected=expected.replace(/      const response = await fetch\('\/api\/contact',[\s\S]*?\n      \}\n/, '      await submitLeadForm(form, window.location.pathname);\n');
+    }
+    assert.equal(sender(read(file)),expected,file);
+    assert.match(sender(read(file)),/await submitLeadForm\(form, window.location.pathname\)/);
     const phoneLinks=t=>[...t.matchAll(/href="tel:[^"]*"/g)].map(m=>m[0]);
-    assert.deepEqual(phoneLinks(read(file)),phoneLinks(original(file)),file+' public phone links');
+    assert.deepEqual(phoneLinks(read(file)),phoneLinks(original(file)).map(()=>'href="tel:+998901381313"'),file+' owner-approved public phone links');
   }
 });
 

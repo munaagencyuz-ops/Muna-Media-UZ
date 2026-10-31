@@ -7,7 +7,7 @@ const sharedUiInputs = ['nav.jsx', 'tweaks-panel.jsx'];
 const builds = [
   {
     out: 'assets/bundles/index.bundle.js',
-    inputs: [...sharedUiInputs, 'sections.jsx', 'app.jsx'],
+    inputs: [...sharedUiInputs, 'contact-helper.jsx', 'sections.jsx', 'app.jsx'],
   },
   {
     out: 'assets/bundles/about.bundle.js',
@@ -84,6 +84,12 @@ async function buildAll() {
       const version = crypto.createHash('sha256').update(fs.readFileSync(asset)).digest('hex').slice(0, 16);
       return `${asset}?v=${version}`;
     });
+    if (['index.html','about.html','influence.html','services-uzbekistan.html'].includes(file)) {
+      // Keep a usable email fallback before React attaches (also on script failure).
+      // The Uzbek staging template already supplies its localized email link.
+      updated = updated.replace(/(<main class="seo-fallback"[\s\S]*?)(<\/nav>)/, (all, before, end) =>
+        before.includes('mailto:info@munamedia.me') ? all : before + '<a href="mailto:info@munamedia.me">Написать на email</a>' + end);
+    }
     if (updated !== html) fs.writeFileSync(file, updated);
   }
 }

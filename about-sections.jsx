@@ -383,8 +383,8 @@ function AboutCTA() {
                     info@munamedia.me
                   </a>
                   <br />
-                  <a href="tel:+998331301313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
-                    +998 33 130 13 13
+                  <a href="tel:+998901381313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    +998 90 138 13 13
                   </a>
                 </div>
               </div>
@@ -402,7 +402,6 @@ function AboutCTA() {
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
                   <MunaLeadContactNotice />
-                  <p style={{fontSize:13,lineHeight:1.5,margin:0}}>{MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : 'Данные сохраняются для обработки обращения и могут быть переданы ответственной команде через Telegram. Не указывайте конфиденциальные документы и платежные данные.'}</p>
                   <div>
                     <label htmlFor="about-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
                     <input id="about-name" name="name" autoComplete="name"

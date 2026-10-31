@@ -830,16 +830,7 @@ function FinalCTA() {
     setError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, page: window.location.pathname }),
-      });
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok || result.ok !== true || result.stored !== true) {
-        throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте позже.');
-      }
+      await submitLeadForm(form, window.location.pathname);
 
       setSubmitted(true);
       setForm({ name: '', company: '', phone: '', email: '', task: '' });
@@ -906,8 +897,8 @@ function FinalCTA() {
                 </div>
                 <div>
                   <div className="mono" style={{opacity:.6}}>Телефон</div>
-                  <a href="tel:+998331301313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
-                    +998 33 130 13 13
+                  <a href="tel:+998901381313" style={{color:'var(--bg)', textDecoration:'none', fontSize: 18, fontWeight: 600}}>
+                    +998 90 138 13 13
                   </a>
                 </div>
                 <div>
@@ -931,7 +922,6 @@ function FinalCTA() {
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap: 16}}>
                   <MunaLeadContactNotice />
-                  <p style={{fontSize:13,lineHeight:1.5,margin:0}}>{MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : 'Данные сохраняются для обработки обращения и могут быть переданы ответственной команде через Telegram. Не указывайте конфиденциальные документы и платежные данные.'}</p>
                   <div>
                     <label htmlFor="home-name" className="mono" style={{color:'var(--muted)', display:'block', marginBottom: 8}}>Имя</label>
                     <input id="home-name" name="name" autoComplete="name"

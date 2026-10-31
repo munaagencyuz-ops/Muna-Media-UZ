@@ -2,11 +2,30 @@
 const { useState: navUseState, useEffect: navUseEffect } = React;
 
 function MunaLeadContactNotice() {
-  return <p role="status" style={{fontSize:14,lineHeight:1.5,margin:0}}>
-    {munaText('Онлайн-форма пока недоступна. Напишите нам: ', 'Onlayn shakl hozircha ishlamayapti. Bizga yozing: ')}
-    <a href="mailto:info@munamedia.me">info@munamedia.me</a>
-    {' · '}<a href="https://t.me/munamedia">Telegram</a>.
-  </p>;
+  const [available, setAvailable] = navUseState(null);
+  navUseEffect(() => {
+    let active = true;
+    fetch('/api/contact', {method:'GET', cache:'no-store'})
+      .then(response => response.ok ? response.json() : {})
+      .then(result => { if(active) setAvailable(result.available === true); })
+      .catch(() => { if(active) setAvailable(false); });
+    return () => { active = false; };
+  }, []);
+  return <div style={{fontSize:14,lineHeight:1.5,margin:0}}>
+    <p role="status" style={{margin:'0 0 8px'}}>
+      {available === null
+        ? munaText('Проверяем доступность формы. ', 'Shakl tayyorligini tekshiryapmiz. ')
+        : available
+          ? munaText('Форма настроена для отправки в Telegram и на email. ', 'Shakl Telegram va emailga yuborish uchun sozlangan. ')
+          : munaText('Форма сейчас недоступна. Напишите нам: ', 'Shakl hozir ishlamayapti. Bizga yozing: ')}
+      <a href="mailto:info@munamedia.me">info@munamedia.me</a>
+      {' · '}<a href="https://t.me/munamedia">Telegram</a>.
+    </p>
+    <p style={{fontSize:13,margin:0}}>{munaText(
+      'При отправке данные передаются команде Muna Media в Telegram и на email. Не указывайте конфиденциальные документы и платёжные данные. Подтверждение означает приём обоими сервисами, а не прочтение сообщения.',
+      "Yuborilganda ma'lumotlar Muna Media jamoasiga Telegram va email orqali uzatiladi. Maxfiy hujjat va to'lov ma'lumotlarini yozmang. Tasdiq — ikkala xizmat qabul qilganini bildiradi, xabar o'qilganini emas."
+    )}</p>
+  </div>;
 }
 
 function Nav() {
@@ -548,9 +567,8 @@ function MunaFooter() {
           alignItems: 'start'
         }}>
           <div>
-            <a href="/" className="logo" style={{fontSize: 42, color: 'white', textDecoration: 'none'}}>
-              <span className="blob" style={{width: 34, height: 34, background: 'var(--accent)'}} />
-              MUNA MEDIA
+            <a href="/" className="logo" aria-label="Muna Media" style={{display: 'inline-flex', color: 'white', textDecoration: 'none'}}>
+              <img src="/assets/logo/muna-media-navbar-logo.png" alt="Muna Media" width="208" height="80" style={{display: 'block', width: 208, maxWidth: '100%', height: 'auto', borderRadius: '10% / 26%'}} />
             </a>
             <p style={{margin: '18px 0 0', maxWidth: 470, color: 'rgba(255,255,255,.72)', fontSize: 16, lineHeight: 1.65}}>
               Рекламное агентство полного цикла в Узбекистане: стратегия, наружная реклама, digital, инфлюенсеры, ивенты и прозрачная отчетность.
@@ -591,7 +609,7 @@ function MunaFooter() {
         }}>
           <div style={{display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center'}}>
             <a href="mailto:info@munamedia.me" style={{...linkStyle, fontWeight: 700}}>info@munamedia.me</a>
-            <a href="tel:+998331301313" style={linkStyle}>+998 33 130 13 13</a>
+            <a href="tel:+998901381313" style={linkStyle}>+998 90 138 13 13</a>
             <a href="https://t.me/munamedia" style={linkStyle}>Telegram</a>
             <a href="https://instagram.com/munamedia" style={linkStyle}>Instagram</a>
           </div>

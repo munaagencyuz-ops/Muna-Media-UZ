@@ -33,7 +33,22 @@
   }
   const { useState: navUseState, useEffect: navUseEffect } = React;
   function MunaLeadContactNotice() {
-    return /* @__PURE__ */ React.createElement("p", { role: "status", style: { fontSize: 14, lineHeight: 1.5, margin: 0 } }, munaText("\u041E\u043D\u043B\u0430\u0439\u043D-\u0444\u043E\u0440\u043C\u0430 \u043F\u043E\u043A\u0430 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430. \u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C: ", "Onlayn shakl hozircha ishlamayapti. Bizga yozing: "), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me" }, "info@munamedia.me"), " \xB7 ", /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia" }, "Telegram"), ".");
+    const [available, setAvailable] = navUseState(null);
+    navUseEffect(() => {
+      let active = true;
+      fetch("/api/contact", { method: "GET", cache: "no-store" }).then((response) => response.ok ? response.json() : {}).then((result) => {
+        if (active) setAvailable(result.available === true);
+      }).catch(() => {
+        if (active) setAvailable(false);
+      });
+      return () => {
+        active = false;
+      };
+    }, []);
+    return /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, lineHeight: 1.5, margin: 0 } }, /* @__PURE__ */ React.createElement("p", { role: "status", style: { margin: "0 0 8px" } }, available === null ? munaText("\u041F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u043C \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E\u0441\u0442\u044C \u0444\u043E\u0440\u043C\u044B. ", "Shakl tayyorligini tekshiryapmiz. ") : available ? munaText("\u0424\u043E\u0440\u043C\u0430 \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043D\u0430 \u0434\u043B\u044F \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0438 \u0432 Telegram \u0438 \u043D\u0430 email. ", "Shakl Telegram va emailga yuborish uchun sozlangan. ") : munaText("\u0424\u043E\u0440\u043C\u0430 \u0441\u0435\u0439\u0447\u0430\u0441 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430. \u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C: ", "Shakl hozir ishlamayapti. Bizga yozing: "), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me" }, "info@munamedia.me"), " \xB7 ", /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia" }, "Telegram"), "."), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, margin: 0 } }, munaText(
+      "\u041F\u0440\u0438 \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0435 \u0434\u0430\u043D\u043D\u044B\u0435 \u043F\u0435\u0440\u0435\u0434\u0430\u044E\u0442\u0441\u044F \u043A\u043E\u043C\u0430\u043D\u0434\u0435 Muna Media \u0432 Telegram \u0438 \u043D\u0430 email. \u041D\u0435 \u0443\u043A\u0430\u0437\u044B\u0432\u0430\u0439\u0442\u0435 \u043A\u043E\u043D\u0444\u0438\u0434\u0435\u043D\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0435 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0438 \u043F\u043B\u0430\u0442\u0451\u0436\u043D\u044B\u0435 \u0434\u0430\u043D\u043D\u044B\u0435. \u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043E\u0437\u043D\u0430\u0447\u0430\u0435\u0442 \u043F\u0440\u0438\u0451\u043C \u043E\u0431\u043E\u0438\u043C\u0438 \u0441\u0435\u0440\u0432\u0438\u0441\u0430\u043C\u0438, \u0430 \u043D\u0435 \u043F\u0440\u043E\u0447\u0442\u0435\u043D\u0438\u0435 \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u044F.",
+      "Yuborilganda ma'lumotlar Muna Media jamoasiga Telegram va email orqali uzatiladi. Maxfiy hujjat va to'lov ma'lumotlarini yozmang. Tasdiq \u2014 ikkala xizmat qabul qilganini bildiradi, xabar o'qilganini emas."
+    )));
   }
   function Nav() {
     const [isOpen, setIsOpen] = navUseState(false);
@@ -503,7 +518,7 @@
       gridTemplateColumns: "minmax(260px, 1.05fr) minmax(0, 1.65fr)",
       gap: 42,
       alignItems: "start"
-    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", style: { fontSize: 42, color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("span", { className: "blob", style: { width: 34, height: 34, background: "var(--accent)" } }), "MUNA MEDIA"), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C.","O'zbekistonda reklama xizmatlari: strategiya, tashqi reklama, internet reklamasi, blogerlar, tadbirlar va xarajatlar hisoboti.")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, munaText("\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani muhokama qilish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, munaText("\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B","Loyihalarni ko'rish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", { href: "/", className: "logo", "aria-label": "Muna Media", style: { display: "inline-flex", color: "white", textDecoration: "none" } }, /* @__PURE__ */ React.createElement("img", { src: "/assets/logo/muna-media-navbar-logo.png", alt: "Muna Media", width: "208", height: "80", style: { display: "block", width: 208, maxWidth: "100%", height: "auto", borderRadius: "10% / 26%" } })), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", maxWidth: 470, color: "rgba(255,255,255,.72)", fontSize: 16, lineHeight: 1.65 } }, munaText("\u0420\u0435\u043A\u043B\u0430\u043C\u043D\u043E\u0435 \u0430\u0433\u0435\u043D\u0442\u0441\u0442\u0432\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E \u0446\u0438\u043A\u043B\u0430 \u0432 \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D\u0435: \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044F, \u043D\u0430\u0440\u0443\u0436\u043D\u0430\u044F \u0440\u0435\u043A\u043B\u0430\u043C\u0430, digital, \u0438\u043D\u0444\u043B\u044E\u0435\u043D\u0441\u0435\u0440\u044B, \u0438\u0432\u0435\u043D\u0442\u044B \u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u0430\u044F \u043E\u0442\u0447\u0435\u0442\u043D\u043E\u0441\u0442\u044C.","O'zbekistonda reklama xizmatlari: strategiya, tashqi reklama, internet reklamasi, blogerlar, tadbirlar va xarajatlar hisoboti.")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 26 } }, /* @__PURE__ */ React.createElement("a", { href: "/#contact", className: "btn", style: { background: "var(--accent)", borderColor: "white", color: "white" } }, munaText("\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442","Loyihani muhokama qilish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")), /* @__PURE__ */ React.createElement("a", { href: "/cases", className: "btn", style: { background: "transparent", borderColor: "white", color: "white" } }, munaText("\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043A\u0435\u0439\u0441\u044B","Loyihalarni ko'rish"), /* @__PURE__ */ React.createElement("span", { className: "arrow" }, "\u2192")))), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(4, minmax(140px, 1fr))",
       gap: 26
@@ -515,7 +530,7 @@
       gridTemplateColumns: "1fr auto",
       gap: 22,
       alignItems: "center"
-    } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { ...linkStyle, fontWeight: 700 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: linkStyle }, "+998 33 130 13 13"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", textAlign: "right" } }, munaText("\xA9 2019-2026 Muna Media \xB7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D","© 2019-2026 Muna Media · Toshkent, O'zbekiston")))), /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
+    } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { ...linkStyle, fontWeight: 700 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("a", { href: "tel:+998901381313", style: linkStyle }, "+998 90 138 13 13"), /* @__PURE__ */ React.createElement("a", { href: "https://t.me/munamedia", style: linkStyle }, "Telegram"), /* @__PURE__ */ React.createElement("a", { href: "https://instagram.com/munamedia", style: linkStyle }, "Instagram")), /* @__PURE__ */ React.createElement("div", { className: "mono", style: { color: "rgba(255,255,255,.46)", textAlign: "right" } }, munaText("\xA9 2019-2026 Muna Media \xB7 \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D","© 2019-2026 Muna Media · Toshkent, O'zbekiston")))), /* @__PURE__ */ React.createElement("style", { dangerouslySetInnerHTML: { __html: `
         footer a:hover {
           color: white !important;
           transform: translateX(2px);
@@ -1009,24 +1024,47 @@
       ...defaults
     };
   }
+  const pendingLeadSubmissions = /* @__PURE__ */ new Map();
   async function submitLeadForm(form, page) {
+    var _a, _b;
+    const city = munaCityTask();
+    const task = form.task || form.budget || "";
     const payload = {
       name: form.name || "",
       company: form.company || "",
       phone: form.phone || "",
       email: form.email || "",
-      task: [munaCityTask(), form.task || form.budget || ""].filter(Boolean).join("\n"),
+      task: [city && !task.startsWith(city) ? city : "", task].filter(Boolean).join("\n"),
       page: page || (typeof window !== "undefined" ? window.location.pathname : "")
     };
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || result.ok !== true || result.stored !== true) {
-      throw new Error(result.error || munaText("\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443. \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435.","Arizani yuborib bo'lmadi. Keyinroq qayta urinib ko'ring."));
+    const body = JSON.stringify(payload);
+    let nonce = pendingLeadSubmissions.get(body);
+    if (!nonce) {
+      if (pendingLeadSubmissions.size >= 32) throw new Error(munaText("\u0421\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u043D\u0435\u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043D\u043D\u044B\u0445 \u043E\u0442\u043F\u0440\u0430\u0432\u043E\u043A. \u0421\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u043D\u0430\u043C\u0438 \u043F\u043E email.", "Tugallanmagan arizalar ko'p. Email orqali bog'laning."));
+      nonce = crypto.randomUUID();
+      pendingLeadSubmissions.set(body, nonce);
     }
+    let response;
+    try {
+      response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Idempotency-Key": nonce },
+        body
+      });
+    } catch (e) {
+      throw new Error(munaText("\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u043E. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0431\u0435\u0437 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439 \u0438\u043B\u0438 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u043D\u0430\u043C\u0438.", "Tasdiq olinmadi. Maydonlarni o'zgartirmay qayta urining yoki biz bilan bog'laning."));
+    }
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.ok !== true || result.stored !== true || ((_a = result.delivered) == null ? void 0 : _a.telegram) !== true || ((_b = result.delivered) == null ? void 0 : _b.email) !== true || typeof result.receipt !== "string" || !/^lead\.[0-9a-f-]{36}$/.test(result.receipt)) {
+      const messages = {
+        DELIVERY_UNKNOWN: munaText("\u041E\u0442\u043F\u0440\u0430\u0432\u043A\u0430 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0430 \u043D\u0435 \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E. \u041D\u0435 \u0441\u043E\u0437\u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043D\u043E\u0432\u0443\u044E \u0437\u0430\u044F\u0432\u043A\u0443; \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u043D\u0430\u043C\u0438 \u043F\u043E email \u0438\u043B\u0438 \u0432 Telegram.", "Yuborish to'liq tasdiqlanmadi. Yangi ariza yubormang; email yoki Telegram orqali bog'laning."),
+        DELIVERY_PARTIAL: munaText("\u0417\u0430\u044F\u0432\u043A\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043D\u0435 \u0432 \u043E\u0431\u0430 \u043A\u0430\u043D\u0430\u043B\u0430. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0431\u0435\u0437 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439 \u2014 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0451\u043D\u043D\u044B\u0439 \u043A\u0430\u043D\u0430\u043B \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442 \u0434\u0443\u0431\u043B\u0438\u043A\u0430\u0442.", "Ariza ikkala kanalga ham yuborilmadi. Maydonlarni o'zgartirmay qayta urining \u2014 tasdiqlangan kanalga qayta yuborilmaydi."),
+        UNAVAILABLE: munaText("\u0424\u043E\u0440\u043C\u0430 \u0441\u0435\u0439\u0447\u0430\u0441 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430. \u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C \u043F\u043E email \u0438\u043B\u0438 \u0432 Telegram.", "Shakl hozir ishlamayapti. Email yoki Telegram orqali yozing."),
+        IDEMPOTENCY_CONFLICT: munaText("\u041A\u043B\u044E\u0447 \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0438 \u0443\u0436\u0435 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D. \u0421\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u043D\u0430\u043C\u0438 \u043F\u043E email.", "Yuborish kaliti ishlatilgan. Email orqali bog'laning.")
+      };
+      throw new Error(messages[result.code] || munaText("\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C \u043E\u0442\u043F\u0440\u0430\u0432\u043A\u0443 \u0432 \u043E\u0431\u0430 \u043A\u0430\u043D\u0430\u043B\u0430. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u043E\u043B\u044F \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0431\u0435\u0437 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439 \u0438\u043B\u0438 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u043D\u0430\u043C\u0438.", "Ikkala kanalga yuborish tasdiqlanmadi. Maydonlarni tekshiring, o'zgartirmay qayta urining yoki biz bilan bog'laning."));
+    }
+    pendingLeadSubmissions.delete(body);
     return result;
   }
   function leadErrorMessage(error) {
@@ -1167,14 +1205,14 @@
       display: "flex",
       flexDirection: "column",
       gap: 16
-    } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, lineHeight: 1.5, color: "rgba(255,255,255,0.85)" } }, /* @__PURE__ */ React.createElement("strong", null, munaText("\u0413\u043E\u043B\u043E\u0432\u043D\u043E\u0439 \u043E\u0444\u0438\u0441 \u0422\u0430\u0448\u043A\u0435\u043D\u0442:","Toshkentdagi aloqa manzili:")), /* @__PURE__ */ React.createElement("br", null), munaText("\u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D, \u0433. \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0443\u043B. \u0410\u043C\u0438\u0440\u0430 \u0422\u0435\u043C\u0443\u0440\u0430, 107\u0411","O'zbekiston, Toshkent shahri, Amir Temur ko'chasi, 107B"), /* @__PURE__ */ React.createElement("br", null), munaText("\u0411\u0438\u0437\u043D\u0435\u0441-\u0446\u0435\u043D\u0442\u0440 \xABInternational\xBB, 4 \u044D\u0442\u0430\u0436","International biznes markazi, 4-qavat")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6, fontSize: 11 } }, munaText("\u041F\u0440\u044F\u043C\u0430\u044F \u043B\u0438\u043D\u0438\u044F","To'g'ridan-to'g'ri aloqa")), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("a", { href: "tel:+998331301313", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "+998 33 130 13 13")))), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, lineHeight: 1.5, color: "rgba(255,255,255,0.85)" } }, /* @__PURE__ */ React.createElement("strong", null, munaText("\u0413\u043E\u043B\u043E\u0432\u043D\u043E\u0439 \u043E\u0444\u0438\u0441 \u0422\u0430\u0448\u043A\u0435\u043D\u0442:","Toshkentdagi aloqa manzili:")), /* @__PURE__ */ React.createElement("br", null), munaText("\u0423\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u0430\u043D, \u0433. \u0422\u0430\u0448\u043A\u0435\u043D\u0442, \u0443\u043B. \u0410\u043C\u0438\u0440\u0430 \u0422\u0435\u043C\u0443\u0440\u0430, 107\u0411","O'zbekiston, Toshkent shahri, Amir Temur ko'chasi, 107B"), /* @__PURE__ */ React.createElement("br", null), munaText("\u0411\u0438\u0437\u043D\u0435\u0441-\u0446\u0435\u043D\u0442\u0440 \xABInternational\xBB, 4 \u044D\u0442\u0430\u0436","International biznes markazi, 4-qavat")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono", style: { opacity: 0.6, fontSize: 11 } }, munaText("\u041F\u0440\u044F\u043C\u0430\u044F \u043B\u0438\u043D\u0438\u044F","To'g'ridan-to'g'ri aloqa")), /* @__PURE__ */ React.createElement("a", { href: "mailto:info@munamedia.me", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "info@munamedia.me"), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("a", { href: "tel:+998901381313", style: { color: "var(--bg)", textDecoration: "none", fontSize: 18, fontWeight: 600 } }, "+998 90 138 13 13")))), /* @__PURE__ */ React.createElement("div", { style: {
       background: "var(--bg)",
       color: "var(--ink)",
       border: "1.5px solid var(--bg)",
       borderRadius: 24,
       padding: 32,
       position: "relative"
-    } }, !submitted ? /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit, style: { display: "flex", flexDirection: "column", gap: 16 } }, /* @__PURE__ */ React.createElement(MunaLeadContactNotice, null), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, lineHeight: 1.5, margin: 0 } }, MUNA_UZ ? "Ma'lumotingiz murojaatni ko'rib chiqish uchun saqlanadi va mas'ul jamoaga Telegram orqali yuborilishi mumkin. Maxfiy hujjat va to'lov ma'lumotlarini yozmang." : "\u0414\u0430\u043D\u043D\u044B\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u044E\u0442\u0441\u044F \u0434\u043B\u044F \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043E\u0431\u0440\u0430\u0449\u0435\u043D\u0438\u044F \u0438 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u043F\u0435\u0440\u0435\u0434\u0430\u043D\u044B \u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0435 \u0447\u0435\u0440\u0435\u0437 Telegram. \u041D\u0435 \u0443\u043A\u0430\u0437\u044B\u0432\u0430\u0439\u0442\u0435 \u043A\u043E\u043D\u0444\u0438\u0434\u0435\u043D\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0435 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B \u0438 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u044B\u0435 \u0434\u0430\u043D\u043D\u044B\u0435."), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "about-name", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, munaText("\u0418\u043C\u044F","Ismingiz")), /* @__PURE__ */ React.createElement(
+    } }, !submitted ? /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit, style: { display: "flex", flexDirection: "column", gap: 16 } }, /* @__PURE__ */ React.createElement(MunaLeadContactNotice, null), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { htmlFor: "about-name", className: "mono", style: { color: "var(--muted)", display: "block", marginBottom: 8 } }, munaText("\u0418\u043C\u044F","Ismingiz")), /* @__PURE__ */ React.createElement(
       "input",
       {
         id: "about-name",
